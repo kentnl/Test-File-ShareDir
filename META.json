@@ -52,7 +52,6 @@
       "test" : {
          "requires" : {
             "English" : 0,
-            "Example" : 0,
             "File::Find" : 0,
             "FindBin" : 0,
             "Test::Fatal" : 0,
@@ -81,7 +80,6 @@
          "Carp" : "1.17",
          "Dist::Zilla::PluginBundle::Author::KENTNL" : "1.0.2",
          "Dist::Zilla::PluginBundle::Author::KENTNL::Lite" : "NA(possibly not installed)",
-         "Example" : "NA(possibly not installed)",
          "File::Copy::Recursive" : "0.38",
          "File::ShareDir" : "1.03",
          "File::Temp" : "0.22",
@@ -178,11 +176,6 @@
          {
             "class" : "Dist::Zilla::Plugin::Manifest",
             "name" : "@Author::KENTNL/Manifest",
-            "version" : "4.200004"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::AutoPrereqs",
-            "name" : "@Author::KENTNL/AutoPrereqs",
             "version" : "4.200004"
          },
          {
@@ -333,6 +326,11 @@
             "class" : "Dist::Zilla::Plugin::Twitter",
             "name" : "@Author::KENTNL/Twitter",
             "version" : "0.010"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::AutoPrereqs",
+            "name" : "AutoPrereqs",
+            "version" : "4.200004"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaNoIndex",

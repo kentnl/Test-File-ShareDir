@@ -8,7 +8,6 @@ use Module::Build 0.3601;
 my %module_build_args = (
   'build_requires' => {
     'English' => '0',
-    'Example' => '0',
     'File::Find' => '0',
     'FindBin' => '0',
     'Module::Build' => '0.3601',
