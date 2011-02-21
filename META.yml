@@ -19,6 +19,9 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Test-File-ShareDir
+no_index:
+  directory:
+    - t/tlib
 provides:
   Test::File::ShareDir:
     file: lib/Test/File/ShareDir.pm
@@ -238,6 +241,10 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::Twitter
       name: '@Author::KENTNL/Twitter'
       version: 0.010
+    -
+      class: Dist::Zilla::Plugin::MetaNoIndex
+      name: MetaNoIndex
+      version: 4.200004
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:

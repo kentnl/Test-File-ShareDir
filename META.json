@@ -13,6 +13,11 @@
       "version" : "2"
    },
    "name" : "Test-File-ShareDir",
+   "no_index" : {
+      "directory" : [
+         "t/tlib"
+      ]
+   },
    "prereqs" : {
       "build" : {
          "requires" : {
@@ -328,6 +333,11 @@
             "class" : "Dist::Zilla::Plugin::Twitter",
             "name" : "@Author::KENTNL/Twitter",
             "version" : "0.010"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::MetaNoIndex",
+            "name" : "MetaNoIndex",
+            "version" : "4.200004"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",
