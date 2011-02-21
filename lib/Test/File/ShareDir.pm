@@ -16,8 +16,7 @@ use File::Copy::Recursive qw( rcopy );
 use File::ShareDir 1.00 qw();
 
 sub import {
-  my $class = shift;
-  my (%config) = @_;
+  my ($class , %config ) = @_;;
 
   if ( not exists $config{-root} ) {
     require Carp;
@@ -55,6 +54,7 @@ sub import {
 
   unshift @INC, $tempdir->stringify;
 
+  return 1;
 }
 
 
