@@ -62,7 +62,8 @@ sub import {
 # one-day vanishes.
 sub _module_subdir {
   my $modname = shift;
-  $modname =~ s/::/-/;
+  ## no critic ( RegularExpressions )
+  $modname =~ s/::/-/g;
   return $modname;
 }
 
