@@ -16,7 +16,7 @@ use File::Copy::Recursive qw( rcopy );
 use File::ShareDir 1.00 qw();
 
 sub import {
-  my ($class , %config ) = @_;;
+  my ( $class, %config ) = @_;
 
   if ( not exists $config{-root} ) {
     require Carp;
@@ -46,7 +46,7 @@ sub import {
 
   for my $module ( keys %{$modules} ) {
     my $sourcedir = $rootdir->subdir( $modules->{$module} );
-    my $targetdir = $module_share_dir_root->subdir( File::ShareDir::_module_subdir($module) );
+    my $targetdir = $module_share_dir_root->subdir( _module_subdir($module) );
 
     #print "Copy $sourcedir to $targetdir\n";
     rcopy( $sourcedir, $targetdir );
@@ -57,8 +57,14 @@ sub import {
   return 1;
 }
 
-
-
+# this is replicated from File::ShareDir
+# but code is copied to prevent breakages when the private method
+# one-day vanishes.
+sub _module_subdir {
+  my $modname = shift;
+  $modname =~ s/::/-/;
+  return $modname;
+}
 
 1;
 
