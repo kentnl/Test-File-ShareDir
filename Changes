@@ -3,4 +3,5 @@ Release history for Test-File-ShareDir
 {{$NEXT}}
 
         First version, released on an unsuspecting world.
+        Presently only supports module share-dirs.
 
