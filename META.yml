@@ -12,7 +12,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110440'
+generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110580'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -24,17 +24,20 @@ no_index:
 provides:
   Test::File::ShareDir:
     file: lib/Test/File/ShareDir.pm
-    version: v0.1.0
+    version: v0.1.1
+  Test::File::ShareDir::TempDirObject:
+    file: lib/Test/File/ShareDir/TempDirObject.pm
+    version: v0.1.1
 requires:
   Carp: 0
   File::Copy::Recursive: 0
   File::ShareDir: 1.00
   File::Temp: 0
-  Path::Class: 0
+  Path::Class::Dir: 0
 resources:
   homepage: http://github.com/kentfredric/Test-File-ShareDir/tree
   repository: git://github.com/kentfredric/Test-File-ShareDir.git
-version: 0.1.0
+version: 0.1.1
 x_BuiltWith:
   modules:
     Carp: 1.17
@@ -44,10 +47,10 @@ x_BuiltWith:
     File::ShareDir: 1.03
     File::Temp: 0.22
     FindBin: 1.50
-    Module::Build: 0.3624
-    Path::Class: 0.23
+    Module::Build: 0.38
+    Path::Class::Dir: 0.23
     Test::Fatal: 0.003
-    Test::More: 0.96
+    Test::More: 0.98
   perl:
     original: v5.12.3
     qv: 1

@@ -1,5 +1,18 @@
 Release history for Test-File-ShareDir
 
+0.1.1     2011-03-11 05:35:13 Pacific/Auckland
+
+        Overhauled the internals to make it easier to work on.
+
+        Refactored code into an object.
+
+        No externally visible changes.
+
+        Slightly more strict, but just to stop 
+        you doing stupid things.
+
+        Module Loading is now slightly lazier.
+
 0.1.0     2011-02-22 01:42:47 Pacific/Auckland
 
         First version, released on an unsuspecting world.

@@ -58,7 +58,7 @@ eval { $v .= pmver('File::ShareDir','1.00') };
 eval { $v .= pmver('File::Temp','any version') };
 eval { $v .= pmver('FindBin','any version') };
 eval { $v .= pmver('Module::Build','0.3601') };
-eval { $v .= pmver('Path::Class','any version') };
+eval { $v .= pmver('Path::Class::Dir','any version') };
 eval { $v .= pmver('Test::Fatal','any version') };
 eval { $v .= pmver('Test::More','0.96') };
 
