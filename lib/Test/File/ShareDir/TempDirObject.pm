@@ -78,7 +78,7 @@ sub _module_share_source_dir {
 
 sub _install_module {
   my ( $self, $module ) = @_;
-  __rcopy( $self->_module_share_source_dir($module), $self->_module_share_target_dir($module) );
+  return __rcopy( $self->_module_share_source_dir($module), $self->_module_share_target_dir($module) );
 }
 
 1;
