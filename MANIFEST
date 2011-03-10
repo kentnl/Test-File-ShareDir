@@ -8,6 +8,7 @@ META.yml
 README
 dist.ini
 lib/Test/File/ShareDir.pm
+lib/Test/File/ShareDir/TempDirObject.pm
 perlcritic.rc
 t/00-compile.t
 t/000-report-versions-tiny.t

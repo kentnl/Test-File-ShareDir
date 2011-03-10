@@ -3,68 +3,30 @@ use warnings;
 
 package Test::File::ShareDir;
 BEGIN {
-  $Test::File::ShareDir::VERSION = '0.1.0';
+  $Test::File::ShareDir::VERSION = '0.1.1';
 }
 
 # ABSTRACT: Create a Fake ShareDir for your modules for testing.
 
 
 
-use File::Temp qw( tempdir );
-use Path::Class qw( dir );
-use File::Copy::Recursive qw( rcopy );
+
 use File::ShareDir 1.00 qw();
 
 sub import {
-  my ( $class, %config ) = @_;
+  my ( $class, %input_config ) = @_;
 
-  if ( not exists $config{-root} ) {
-    require Carp;
-    Carp::confess('Need -root => for Test::File::ShareDir');
+  require Test::File::ShareDir::TempDirObject;
+
+  my $object = Test::File::ShareDir::TempDirObject->new( \%input_config );
+
+  for my $module ( $object->_module_names ){
+      $object->_install_module( $module );
   }
 
-  if ( not exists $config{-share} ) {
-    require Carp;
-    Carp::confess('Need -share for Test::File::ShareDir');
-  }
-
-  my $rootdir = dir( $config{-root} );
-  my $modules = {};
-
-  if ( exists $config{-share}->{-module} ) {
-    $modules = delete $config{-share}->{-module};
-  }
-
-  if ( keys %{ $config{-share} } ) {
-    require Carp;
-    Carp::confess( 'Unsupported -share types : ' . join q{ }, keys %{ $config{-share} } );
-  }
-
-  my $tempdir = dir( tempdir( CLEANUP => 1 ) );
-  my $module_share_dir_root = $tempdir->subdir('auto/share/module');
-  $module_share_dir_root->mkpath();
-
-  for my $module ( keys %{$modules} ) {
-    my $sourcedir = $rootdir->subdir( $modules->{$module} );
-    my $targetdir = $module_share_dir_root->subdir( _module_subdir($module) );
-
-    #print "Copy $sourcedir to $targetdir\n";
-    rcopy( $sourcedir, $targetdir );
-  }
-
-  unshift @INC, $tempdir->stringify;
+  unshift @INC, $object->_tempdir->stringify;
 
   return 1;
-}
-
-# this is replicated from File::ShareDir
-# but code is copied to prevent breakages when the private method
-# one-day vanishes.
-sub _module_subdir {
-  my $modname = shift;
-  ## no critic ( RegularExpressions )
-  $modname =~ s/::/-/g;
-  return $modname;
 }
 
 1;
@@ -78,7 +40,7 @@ Test::File::ShareDir - Create a Fake ShareDir for your modules for testing.
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
 
 =head1 SYNOPSIS
 
