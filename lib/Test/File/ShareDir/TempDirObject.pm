@@ -7,6 +7,7 @@ BEGIN {
 }
 
 sub __confess { require Carp;                  goto \&Carp::confess; }
+## no critic (Subroutines::RequireArgUnpacking)
 sub __dir     { require Path::Class::Dir;      return Path::Class::Dir->new(@_); }
 sub __tempdir { require File::Temp;            goto \&File::Temp::tempdir; }
 sub __rcopy   { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
@@ -64,6 +65,7 @@ sub _module_names {
 sub _module_share_target_dir {
   my ( $self, $modname ) = @_;
 
+  ## no critic (RegularExpressions)
   $modname =~ s/::/-/g;
 
   return $self->_module_tempdir->subdir($modname);
