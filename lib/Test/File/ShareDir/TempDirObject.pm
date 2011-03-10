@@ -9,11 +9,11 @@ BEGIN {
 # ABSTRACT: Internal Object to make code simpler.
 
 
-sub __confess { require Carp; goto \&Carp::confess; }
 ## no critic (Subroutines::RequireArgUnpacking)
 sub __dir     { require Path::Class::Dir;      return Path::Class::Dir->new(@_); }
 sub __tempdir { require File::Temp;            goto \&File::Temp::tempdir; }
 sub __rcopy   { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
+sub __confess { require Carp;                  goto \&Carp::confess; }
 
 
 sub new {
