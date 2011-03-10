@@ -3,10 +3,38 @@ use warnings;
 
 package Test::File::ShareDir::TempDirObject;
 
-sub __confess { require Carp;                  goto \&Carp::confess; }
+# ABSTRACT: Internal Object to make code simpler.
+
+=head1 SYNOPSIS
+
+    my $object = $class->new({
+        -root => 'foo',
+        -share => {
+            -module => {
+                'baz' => 'dir',
+            }
+        }
+    });
+
+    # installs a sharedir for 'baz' by copying 'foo/dir'
+    $object->_install_module('baz');
+
+    # add to @INC
+    unshift @INC, $object->_tempdir->stringify;
+
+=cut
+
+## no critic (Subroutines::RequireArgUnpacking)
 sub __dir     { require Path::Class::Dir;      return Path::Class::Dir->new(@_); }
 sub __tempdir { require File::Temp;            goto \&File::Temp::tempdir; }
 sub __rcopy   { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
+sub __confess { require Carp;                  goto \&Carp::confess; }
+
+=method new
+
+Creates a new instance of this object.
+
+=cut
 
 sub new {
   my ( $class, $config ) = @_;
@@ -15,7 +43,7 @@ sub new {
   __confess('Need -share => for Test::File::ShareDir') unless exists $config->{-share};
 
   my $realconfig = {
-    root    => __dir( $config->{-root} ), #->resolve->absolute,
+    root    => __dir( $config->{-root} ),    #->resolve->absolute,
     modules => {},
   };
 
@@ -61,6 +89,7 @@ sub _module_names {
 sub _module_share_target_dir {
   my ( $self, $modname ) = @_;
 
+  ## no critic (RegularExpressions)
   $modname =~ s/::/-/g;
 
   return $self->_module_tempdir->subdir($modname);
@@ -73,7 +102,7 @@ sub _module_share_source_dir {
 
 sub _install_module {
   my ( $self, $module ) = @_;
-  __rcopy( $self->_module_share_source_dir($module), $self->_module_share_target_dir($module) );
+  return __rcopy( $self->_module_share_source_dir($module), $self->_module_share_target_dir($module) );
 }
 
 1;
