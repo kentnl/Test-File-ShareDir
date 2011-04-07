@@ -24,10 +24,10 @@ no_index:
 provides:
   Test::File::ShareDir:
     file: lib/Test/File/ShareDir.pm
-    version: v0.1.2
+    version: v0.2.0
   Test::File::ShareDir::TempDirObject:
     file: lib/Test/File/ShareDir/TempDirObject.pm
-    version: v0.1.2
+    version: v0.2.0
 requires:
   Carp: 0
   File::Copy::Recursive: 0
@@ -37,7 +37,7 @@ requires:
 resources:
   homepage: http://github.com/kentfredric/Test-File-ShareDir/tree
   repository: git://github.com/kentfredric/Test-File-ShareDir.git
-version: 0.1.2
+version: 0.2.0
 x_BuiltWith:
   modules:
     Carp: 1.17
