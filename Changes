@@ -3,6 +3,7 @@ Release history for Test-File-ShareDir
 {{$NEXT}}
  [Packaging]
  - Remove need for @Filter.
+ - Rework Changes for CPAN::Changes.
 
  [Tests]
  - Added CPAN::Changes tests.
