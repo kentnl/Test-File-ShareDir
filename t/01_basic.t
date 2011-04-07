@@ -6,10 +6,10 @@ use Test::More 0.96;
 use Test::Fatal;
 use FindBin;
 use Test::File::ShareDir
-  -root  => "$FindBin::Bin/../",
-  -share => { -module => { 'Example' => 't/tshare', } };
+  -root  => "$FindBin::Bin/01_files",
+  -share => { -module => { 'Example' => 'share', } };
 
-use lib "$FindBin::Bin/../t/tlib";
+use lib "$FindBin::Bin/01_files/lib";
 
 use Example;
 
