@@ -55,7 +55,7 @@ sub new {
   };
 
   $realconfig->{modules} = delete $config->{-share}->{-module} if exists $config->{-share}->{-module};
-  $realconfig->{dists}   = delete $config->{-share}->{-dist} if exists $config->{-share}->{-dist};
+  $realconfig->{dists}   = delete $config->{-share}->{-dist}   if exists $config->{-share}->{-dist};
 
   __confess( 'Unsupported -share types : ' . join q{ }, keys %{ $config->{-share} } ) if keys %{ $config->{-share} };
 
@@ -105,7 +105,7 @@ sub _module_names {
 }
 
 sub _dist_names {
-  my ( $self ) = shift;
+  my ($self) = shift;
   return keys %{ $self->_dists };
 }
 
@@ -119,7 +119,7 @@ sub _module_share_target_dir {
 }
 
 sub _dist_share_target_dir {
-  my ($self, $distname ) = @_;
+  my ( $self, $distname ) = @_;
   return $self->_dist_tempdir->subdir($distname);
 }
 
@@ -130,7 +130,7 @@ sub _module_share_source_dir {
 
 sub _dist_share_source_dir {
   my ( $self, $dist ) = @_;
-  return $self->_root->subdir( $self->_dists->{$dist});
+  return $self->_root->subdir( $self->_dists->{$dist} );
 }
 
 sub _install_module {
@@ -139,8 +139,8 @@ sub _install_module {
 }
 
 sub _install_dist {
- my ( $self, $dist ) = @_;
- return __rcopy( $self->_dist_share_source_dir($dist), $self->_dist_share_target_dir($dist) );
+  my ( $self, $dist ) = @_;
+  return __rcopy( $self->_dist_share_source_dir($dist), $self->_dist_share_target_dir($dist) );
 }
 
 1;

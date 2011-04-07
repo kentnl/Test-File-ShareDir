@@ -36,7 +36,6 @@ For this reason, unless you have File::ShareDir 1.00 or later installed, this mo
 
 =cut
 
-
 use File::ShareDir 1.00 qw();
 
 sub import {
@@ -46,12 +45,12 @@ sub import {
 
   my $object = Test::File::ShareDir::TempDirObject->new( \%input_config );
 
-  for my $module ( $object->_module_names ){
-      $object->_install_module( $module );
+  for my $module ( $object->_module_names ) {
+    $object->_install_module($module);
   }
 
-  for my $dist ( $object->_dist_names ){
-    $object->_install_dist( $dist );
+  for my $dist ( $object->_dist_names ) {
+    $object->_install_dist($dist);
   }
 
   unshift @INC, $object->_tempdir->stringify;
