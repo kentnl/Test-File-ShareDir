@@ -11,6 +11,7 @@ Release history for Test-File-ShareDir
  [Tests]
  - Added CPAN::Changes tests.
  - 01 Basics files moved to 01_files and 01 Basic is reformatted to match.
+ - Added 02_distdir and 02_files to test for dist feature.
 
 0.1.1 2011-03-10T16:35:13Z
  - Overhauled the internals to make it easier to work on.
