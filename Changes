@@ -1,5 +1,9 @@
 Release history for Test-File-ShareDir
 
+0.2.0 2011-04-07T21:10:54Z
+ - Rereleased as 0.2.0 to signify backwards incompatible changes introduced
+   in 0.1.2
+
 0.1.2 2011-04-07T21:08:05Z
  [Features]
  - Adds support for dist/package sharedirs. See synopsis for syntax.

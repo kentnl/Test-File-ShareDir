@@ -3,7 +3,7 @@ NAME
     testing.
 
 VERSION
-    version 0.1.2
+    version 0.2.0
 
 SYNOPSIS
         use Test::More;
