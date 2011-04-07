@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-0.1.2 2011-04-07T21:07:48Z
+0.1.2 2011-04-07T21:08:05Z
  [Features]
  - Adds support for dist/package sharedirs. See synopsis for syntax.
 
