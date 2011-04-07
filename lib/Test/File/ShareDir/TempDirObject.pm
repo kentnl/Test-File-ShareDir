@@ -3,7 +3,7 @@ use warnings;
 
 package Test::File::ShareDir::TempDirObject;
 BEGIN {
-  $Test::File::ShareDir::TempDirObject::VERSION = '0.1.1';
+  $Test::File::ShareDir::TempDirObject::VERSION = '0.1.2';
 }
 
 # ABSTRACT: Internal Object to make code simpler.
@@ -25,9 +25,11 @@ sub new {
   my $realconfig = {
     root    => __dir( $config->{-root} ),    #->resolve->absolute,
     modules => {},
+    dists   => {},
   };
 
   $realconfig->{modules} = delete $config->{-share}->{-module} if exists $config->{-share}->{-module};
+  $realconfig->{dists}   = delete $config->{-share}->{-dist}   if exists $config->{-share}->{-dist};
 
   __confess( 'Unsupported -share types : ' . join q{ }, keys %{ $config->{-share} } ) if keys %{ $config->{-share} };
 
@@ -54,6 +56,14 @@ sub _module_tempdir {
   return $self->{module_tempdir};
 }
 
+sub _dist_tempdir {
+  my ($self) = shift;
+  return $self->{dist_tempdir} if exists $self->{dist_tempdir};
+  $self->{dist_tempdir} = $self->_tempdir->subdir('auto/share/dist');
+  $self->{dist_tempdir}->mkpath();
+  return $self->{dist_tempdir};
+}
+
 sub _root {
   my ($self) = shift;
   return $self->{root};
@@ -61,9 +71,16 @@ sub _root {
 
 sub _modules { return shift->{modules}; }
 
+sub _dists { return shift->{dists} }
+
 sub _module_names {
   my ($self) = shift;
   return keys %{ $self->_modules };
+}
+
+sub _dist_names {
+  my ($self) = shift;
+  return keys %{ $self->_dists };
 }
 
 sub _module_share_target_dir {
@@ -75,14 +92,29 @@ sub _module_share_target_dir {
   return $self->_module_tempdir->subdir($modname);
 }
 
+sub _dist_share_target_dir {
+  my ( $self, $distname ) = @_;
+  return $self->_dist_tempdir->subdir($distname);
+}
+
 sub _module_share_source_dir {
   my ( $self, $module ) = @_;
   return $self->_root->subdir( $self->_modules->{$module} );
 }
 
+sub _dist_share_source_dir {
+  my ( $self, $dist ) = @_;
+  return $self->_root->subdir( $self->_dists->{$dist} );
+}
+
 sub _install_module {
   my ( $self, $module ) = @_;
   return __rcopy( $self->_module_share_source_dir($module), $self->_module_share_target_dir($module) );
+}
+
+sub _install_dist {
+  my ( $self, $dist ) = @_;
+  return __rcopy( $self->_dist_share_source_dir($dist), $self->_dist_share_target_dir($dist) );
 }
 
 1;
@@ -96,7 +128,7 @@ Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 0.1.1
+version 0.1.2
 
 =head1 SYNOPSIS
 
@@ -105,12 +137,18 @@ version 0.1.1
         -share => {
             -module => {
                 'baz' => 'dir',
-            }
-        }
+            },
+            -dist => {
+                'Task-baz' => 'otherdir',
+            },
+        },
     });
 
     # installs a sharedir for 'baz' by copying 'foo/dir'
     $object->_install_module('baz');
+
+    # installs a shardir for distribution 'Task-baz' by copying 'foo/otherdir'
+    $object->_install_dist('Task-baz');
 
     # add to @INC
     unshift @INC, $object->_tempdir->stringify;

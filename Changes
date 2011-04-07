@@ -1,20 +1,26 @@
 Release history for Test-File-ShareDir
 
-0.1.1     2011-03-11 05:35:13 Pacific/Auckland
+0.1.2 2011-04-07T21:08:05Z
+ [Features]
+ - Adds support for dist/package sharedirs. See synopsis for syntax.
 
-        Overhauled the internals to make it easier to work on.
+ [Packaging]
+ - Remove need for @Filter.
+ - Rework Changes for CPAN::Changes.
 
-        Refactored code into an object.
+ [Tests]
+ - Added CPAN::Changes tests.
+ - 01 Basics files moved to 01_files and 01 Basic is reformatted to match.
+ - Added 02_distdir and 02_files to test for dist feature.
 
-        No externally visible changes.
+0.1.1 2011-03-10T16:35:13Z
+ - Overhauled the internals to make it easier to work on.
+ - Refactored code into an object.
+ - No externally visible changes.
+ - Slightly more strict, but just to stop you doing stupid things.
+ - Module Loading is now slightly lazier.
 
-        Slightly more strict, but just to stop 
-        you doing stupid things.
-
-        Module Loading is now slightly lazier.
-
-0.1.0     2011-02-22 01:42:47 Pacific/Auckland
-
-        First version, released on an unsuspecting world.
-        Presently only supports module share-dirs.
+0.1.0 2011-02-21T12:42:47Z
+ - First version, released on an unsuspecting world.
+ - Presently only supports module share-dirs.
 

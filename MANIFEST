@@ -13,12 +13,15 @@ perlcritic.rc
 t/00-compile.t
 t/000-report-versions-tiny.t
 t/01_basic.t
+t/01_files/lib/Example.pm
+t/01_files/share/afile
+t/02_distdir.t
+t/02_files/share/afile
 t/author-critic.t
+t/release-cpan-changes.t
 t/release-distmeta.t
 t/release-eol.t
 t/release-kwalitee.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
-t/tlib/Example.pm
-t/tshare/afile
 weaver.ini
