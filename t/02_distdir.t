@@ -16,7 +16,7 @@ is(
     note dist_dir('Example-Dist');
   },
   undef,
-  'module_dir doesn\'t bail as it finds the dir'
+  'dist_dir doesn\'t bail as it finds the dir'
 );
 
 is(
@@ -24,7 +24,7 @@ is(
     note dist_file( 'Example-Dist', 'afile' );
   },
   undef,
-  'module_file doesn\'t bail as it finds the file'
+  'dist_file doesn\'t bail as it finds the file'
 );
 
 done_testing;
