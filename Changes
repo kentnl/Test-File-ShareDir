@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-0.1.2 2011-04-07T21:04:10Z
+0.1.2 2011-04-07T21:06:22Z
  [Features]
  - Adds support for dist/package sharedirs. See synopsis for syntax.
 
@@ -11,6 +11,7 @@ Release history for Test-File-ShareDir
  [Tests]
  - Added CPAN::Changes tests.
  - 01 Basics files moved to 01_files and 01 Basic is reformatted to match.
+ - Added 02_distdir and 02_files to test for dist feature.
 
 0.1.1 2011-03-10T16:35:13Z
  - Overhauled the internals to make it easier to work on.
