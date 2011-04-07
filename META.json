@@ -4,7 +4,7 @@
       "Kent Fredric <kentnl@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110580",
+   "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110930",
    "license" : [
       "perl_5"
    ],
@@ -62,11 +62,11 @@
    "provides" : {
       "Test::File::ShareDir" : {
          "file" : "lib/Test/File/ShareDir.pm",
-         "version" : "v0.1.1"
+         "version" : "v0.1.2"
       },
       "Test::File::ShareDir::TempDirObject" : {
          "file" : "lib/Test/File/ShareDir/TempDirObject.pm",
-         "version" : "v0.1.1"
+         "version" : "v0.1.2"
       }
    },
    "release_status" : "stable",
@@ -78,11 +78,11 @@
          "web" : "http://github.com/kentfredric/Test-File-ShareDir/tree"
       }
    },
-   "version" : "0.1.1",
+   "version" : "0.1.2",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.17",
-         "Dist::Zilla::PluginBundle::Author::KENTNL" : "1.0.2",
+         "Dist::Zilla::PluginBundle::Author::KENTNL" : "1.0.5",
          "Dist::Zilla::PluginBundle::Author::KENTNL::Lite" : "NA(possibly not installed)",
          "File::Copy::Recursive" : "0.38",
          "File::ShareDir" : "1.03",
@@ -103,14 +103,14 @@
          ]
       },
       "platform" : "linux",
-      "uname" : "Linux 2.6.37-gentoo x86_64 GenuineIntel GNU/Linux"
+      "uname" : "Linux 2.6.38-gentoo x86_64 GenuineIntel GNU/Linux"
    },
    "x_Dist_Zilla" : {
       "plugins" : [
          {
             "class" : "Dist::Zilla::Plugin::Git::NextVersion",
             "name" : "@Author::KENTNL/Git::NextVersion",
-            "version" : "1.110330"
+            "version" : "1.110500"
          },
          {
             "class" : "Dist::Zilla::Plugin::GatherDir",
@@ -150,7 +150,7 @@
          {
             "class" : "Dist::Zilla::Plugin::MetaProvides::Package",
             "name" : "@Author::KENTNL/MetaProvides::Package",
-            "version" : "1.12044908"
+            "version" : "1.12060213"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaJSON",
@@ -180,6 +180,11 @@
          {
             "class" : "Dist::Zilla::Plugin::Manifest",
             "name" : "@Author::KENTNL/Manifest",
+            "version" : "4.200004"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::AutoPrereqs",
+            "name" : "@Author::KENTNL/AutoPrereqs",
             "version" : "4.200004"
          },
          {
@@ -237,9 +242,14 @@
             "version" : "0.01018204"
          },
          {
+            "class" : "Dist::Zilla::Plugin::CPANChangesTests",
+            "name" : "@Author::KENTNL/CPANChangesTests",
+            "version" : "1.001"
+         },
+         {
             "class" : "Dist::Zilla::Plugin::CompileTests",
             "name" : "@Author::KENTNL/CompileTests",
-            "version" : "1.103030"
+            "version" : "1.110930"
          },
          {
             "class" : "Dist::Zilla::Plugin::CriticTests",
@@ -294,7 +304,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::Check",
             "name" : "@Author::KENTNL/Git::Check",
-            "version" : "1.110330"
+            "version" : "1.110500"
          },
          {
             "class" : "Dist::Zilla::Plugin::NextRelease",
@@ -304,22 +314,22 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
             "name" : "@Author::KENTNL/Git::Tag/tag_master",
-            "version" : "1.110330"
+            "version" : "1.110500"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
             "name" : "@Author::KENTNL/Git::Commit",
-            "version" : "1.110330"
+            "version" : "1.110500"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::CommitBuild",
             "name" : "@Author::KENTNL/Git::CommitBuild",
-            "version" : "1.110330"
+            "version" : "1.110500"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
             "name" : "@Author::KENTNL/Git::Tag/tag_release",
-            "version" : "1.110330"
+            "version" : "1.110500"
          },
          {
             "class" : "Dist::Zilla::Plugin::UploadToCPAN",
@@ -330,11 +340,6 @@
             "class" : "Dist::Zilla::Plugin::Twitter",
             "name" : "@Author::KENTNL/Twitter",
             "version" : "0.010"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::AutoPrereqs",
-            "name" : "AutoPrereqs",
-            "version" : "4.200004"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaNoIndex",
