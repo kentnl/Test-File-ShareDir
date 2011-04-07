@@ -1,6 +1,9 @@
 Release history for Test-File-ShareDir
 
 {{$NEXT}}
+ [Features]
+ - Adds support for dist/package sharedirs. See synopsis for syntax.
+
  [Packaging]
  - Remove need for @Filter.
  - Rework Changes for CPAN::Changes.
