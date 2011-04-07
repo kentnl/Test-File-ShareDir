@@ -1,6 +1,9 @@
 Release history for Test-File-ShareDir
 
 {{$NEXT}}
+ [Packaging]
+ - Remove need for @Filter.
+
 
 0.1.1     2011-03-11 05:35:13 Pacific/Auckland
 
