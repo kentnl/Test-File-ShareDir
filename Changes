@@ -1,6 +1,14 @@
 Release history for Test-File-ShareDir
 
 {{$NEXT}}
+ [Documentation]
+ - Improved primary documentation to explain import flags
+
+ [Features]
+ - In the absense of passing the 'root' parameter, it will default to the
+   current work directory. Considering that most of the time, the Cwd is
+   the project root directory when running tests, this constitutes a
+   reasonably sane default.
 
 0.2.0 2011-04-07T21:10:54Z
  - Rereleased as 0.2.0 to signify backwards incompatible changes introduced

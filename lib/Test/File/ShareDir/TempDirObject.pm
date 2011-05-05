@@ -8,7 +8,7 @@ package Test::File::ShareDir::TempDirObject;
 =head1 SYNOPSIS
 
     my $object = $class->new({
-        -root => 'foo',
+        -root => 'foo', # optional
         -share => {
             -module => {
                 'baz' => 'dir',
@@ -45,21 +45,20 @@ Creates a new instance of this object.
 sub new {
   my ( $class, $config ) = @_;
 
-  __confess('Need -root => for Test::File::ShareDir')  unless exists $config->{-root};
   __confess('Need -share => for Test::File::ShareDir') unless exists $config->{-share};
 
   my $realconfig = {
-    root    => __dir( $config->{-root} ),    #->resolve->absolute,
+    root    => __dir( $config->{-root} )->absolute,    #->resolve->absolute,
     modules => {},
     dists   => {},
   };
 
-  $realconfig->{modules} = delete $config->{-share}->{-module} if exists $config->{-share}->{-module};
-  $realconfig->{dists}   = delete $config->{-share}->{-dist}   if exists $config->{-share}->{-dist};
+  $realconfig->{root}    = __dir( delete $config->{-root} )->absolute if exists $config->{-root};
+  $realconfig->{modules} = delete $config->{-share}->{-module}        if exists $config->{-share}->{-module};
+  $realconfig->{dists}   = delete $config->{-share}->{-dist}          if exists $config->{-share}->{-dist};
 
   __confess( 'Unsupported -share types : ' . join q{ }, keys %{ $config->{-share} } ) if keys %{ $config->{-share} };
 
-  delete $config->{-root};
   delete $config->{-share};
 
   __confess( 'Unsupported parameter to import() : ' . join q{ }, keys %{$config} ) if keys %{$config};
