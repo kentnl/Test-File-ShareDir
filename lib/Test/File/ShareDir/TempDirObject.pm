@@ -3,7 +3,7 @@ use warnings;
 
 package Test::File::ShareDir::TempDirObject;
 BEGIN {
-  $Test::File::ShareDir::TempDirObject::VERSION = '0.3.0';
+  $Test::File::ShareDir::TempDirObject::VERSION = '0.2.1';
 }
 
 # ABSTRACT: Internal Object to make code simpler.
@@ -22,7 +22,7 @@ sub new {
   __confess('Need -share => for Test::File::ShareDir') unless exists $config->{-share};
 
   my $realconfig = {
-    root    => __dir( $config->{-root} )->absolute,    #->resolve->absolute,
+    root    => __dir('./')->absolute,    #->resolve->absolute,
     modules => {},
     dists   => {},
   };
@@ -127,7 +127,7 @@ Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 0.3.0
+version 0.2.1
 
 =head1 SYNOPSIS
 

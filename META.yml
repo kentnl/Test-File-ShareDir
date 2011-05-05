@@ -3,6 +3,7 @@ abstract: 'Create a Fake ShareDir for your modules for testing.'
 author:
   - 'Kent Fredric <kentnl@cpan.org>'
 build_requires:
+  Cwd: 0
   English: 0
   File::Find: 0
   FindBin: 0
@@ -24,10 +25,10 @@ no_index:
 provides:
   Test::File::ShareDir:
     file: lib/Test/File/ShareDir.pm
-    version: v0.3.0
+    version: v0.2.1
   Test::File::ShareDir::TempDirObject:
     file: lib/Test/File/ShareDir/TempDirObject.pm
-    version: v0.3.0
+    version: v0.2.1
 requires:
   Carp: 0
   File::Copy::Recursive: 0
@@ -37,10 +38,11 @@ requires:
 resources:
   homepage: http://github.com/kentfredric/Test-File-ShareDir/tree
   repository: git://github.com/kentfredric/Test-File-ShareDir.git
-version: 0.3.0
+version: 0.2.1
 x_BuiltWith:
   modules:
     Carp: 1.20
+    Cwd: 3.33
     Dist::Zilla::PluginBundle::Author::KENTNL: 1.0.7
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 'NA(possibly not installed)'
     File::Copy::Recursive: 0.38

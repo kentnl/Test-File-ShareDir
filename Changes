@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-0.3.0 2011-05-05T03:08:36Z
+0.2.1 2011-05-05T03:24:09Z
  [Documentation]
  - Improved primary documentation to explain import flags
 
@@ -9,6 +9,9 @@ Release history for Test-File-ShareDir
    current work directory. Considering that most of the time, the Cwd is
    the project root directory when running tests, this constitutes a
    reasonably sane default.
+
+ [Tests]
+ - Now uses Test::CPAN::Changes plugin instead of CPANChangesTests plugin
 
 0.2.0 2011-04-07T21:10:54Z
  - Rereleased as 0.2.0 to signify backwards incompatible changes introduced
