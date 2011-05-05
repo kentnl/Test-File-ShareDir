@@ -70,7 +70,7 @@ version 0.2.1
 
 =head1 DESCRIPTION
 
-This module only has support for creating 'new' style sharedirs and are NOT compatible with old File::ShareDirs.
+This module only has support for creating 'new' style share dirs and are NOT compatible with old File::ShareDirs.
 
 For this reason, unless you have File::ShareDir 1.00 or later installed, this module will not be usable by you.
 
@@ -80,11 +80,11 @@ For this reason, unless you have File::ShareDir 1.00 or later installed, this mo
 
 This parameter is the prefix the other paths are relative to.
 
-If this parameter is not specified, it defaults to the Current Working Directory ( CWD ).
+If this parameter is not specified, it defaults to the Current Working Directory ( C<CWD> ).
 
 In versions prior to C<0.3.0>, this value was mandatory.
 
-The rationale behind using CWD as the default value is as follows.
+The rationale behind using C<CWD> as the default value is as follows.
 
 =over 4
 
@@ -92,24 +92,24 @@ The rationale behind using CWD as the default value is as follows.
 
 =item * Most users of this module will be using it in C<$project/t/> to load files from C<$project/share/>
 
-=item * Most CPAN tools run tests with CWD = $project
+=item * Most C<CPAN> tools run tests with C<CWD> = $project
 
 =back
 
-Therefor, defaulting to CWD is a reasonably sane default for most people, but where it is not it can
+Therefor, defaulting to C<CWD> is a reasonably sane default for most people, but where it is not it can
 still be overridden.
 
   -root => "$FindBin::Bin/../" # resolves to project root from t/ regardless of Cwd.
 
 =head2 -share
 
-This parameter is mandatory, and contains a hashref containing the data that explains what directories you want shared.
+This parameter is mandatory, and contains a C<hashref> containing the data that explains what directories you want shared.
 
   -share =>  { ..... }
 
 =head3 -module
 
-C<-module> contains a hashref mapping Module names to path names for module_dir style sharedirs.
+C<-module> contains a C<hashref> mapping Module names to path names for module_dir style share dirs.
 
   -share => {
     -module => { 'My::Module' => 'share/mymodule/', }
@@ -119,11 +119,11 @@ C<-module> contains a hashref mapping Module names to path names for module_dir 
 
   module_dir('My::Module')
 
-Notedly, it is a hashref, which means there is a limitation of one sharedir per module. This is simply because having more than one sharedir per module makes no sense at all.
+Notedly, it is a C<hashref>, which means there is a limitation of one share dir per module. This is simply because having more than one share dir per module makes no sense at all.
 
 =head3 -dist
 
-C<-dist> contains a hashref mapping Distribution names to path names for dist_dir style sharedirs. The same limitation applied to C<-module> applies here.
+C<-dist> contains a C<hashref> mapping Distribution names to path names for dist_dir style share dirs. The same limitation applied to C<-module> applies here.
 
   -share => {
     -dist => { 'My-Dist' => 'share/mydist' }
