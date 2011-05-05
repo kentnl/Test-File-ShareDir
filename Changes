@@ -1,5 +1,23 @@
 Release history for Test-File-ShareDir
 
+0.3.0 2011-05-05T03:29:45Z
+ [Dependencies::Testing]
+ - Now requires Cwd as provided by File-Spec / PathTools.
+
+ [Documentation]
+ - Improved primary documentation to explain import flags
+
+ [Features]
+ - In the absense of passing the 'root' parameter, it will default to the
+   current work directory. Considering that most of the time, the Cwd is
+   the project root directory when running tests, this constitutes a
+   reasonably sane default.
+
+ [Tests]
+ - Now uses Test::CPAN::Changes plugin instead of CPANChangesTests plugin
+ - Added 03_cwd.t which tests how the module behaves when -root is
+   implicit.
+
 0.2.0 2011-04-07T21:10:54Z
  - Rereleased as 0.2.0 to signify backwards incompatible changes introduced
    in 0.1.2

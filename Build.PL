@@ -7,6 +7,7 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   'build_requires' => {
+    'Cwd' => '0',
     'English' => '0',
     'File::Find' => '0',
     'FindBin' => '0',
@@ -22,7 +23,7 @@ my %module_build_args = (
     'Kent Fredric <kentnl@cpan.org>'
   ],
   'dist_name' => 'Test-File-ShareDir',
-  'dist_version' => '0.2.0',
+  'dist_version' => '0.3.0',
   'license' => 'perl',
   'module_name' => 'Test::File::ShareDir',
   'recommends' => {},

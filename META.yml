@@ -3,6 +3,7 @@ abstract: 'Create a Fake ShareDir for your modules for testing.'
 author:
   - 'Kent Fredric <kentnl@cpan.org>'
 build_requires:
+  Cwd: 0
   English: 0
   File::Find: 0
   FindBin: 0
@@ -24,10 +25,10 @@ no_index:
 provides:
   Test::File::ShareDir:
     file: lib/Test/File/ShareDir.pm
-    version: v0.2.0
+    version: v0.3.0
   Test::File::ShareDir::TempDirObject:
     file: lib/Test/File/ShareDir/TempDirObject.pm
-    version: v0.2.0
+    version: v0.3.0
 requires:
   Carp: 0
   File::Copy::Recursive: 0
@@ -37,11 +38,12 @@ requires:
 resources:
   homepage: http://github.com/kentfredric/Test-File-ShareDir/tree
   repository: git://github.com/kentfredric/Test-File-ShareDir.git
-version: 0.2.0
+version: 0.3.0
 x_BuiltWith:
   modules:
-    Carp: 1.17
-    Dist::Zilla::PluginBundle::Author::KENTNL: 1.0.5
+    Carp: 1.20
+    Cwd: 3.33
+    Dist::Zilla::PluginBundle::Author::KENTNL: 1.0.7
     Dist::Zilla::PluginBundle::Author::KENTNL::Lite: 'NA(possibly not installed)'
     File::Copy::Recursive: 0.38
     File::ShareDir: 1.03
@@ -49,15 +51,15 @@ x_BuiltWith:
     FindBin: 1.50
     Module::Build: 0.38
     Path::Class::Dir: 0.23
-    Test::Fatal: 0.003
+    Test::Fatal: 0.005
     Test::More: 0.98
   perl:
-    original: v5.12.3
+    original: v5.14.0
     qv: 1
     version:
       - 5
-      - 12
-      - 3
+      - 14
+      - 0
   platform: linux
   uname: 'Linux 2.6.38-gentoo x86_64 GenuineIntel GNU/Linux'
 x_Dist_Zilla:
@@ -97,7 +99,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaProvides::Package
       name: '@Author::KENTNL/MetaProvides::Package'
-      version: 1.12060213
+      version: 1.12060501
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: '@Author::KENTNL/MetaJSON'
@@ -167,9 +169,9 @@ x_Dist_Zilla:
       name: '@Author::KENTNL/MetaData::BuiltWith'
       version: 0.01018204
     -
-      class: Dist::Zilla::Plugin::CPANChangesTests
-      name: '@Author::KENTNL/CPANChangesTests'
-      version: 1.001
+      class: Dist::Zilla::Plugin::Test::CPAN::Changes
+      name: '@Author::KENTNL/Test::CPAN::Changes'
+      version: 0.004
     -
       class: Dist::Zilla::Plugin::CompileTests
       name: '@Author::KENTNL/CompileTests'

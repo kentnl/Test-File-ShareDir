@@ -17,6 +17,9 @@ t/01_files/lib/Example.pm
 t/01_files/share/afile
 t/02_distdir.t
 t/02_files/share/afile
+t/03_cwd.t
+t/03_files/lib/Example.pm
+t/03_files/share/afile
 t/author-critic.t
 t/release-cpan-changes.t
 t/release-distmeta.t
