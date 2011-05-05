@@ -48,7 +48,7 @@ sub new {
   __confess('Need -share => for Test::File::ShareDir') unless exists $config->{-share};
 
   my $realconfig = {
-    root    => __dir( $config->{-root} )->absolute,    #->resolve->absolute,
+    root    => __dir(q{./})->absolute,    #->resolve->absolute,
     modules => {},
     dists   => {},
   };
