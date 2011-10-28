@@ -1,5 +1,7 @@
 Release history for Test-File-ShareDir
 
+0.3.1 2011-10-28T20:36:06Z
+
 0.3.0 2011-05-05T03:29:45Z
  [Dependencies::Testing]
  - Now requires Cwd as provided by File-Spec / PathTools.
