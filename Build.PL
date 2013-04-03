@@ -28,7 +28,7 @@ my %module_build_args = (
     "File::ShareDir" => "1.00",
     "File::Temp" => 0,
     "Path::Class::Dir" => 0,
-    "perl" => "v5.10.0",
+    "perl" => "5.006",
     "strict" => 0,
     "warnings" => 0
   },
