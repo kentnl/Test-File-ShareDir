@@ -70,7 +70,7 @@ sub _tempdir {
   my ($self) = shift;
   return $self->{tempdir} if exists $self->{tempdir};
   $self->{tempdir} = __dir( __tempdir( CLEANUP => 1 ) );
-  return $self->{tempdir};
+  return $self->{tempdir}->absolute;
 }
 
 sub _module_tempdir {
@@ -78,7 +78,7 @@ sub _module_tempdir {
   return $self->{module_tempdir} if exists $self->{module_tempdir};
   $self->{module_tempdir} = $self->_tempdir->subdir('auto/share/module');
   $self->{module_tempdir}->mkpath();
-  return $self->{module_tempdir};
+  return $self->{module_tempdir}->absolute;
 }
 
 sub _dist_tempdir {
@@ -86,7 +86,7 @@ sub _dist_tempdir {
   return $self->{dist_tempdir} if exists $self->{dist_tempdir};
   $self->{dist_tempdir} = $self->_tempdir->subdir('auto/share/dist');
   $self->{dist_tempdir}->mkpath();
-  return $self->{dist_tempdir};
+  return $self->{dist_tempdir}->absolute;
 }
 
 sub _root {
@@ -124,12 +124,12 @@ sub _dist_share_target_dir {
 
 sub _module_share_source_dir {
   my ( $self, $module ) = @_;
-  return $self->_root->subdir( $self->_modules->{$module} );
+  return __dir( $self->_modules->{$module} )->absolute( $self->_root );
 }
 
 sub _dist_share_source_dir {
   my ( $self, $dist ) = @_;
-  return $self->_root->subdir( $self->_dists->{$dist} );
+  return __dir( $self->_dists->{$dist} )->absolute( $self->_root );
 }
 
 sub _install_module {
