@@ -47,7 +47,7 @@ sub _tempdir {
   my ($self) = shift;
   return $self->{tempdir} if exists $self->{tempdir};
   $self->{tempdir} = __dir( __tempdir( CLEANUP => 1 ) );
-  return $self->{tempdir}->absolute;
+  return $self->{tempdir};
 }
 
 sub _module_tempdir {
@@ -55,7 +55,7 @@ sub _module_tempdir {
   return $self->{module_tempdir} if exists $self->{module_tempdir};
   $self->{module_tempdir} = $self->_tempdir->subdir('auto/share/module');
   $self->{module_tempdir}->mkpath();
-  return $self->{module_tempdir}->absolute;
+  return $self->{module_tempdir};
 }
 
 sub _dist_tempdir {
@@ -63,7 +63,7 @@ sub _dist_tempdir {
   return $self->{dist_tempdir} if exists $self->{dist_tempdir};
   $self->{dist_tempdir} = $self->_tempdir->subdir('auto/share/dist');
   $self->{dist_tempdir}->mkpath();
-  return $self->{dist_tempdir}->absolute;
+  return $self->{dist_tempdir};
 }
 
 sub _root {
@@ -101,12 +101,12 @@ sub _dist_share_target_dir {
 
 sub _module_share_source_dir {
   my ( $self, $module ) = @_;
-  return __dir($self->_modules->{$module})->absolute($self->_root );
+  return $self->_root->subdir( $self->_modules->{$module} );
 }
 
 sub _dist_share_source_dir {
   my ( $self, $dist ) = @_;
-  return __dir( $self->_dists->{$dist} )->absolute( $self->_root );
+  return $self->_root->subdir( $self->_dists->{$dist} );
 }
 
 sub _install_module {
@@ -122,6 +122,7 @@ sub _install_dist {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -167,10 +168,9 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
