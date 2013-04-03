@@ -6,7 +6,7 @@ BEGIN {
   $Test::File::ShareDir::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::File::ShareDir::VERSION = '0.3.2';
+  $Test::File::ShareDir::VERSION = '0.3.3';
 }
 
 # ABSTRACT: Create a Fake ShareDir for your modules for testing.
@@ -48,7 +48,7 @@ Test::File::ShareDir - Create a Fake ShareDir for your modules for testing.
 
 =head1 VERSION
 
-version 0.3.2
+version 0.3.3
 
 =head1 SYNOPSIS
 
