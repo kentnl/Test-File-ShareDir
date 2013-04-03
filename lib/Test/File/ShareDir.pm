@@ -95,7 +95,6 @@ C<-dist> contains a C<hashref> mapping Distribution names to path names for dist
 
 =cut
 
-
 use File::ShareDir 1.00 qw();
 
 sub import {

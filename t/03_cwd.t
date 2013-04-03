@@ -15,8 +15,7 @@ BEGIN {
   chdir "$FindBin::Bin/03_files";
 }
 
-use Test::File::ShareDir
-  -share => { -module => { 'Example' => 'share', } };
+use Test::File::ShareDir -share => { -module => { 'Example' => 'share', } };
 
 BEGIN {
   chdir $prevcwd;
