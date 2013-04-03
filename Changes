@@ -1,5 +1,15 @@
 Release history for Test-File-ShareDir
 
+0.3.3 2013-04-03T11:32:08Z
+ [!Noteable Changes]
+ - Replace Path::Class with Path::Tiny
+
+ [Dependencies::Added / runtime_requires]
+ - Path::Tiny
+
+ [Dependencies::Removed / runtime_requires]
+ - Path::Class::Dir
+
 0.3.2 2013-04-03T07:03:58Z
  - Maintenance release for MB 0.4004
 

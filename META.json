@@ -51,7 +51,7 @@
             "File::Copy::Recursive" : "0",
             "File::ShareDir" : "1.00",
             "File::Temp" : "0",
-            "Path::Class::Dir" : "0",
+            "Path::Tiny" : "0",
             "perl" : "5.006",
             "strict" : "0",
             "warnings" : "0"
@@ -70,11 +70,11 @@
    "provides" : {
       "Test::File::ShareDir" : {
          "file" : "lib/Test/File/ShareDir.pm",
-         "version" : "v0.3.2"
+         "version" : "v0.3.3"
       },
       "Test::File::ShareDir::TempDirObject" : {
          "file" : "lib/Test/File/ShareDir/TempDirObject.pm",
-         "version" : "v0.3.2"
+         "version" : "v0.3.3"
       }
    },
    "release_status" : "stable",
@@ -89,7 +89,7 @@
          "web" : "https://github.com/kentfredric/Test-File-ShareDir"
       }
    },
-   "version" : "0.3.2",
+   "version" : "0.3.3",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.28",
@@ -102,7 +102,7 @@
          "File::Temp" : "0.23",
          "FindBin" : "1.51",
          "Module::Build" : "0.4004",
-         "Path::Class::Dir" : "0.32",
+         "Path::Tiny" : "0.017",
          "Pod::Coverage::TrustPod" : "0.100002",
          "Test::CPAN::Meta" : "0.22",
          "Test::Fatal" : "0.010",

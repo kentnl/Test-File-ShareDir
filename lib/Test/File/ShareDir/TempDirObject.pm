@@ -6,14 +6,14 @@ BEGIN {
   $Test::File::ShareDir::TempDirObject::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::File::ShareDir::TempDirObject::VERSION = '0.3.2';
+  $Test::File::ShareDir::TempDirObject::VERSION = '0.3.3';
 }
 
 # ABSTRACT: Internal Object to make code simpler.
 
 
 ## no critic (Subroutines::RequireArgUnpacking)
-sub __dir     { require Path::Class::Dir;      return Path::Class::Dir->new(@_); }
+sub __dir     { require Path::Tiny;            return Path::Tiny::path(@_); }
 sub __tempdir { require File::Temp;            goto \&File::Temp::tempdir; }
 sub __rcopy   { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
 sub __confess { require Carp;                  goto \&Carp::confess; }
@@ -53,7 +53,7 @@ sub _tempdir {
 sub _module_tempdir {
   my ($self) = shift;
   return $self->{module_tempdir} if exists $self->{module_tempdir};
-  $self->{module_tempdir} = $self->_tempdir->subdir('auto/share/module');
+  $self->{module_tempdir} = $self->_tempdir->child('auto/share/module');
   $self->{module_tempdir}->mkpath();
   return $self->{module_tempdir}->absolute;
 }
@@ -61,7 +61,7 @@ sub _module_tempdir {
 sub _dist_tempdir {
   my ($self) = shift;
   return $self->{dist_tempdir} if exists $self->{dist_tempdir};
-  $self->{dist_tempdir} = $self->_tempdir->subdir('auto/share/dist');
+  $self->{dist_tempdir} = $self->_tempdir->child('auto/share/dist');
   $self->{dist_tempdir}->mkpath();
   return $self->{dist_tempdir}->absolute;
 }
@@ -91,12 +91,12 @@ sub _module_share_target_dir {
   ## no critic (RegularExpressions)
   $modname =~ s/::/-/g;
 
-  return $self->_module_tempdir->subdir($modname);
+  return $self->_module_tempdir->child($modname);
 }
 
 sub _dist_share_target_dir {
   my ( $self, $distname ) = @_;
-  return $self->_dist_tempdir->subdir($distname);
+  return $self->_dist_tempdir->child($distname);
 }
 
 sub _module_share_source_dir {
@@ -131,7 +131,7 @@ Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 0.3.2
+version 0.3.3
 
 =head1 SYNOPSIS
 

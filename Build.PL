@@ -17,7 +17,7 @@ my %module_build_args = (
     "Kent Fredric <kentnl\@cpan.org>"
   ],
   "dist_name" => "Test-File-ShareDir",
-  "dist_version" => "0.3.2",
+  "dist_version" => "0.3.3",
   "license" => "perl",
   "module_name" => "Test::File::ShareDir",
   "recommends" => {},
@@ -27,7 +27,7 @@ my %module_build_args = (
     "File::Copy::Recursive" => 0,
     "File::ShareDir" => "1.00",
     "File::Temp" => 0,
-    "Path::Class::Dir" => 0,
+    "Path::Tiny" => 0,
     "perl" => "5.006",
     "strict" => 0,
     "warnings" => 0
