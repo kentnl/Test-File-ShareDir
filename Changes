@@ -1,5 +1,18 @@
 Release history for Test-File-ShareDir
 
+0.3.1 2011-10-28T20:58:28Z
+ [Bugs]
+ - Absolute paths were treated incorrectly as relative ones. Now using
+   Path::Class properly which should fix this problem. Thanks to RJBS for
+   diagnosing and reporting this problem. 
+
+ [Dependencies]
+ - test removed: English
+
+ [Packaging]
+ - Updated License ( Indentation, Address )
+ - Extra tests moved to xt/
+
 0.3.0 2011-05-05T03:29:45Z
  [Dependencies::Testing]
  - Now requires Cwd as provided by File-Spec / PathTools.
