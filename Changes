@@ -1,6 +1,8 @@
 Release history for Test-File-ShareDir
 
 {{$NEXT}}
+
+0.3.3 2013-04-03T11:32:08Z
  [!Noteable Changes]
  - Replace Path::Class with Path::Tiny
 
