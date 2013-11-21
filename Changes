@@ -1,6 +1,8 @@
 Release history for Test-File-ShareDir
 
 {{$NEXT}}
+ [00 Trivial Doc Fix]
+ - Escaping of code containing > was done wrong.
 
 0.4.0 2013-11-21T06:38:44Z
  [00 Major Changes]
