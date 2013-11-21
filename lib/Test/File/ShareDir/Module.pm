@@ -17,8 +17,10 @@ use File::ShareDir 1.00 qw();
 sub import {
   my ( $class, $arg ) = @_;
 
-  die "Must pass a hashref" if not ref $arg;
-  die "Must pass a hashref" if not ref $arg eq 'HASH';
+  if ( not ref $arg or not ref $arg eq 'HASH' ) {
+      require Carp;
+      return Carp::croak q[Must pass a hashref];
+  }
 
   my %input_config = %{$arg};
 
