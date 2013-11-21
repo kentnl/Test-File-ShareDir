@@ -9,6 +9,8 @@ BEGIN {
   $Test::File::ShareDir::Dist::VERSION = '0.3.4';
 }
 
+# ABSTRACT: Simplified C<dist> oriented C<ShareDir> tester
+
 use File::ShareDir 1.00 qw();
 
 
@@ -49,7 +51,7 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Dist
+Test::File::ShareDir::Dist - Simplified C<dist> oriented C<ShareDir> tester
 
 =head1 VERSION
 
@@ -61,6 +63,8 @@ version 0.3.4
         -root => "some/root/path",
         "Dist-Zilla-Plugin-Foo" => "share/DZPF",
     };
+
+C<-root> is optional, and defaults to C<cwd>
 
 =head1 AUTHOR
 

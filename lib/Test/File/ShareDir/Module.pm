@@ -9,6 +9,8 @@ BEGIN {
   $Test::File::ShareDir::Module::VERSION = '0.3.4';
 }
 
+# ABSTRACT: Simplified C<module> oriented C<ShareDir> tester
+
 use File::ShareDir 1.00 qw();
 
 
@@ -49,7 +51,7 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Module
+Test::File::ShareDir::Module - Simplified C<module> oriented C<ShareDir> tester
 
 =head1 VERSION
 
@@ -61,6 +63,8 @@ version 0.3.4
         -root => "some/root/path",
         "Module::Foo" => "share/ModuleFoo",
     };
+
+C<-root> is optional, and defaults to C<cwd>
 
 =head1 AUTHOR
 
