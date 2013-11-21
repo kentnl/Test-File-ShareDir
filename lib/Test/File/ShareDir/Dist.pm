@@ -6,7 +6,7 @@ BEGIN {
   $Test::File::ShareDir::Dist::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::File::ShareDir::Dist::VERSION = '0.4.0';
+  $Test::File::ShareDir::Dist::VERSION = '0.4.1';
 }
 
 # ABSTRACT: Simplified C<dist> oriented C<ShareDir> tester
@@ -57,7 +57,7 @@ Test::File::ShareDir::Dist - Simplified C<dist> oriented C<ShareDir> tester
 
 =head1 VERSION
 
-version 0.4.0
+version 0.4.1
 
 =head1 SYNOPSIS
 
@@ -68,7 +68,7 @@ version 0.4.0
 
 C<-root> is optional, and defaults to C<cwd>
 
-B<NOTE:> There's a bug prior to 5.18 with C<use Foo { -key => }>, so for backwards compatibility, make sure you either quote the key: C<use Foo { '-key' => }>, or make it the non-first key.
+B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
 
 =begin MetaPOD::JSON v1.1.0
 

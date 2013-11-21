@@ -6,7 +6,7 @@ BEGIN {
   $Test::File::ShareDir::Object::Inc::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::File::ShareDir::Object::Inc::VERSION = '0.4.0';
+  $Test::File::ShareDir::Object::Inc::VERSION = '0.4.1';
 }
 
 # ABSTRACT: Shared C<tempdir> object code to inject into C<@INC>
@@ -55,7 +55,7 @@ Test::File::ShareDir::Object::Inc - Shared C<tempdir> object code to inject into
 
 =head1 VERSION
 
-version 0.4.0
+version 0.4.1
 
 =head1 SYNOPSIS
 

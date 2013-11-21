@@ -24,25 +24,25 @@ no_index:
 provides:
   Test::File::ShareDir:
     file: lib/Test/File/ShareDir.pm
-    version: v0.4.0
+    version: v0.4.1
   Test::File::ShareDir::Dist:
     file: lib/Test/File/ShareDir/Dist.pm
-    version: v0.4.0
+    version: v0.4.1
   Test::File::ShareDir::Module:
     file: lib/Test/File/ShareDir/Module.pm
-    version: v0.4.0
+    version: v0.4.1
   Test::File::ShareDir::Object::Dist:
     file: lib/Test/File/ShareDir/Object/Dist.pm
-    version: v0.4.0
+    version: v0.4.1
   Test::File::ShareDir::Object::Inc:
     file: lib/Test/File/ShareDir/Object/Inc.pm
-    version: v0.4.0
+    version: v0.4.1
   Test::File::ShareDir::Object::Module:
     file: lib/Test/File/ShareDir/Object/Module.pm
-    version: v0.4.0
+    version: v0.4.1
   Test::File::ShareDir::TempDirObject:
     file: lib/Test/File/ShareDir/TempDirObject.pm
-    version: v0.4.0
+    version: v0.4.1
 requires:
   Carp: 0
   Class::Tiny: 0
@@ -57,7 +57,7 @@ resources:
   bugtracker: https://github.com/kentfredric/Test-File-ShareDir/issues
   homepage: https://github.com/kentfredric/Test-File-ShareDir
   repository: https://github.com/kentfredric/Test-File-ShareDir.git
-version: 0.4.0
+version: 0.4.1
 x_BuiltWith:
   modules:
     Carp: 1.32

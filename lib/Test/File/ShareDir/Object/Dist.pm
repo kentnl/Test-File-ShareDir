@@ -7,7 +7,7 @@ BEGIN {
   $Test::File::ShareDir::Object::Dist::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::File::ShareDir::Object::Dist::VERSION = '0.4.0';
+  $Test::File::ShareDir::Object::Dist::VERSION = '0.4.1';
 }
 
 # ABSTRACT: Object Oriented C<ShareDir> creation for distributions
@@ -87,7 +87,7 @@ Test::File::ShareDir::Object::Dist - Object Oriented C<ShareDir> creation for di
 
 =head1 VERSION
 
-version 0.4.0
+version 0.4.1
 
 =head1 SYNOPSIS
 
