@@ -68,7 +68,7 @@ version 0.4.0
 
 C<-root> is optional, and defaults to C<cwd>
 
-B<NOTE:> There's a bug prior to 5.18 with C<use Foo { -key => }>, so for backcompat, make sure you either quote the key: C<use Foo { '-key' => }>, or make it the non-first key.
+B<NOTE:> There's a bug prior to 5.18 with C<use Foo { -key => }>, so for backwards compatability, make sure you either quote the key: C<use Foo { '-key' => }>, or make it the non-first key.
 
 =begin MetaPOD::JSON v1.1.0
 
