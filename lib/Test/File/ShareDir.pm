@@ -101,7 +101,7 @@ See L<< C<Test::File::ShareDir::Dist>|Test::File::ShareDir::Dist >> for details.
 
 =head3 C<Test::File::ShareDir::Module>
 
-L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Moduile >> provides a simple export interface
+L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> provides a simple export interface
 for making C<TempDir> C<ShareDir>'s from a given path:
 
     use Test::File::ShareDir::Module { "Module::Name" => "share/" };
