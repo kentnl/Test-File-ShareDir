@@ -9,6 +9,10 @@ BEGIN {
   $Test::File::ShareDir::Object::Inc::VERSION = '0.3.4';
 }
 
+# ABSTRACT: Shared C<tempdir> object code to inject into C<@INC>
+
+
+
 use Class::Tiny {
   tempdir => sub {
     require Path::Tiny;
@@ -46,11 +50,32 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Object::Inc
+Test::File::ShareDir::Object::Inc - Shared C<tempdir> object code to inject into C<@INC>
 
 =head1 VERSION
 
 version 0.3.4
+
+=head1 SYNOPSIS
+
+    use Test::File::ShareDir::Object::Inc;
+
+    my $inc = Test::File::ShareDir::Object::Inc->new();
+
+    $inc->tempdir() # add files to here
+
+    $inc->module_tempdir() # or here
+
+    $inc->dist_tempdir() # or here
+
+    $inc->add_to_inc;
+
+=head1 DESCRIPTION
+
+This class doesn't do very much on its own.
+
+It simply exists to facilitate C<tempdir> creation,
+and the injection of those C<tempdir>'s into C<@INC>
 
 =head1 AUTHOR
 

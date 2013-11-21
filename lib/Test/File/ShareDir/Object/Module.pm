@@ -10,6 +10,9 @@ BEGIN {
   $Test::File::ShareDir::Object::Module::VERSION = '0.3.4';
 }
 
+# ABSTRACT: Object Oriented C<ShareDir> creation for modules
+
+
 use Class::Tiny {
   inc => sub {
     require Test::File::ShareDir::Object::Inc;
@@ -24,22 +27,30 @@ use Class::Tiny {
   },
 };
 
+
 sub __rcopy { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
+
 
 sub module_names {
   return keys %{ $_[0]->modules };
 }
 
+
 sub module_share_target_dir {
   my ( $self, $module ) = @_;
+
+  $module =~ s/::/-/msxg;
+
   return $self->inc->module_tempdir->child($module);
 }
+
 
 sub module_share_source_dir {
   my ( $self, $module ) = @_;
   require Path::Tiny;
   return Path::Tiny::path( $self->modules->{$module} )->absolute( $self->root );
 }
+
 
 sub install_module {
   my ( $self, $module ) = @_;
@@ -48,12 +59,14 @@ sub install_module {
   return __rcopy( $source, $target );
 }
 
+
 sub install_all_modules {
   my ($self) = @_;
   for my $module ( $self->module_names ) {
     $self->install_module($module);
   }
 }
+
 
 sub add_to_inc {
   my ($self) = @_;
@@ -70,11 +83,81 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Object::Module
+Test::File::ShareDir::Object::Module - Object Oriented C<ShareDir> creation for modules
 
 =head1 VERSION
 
 version 0.3.4
+
+=head1 SYNOPSIS
+
+    use Test::File::ShareDir::Object::Module;
+
+    my $dir = Test::File::ShareDir::Object::Module->new(
+        root    => "some/path",
+        modules => { 
+            "Hello::Nurse" => "share/HN"
+        },
+    );
+
+    $dir->install_all_modules;
+    $dir->add_to_inc;
+
+=head1 METHODS
+
+=head2 C<module_names>
+
+    my @names = $instance->module_names();
+
+Returns the names of all modules listed in the C<modules> set.
+
+=head2 C<module_share_target_dir>
+
+    my $dir = $instance->module_share_target_dir("Module::Name");
+
+Returns the path where the C<ShareDir> will be created for C<Module::Name>
+
+=head2 C<module_share_source_dir>
+
+    my $dir = $instance->module_share_source_dir("Module::Name");
+
+Returns the path where the C<ShareDir> will be B<COPIED> I<FROM> for C<Module::Name>
+
+=head2 C<install_module>
+
+    $instance->install_module("Module::Name");
+
+Installs C<Module::Name>'s C<ShareDir>
+
+=head2 C<install_all_modules>
+
+    $instance->install_all_modules();
+
+Installs all C<module_names>.
+
+=head2 C<add_to_inc>
+
+    $instance->add_to_inc();
+
+Adds the C<Tempdir> C<ShareDir> ( C<inc> ) to the global C<@INC>.
+
+=head1 ATTRIBUTES
+
+=head2 C<inc>
+
+A C<Test::File::ShareDir::Object::Inc> object.
+
+=head2 C<modules>
+
+A hash of :
+
+    Module::Name => "relative/path"
+
+=head2 C<root>
+
+The origin all URI's are relative to.
+
+( Defaults to C<cwd> )
 
 =head1 AUTHOR
 
