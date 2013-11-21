@@ -3,6 +3,8 @@ use warnings;
 
 package Test::File::ShareDir::Module;
 
+# ABSTRACT: Simplified C<module> oriented C<ShareDir> tester
+
 use File::ShareDir 1.00 qw();
 
 =head1 SYNOPSIS
@@ -12,13 +14,17 @@ use File::ShareDir 1.00 qw();
         "Module::Foo" => "share/ModuleFoo",
     };
 
+C<-root> is optional, and defaults to C<cwd>
+
 =cut
 
 sub import {
   my ( $class, $arg ) = @_;
 
-  die "Must pass a hashref" if not ref $arg;
-  die "Must pass a hashref" if not ref $arg eq 'HASH';
+  if ( not ref $arg or not ref $arg eq 'HASH' ) {
+      require Carp;
+      return Carp::croak q[Must pass a hashref];
+  }
 
   my %input_config = %{$arg};
 
