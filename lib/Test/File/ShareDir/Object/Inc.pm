@@ -34,6 +34,7 @@ use Class::Tiny {
   },
 };
 
+
 sub add_to_inc {
   my ($self) = @_;
   unshift @INC, $self->tempdir->stringify;
@@ -76,6 +77,28 @@ This class doesn't do very much on its own.
 
 It simply exists to facilitate C<tempdir> creation,
 and the injection of those C<tempdir>'s into C<@INC>
+
+=head1 METHODS
+
+=head2 C<add_to_inc>
+
+    $instance->add_to_inc;
+
+Injects C<tempdir> into C<@INC>
+
+=head1 ATTRIBUTES
+
+=head2 C<tempdir>
+
+A path to a C<tempdir> of some description.
+
+=head2 C<module_tempdir>
+
+The C<module> C<ShareDir> base directory within the C<tempdir>
+
+=head2 C<dist_tempdir>
+
+The C<dist> C<ShareDir> base directory within the C<tempdir>
 
 =head1 AUTHOR
 
