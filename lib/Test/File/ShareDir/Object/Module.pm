@@ -7,7 +7,7 @@ BEGIN {
   $Test::File::ShareDir::Object::Module::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::File::ShareDir::Object::Module::VERSION = '0.3.4';
+  $Test::File::ShareDir::Object::Module::VERSION = '0.4.0';
 }
 
 # ABSTRACT: Object Oriented C<ShareDir> creation for modules
@@ -90,7 +90,7 @@ Test::File::ShareDir::Object::Module - Object Oriented C<ShareDir> creation for 
 
 =head1 VERSION
 
-version 0.3.4
+version 0.4.0
 
 =head1 SYNOPSIS
 

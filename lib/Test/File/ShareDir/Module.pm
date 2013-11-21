@@ -6,7 +6,7 @@ BEGIN {
   $Test::File::ShareDir::Module::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::File::ShareDir::Module::VERSION = '0.3.4';
+  $Test::File::ShareDir::Module::VERSION = '0.4.0';
 }
 
 # ABSTRACT: Simplified C<module> oriented C<ShareDir> tester
@@ -57,7 +57,7 @@ Test::File::ShareDir::Module - Simplified C<module> oriented C<ShareDir> tester
 
 =head1 VERSION
 
-version 0.3.4
+version 0.4.0
 
 =head1 SYNOPSIS
 
