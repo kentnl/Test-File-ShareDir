@@ -5,6 +5,16 @@ package Test::File::ShareDir::Object::Inc;
 
 # ABSTRACT: Shared C<tempdir> object code to inject into C<@INC>
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir::Object::Inc",
+    "interface":"class",
+    "inherits":"Class::Tiny::Object"
+}
+
+=end MetaPOD::JSON
+
 =head1 SYNOPSIS
 
     use Test::File::ShareDir::Object::Inc;

@@ -7,6 +7,15 @@ package Test::File::ShareDir::Dist;
 
 use File::ShareDir 1.00 qw();
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir::Dist",
+    "interface":"exporter"
+}
+
+=end MetaPOD::JSON
+
 =head1 SYNOPSIS
 
     use Test::File::ShareDir::Dist {
@@ -22,8 +31,8 @@ sub import {
   my ( $class, $arg ) = @_;
 
   if ( not ref $arg or not ref $arg eq 'HASH' ) {
-      require Carp;
-      return Carp::croak q[Must pass a hashref];
+    require Carp;
+    return Carp::croak q[Must pass a hashref];
   }
 
   my %input_config = %{$arg};

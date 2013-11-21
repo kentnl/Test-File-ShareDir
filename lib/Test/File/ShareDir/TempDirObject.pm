@@ -5,6 +5,15 @@ package Test::File::ShareDir::TempDirObject;
 
 # ABSTRACT: Internal Object to make code simpler.
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir::TempDirObject",
+    "interface":"class"
+}
+
+=end MetaPOD::JSON
+
 =head1 SYNOPSIS
 
     my $object = $class->new({

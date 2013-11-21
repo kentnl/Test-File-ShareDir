@@ -6,6 +6,16 @@ package Test::File::ShareDir::Object::Module;
 
 # ABSTRACT: Object Oriented C<ShareDir> creation for modules
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir::Object::Module",
+    "interface":"class",
+    "inherits":"Class::Tiny::Object"
+}
+
+=end MetaPOD::JSON
+
 =head1 SYNOPSIS
 
     use Test::File::ShareDir::Object::Module;
