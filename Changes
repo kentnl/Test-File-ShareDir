@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-0.4.1 2013-11-21T06:50:50Z
+0.4.1 2013-11-21T06:51:24Z
  [00 Trivial Doc Fix]
  - Escaping of code containing > was done wrong.
 
