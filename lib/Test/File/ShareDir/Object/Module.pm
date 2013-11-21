@@ -23,7 +23,7 @@ use Class::Tiny {
   },
   root => sub {
     require Path::Tiny;
-    return Path::Tiny::path('./')->absolute;
+    return Path::Tiny::path(q[./])->absolute;
   },
 };
 
@@ -32,7 +32,8 @@ sub __rcopy { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy
 
 
 sub module_names {
-  return keys %{ $_[0]->modules };
+  my ( $self, ) = @_;
+  return keys %{ $self->modules };
 }
 
 
@@ -65,12 +66,14 @@ sub install_all_modules {
   for my $module ( $self->module_names ) {
     $self->install_module($module);
   }
+  return;
 }
 
 
 sub add_to_inc {
   my ($self) = @_;
   $self->inc->add_to_inc;
+  return;
 }
 
 1;
