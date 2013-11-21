@@ -158,7 +158,7 @@ A hash of :
 
 =head2 C<root>
 
-The origin all URI's are relative to.
+The origin all paths's are relative to.
 
 ( Defaults to C<cwd> )
 

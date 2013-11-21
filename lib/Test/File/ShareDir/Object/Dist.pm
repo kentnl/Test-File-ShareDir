@@ -10,6 +10,9 @@ BEGIN {
   $Test::File::ShareDir::Object::Dist::VERSION = '0.3.4';
 }
 
+# ABSTRACT: Object Oriented C<ShareDir> creation for distributions
+
+
 use Class::Tiny {
   inc => sub {
     require Test::File::ShareDir::Object::Inc;
@@ -20,26 +23,32 @@ use Class::Tiny {
   },
   root => sub {
     require Path::Tiny;
-    return Path::Tiny::path('./')->absolute;
+    return Path::Tiny::path(q[./])->absolute;
   },
 };
 
+
 sub __rcopy { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
 
+
 sub dist_names {
-  return keys %{ $_[0]->dists };
+  my ($self) = @_;
+  return keys %{ $self->dists };
 }
+
 
 sub dist_share_target_dir {
   my ( $self, $distname ) = @_;
   return $self->inc->dist_tempdir->child($distname);
 }
 
+
 sub dist_share_source_dir {
   my ( $self, $distname ) = @_;
   require Path::Tiny;
   return Path::Tiny::path( $self->dists->{$distname} )->absolute( $self->root );
 }
+
 
 sub install_dist {
   my ( $self, $distname ) = @_;
@@ -48,16 +57,20 @@ sub install_dist {
   return __rcopy( $source, $target );
 }
 
+
 sub install_all_dists {
   my ($self) = @_;
   for my $dist ( $self->dist_names ) {
     $self->install_dist($dist);
   }
+  return;
 }
+
 
 sub add_to_inc {
   my ($self) = @_;
   $self->inc->add_to_inc;
+  return;
 }
 
 1;
@@ -70,11 +83,81 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Object::Dist
+Test::File::ShareDir::Object::Dist - Object Oriented C<ShareDir> creation for distributions
 
 =head1 VERSION
 
 version 0.3.4
+
+=head1 SYNOPSIS
+
+    use Test::File::ShareDir::Object::Dist;
+
+    my $dir = Test::File::ShareDir::Object::Dist->new(
+        root    => "some/path",
+        dists => {
+            "Hello-Nurse" => "share/HN"
+        },
+    );
+
+    $dir->install_all_dists;
+    $dir->add_to_inc;
+
+=head1 METHODS
+
+=head2 C<dist_names>
+
+    my @names = $instance->dist_names();
+
+Returns the names of all distributions listed in the C<dists> set.
+
+=head2 C<dist_share_target_dir>
+
+    my $dir = $instance->dist_share_target_dir("Dist-Name");
+
+Returns the path where the C<ShareDir> will be created for C<Dist-Name>
+
+=head2 C<dist_share_source_dir>
+
+    my $dir = $instance->dist_share_source_dir("Dist-Name");
+
+Returns the path where the C<ShareDir> will be B<COPIED> I<FROM> for C<Dist-Name>
+
+=head2 C<install_dist>
+
+    $instance->install_dist("Dist-Name");
+
+Installs C<Dist-Name>'s C<ShareDir>
+
+=head2 C<install_all_dists>
+
+    $instance->install_all_dists();
+
+Installs all C<dist_names>
+
+=head2 C<add_to_inc>
+
+    $instance->add_to_inc();
+
+Adds the C<Tempdir> C<ShareDir> (  C<inc> ) to the global C<@INC>
+
+=head1 ATTRIBUTES
+
+=head2 C<inc>
+
+A C<Test::File::ShareDir::Object::Inc> object.
+
+=head2 C<dists>
+
+A hash of :
+
+    Dist-Name => "relative/path"
+
+=head2 C<root>
+
+The origin all paths's are relative to.
+
+( Defaults to C<cwd> )
 
 =head1 AUTHOR
 
