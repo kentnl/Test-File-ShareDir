@@ -69,7 +69,7 @@ SIMPLE INTERFACE
     interface for making "TempDir" "ShareDir"'s from a given path:
 
         use Test::File::ShareDir::Object::Dist;
-    
+
         my $obj = Test::File::ShareDir::Object::Dist->new( dists => { "Dist-Name" => "share/" } );
         $obj->install_all_dists;
         $obj->add_to_inc;
@@ -84,7 +84,7 @@ SIMPLE INTERFACE
     interface for making "TempDir" "ShareDir"'s from a given path:
 
         use Test::File::ShareDir::Object::Module;
-    
+
         my $obj = Test::File::ShareDir::Object::Module->new( modules => { "Module::Name" => "share/" } );
         $obj->install_all_modules;
         $obj->add_to_inc;

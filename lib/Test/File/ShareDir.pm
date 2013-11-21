@@ -83,7 +83,7 @@ For this reason, unless you have File::ShareDir 1.00 or later installed, this mo
 
 Starting with version C<0.4.0>, there are a few extra interfaces you can use.
 
-These will probably be more useful, and easier to grok, because they don't have a layer of 
+These will probably be more useful, and easier to grok, because they don't have a layer of
 indirection in order to simultaneously support both C<Module> and C<Dist> C<ShareDir>'s.
 
 =head2 Simple Exporter Interfaces
@@ -117,7 +117,7 @@ See L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> for deta
 L<< C<Test::File::ShareDir::Object::Dist>|Test::File::ShareDir::Object::Dist >> provides a simple object oriented interface for making C<TempDir> C<ShareDir>'s from a given path:
 
     use Test::File::ShareDir::Object::Dist;
-    
+
     my $obj = Test::File::ShareDir::Object::Dist->new( dists => { "Dist-Name" => "share/" } );
     $obj->install_all_dists;
     $obj->add_to_inc;
@@ -131,7 +131,7 @@ See L<< C<Test::File::ShareDir::Object::Dist>|Test::File::ShareDir::Object::Dist
 L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Module >> provides a simple object oriented interface for making C<TempDir> C<ShareDir>'s from a given path:
 
     use Test::File::ShareDir::Object::Module;
-    
+
     my $obj = Test::File::ShareDir::Object::Module->new( modules => { "Module::Name" => "share/" } );
     $obj->install_all_modules;
     $obj->add_to_inc;
