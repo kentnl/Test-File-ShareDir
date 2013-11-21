@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-0.3.4 2013-11-21T01:00:52Z
+0.3.4 2013-11-21T01:04:28Z
 
 0.3.3 2013-04-03T11:32:08Z
  [!Noteable Changes]
@@ -59,7 +59,7 @@ Release history for Test-File-ShareDir
  [Bugs]
  - Absolute paths were treated incorrectly as relative ones. Now using
    Path::Class properly which should fix this problem. Thanks to RJBS for
-   diagnosing and reporting this problem. 
+   diagnosing and reporting this problem.
 
  [Dependencies]
  - test removed: English

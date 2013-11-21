@@ -98,7 +98,7 @@ version 0.3.4
 
     my $dir = Test::File::ShareDir::Object::Module->new(
         root    => "some/path",
-        modules => { 
+        modules => {
             "Hello::Nurse" => "share/HN"
         },
     );
