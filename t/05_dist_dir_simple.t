@@ -6,7 +6,7 @@ use Test::More 0.96;
 use Test::Fatal;
 use FindBin;
 use Test::File::ShareDir::Dist {
-  -root          => "$FindBin::Bin/05_files",
+  '-root'        => "$FindBin::Bin/05_files",
   'Example-Dist' => 'share'
 };
 
