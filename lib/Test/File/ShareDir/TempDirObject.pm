@@ -6,7 +6,7 @@ BEGIN {
   $Test::File::ShareDir::TempDirObject::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::File::ShareDir::TempDirObject::VERSION = '0.3.3';
+  $Test::File::ShareDir::TempDirObject::VERSION = '0.3.4';
 }
 
 # ABSTRACT: Internal Object to make code simpler.
@@ -125,13 +125,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 0.3.3
+version 0.3.4
 
 =head1 SYNOPSIS
 
