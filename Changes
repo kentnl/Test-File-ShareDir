@@ -1,5 +1,9 @@
 Release history for Test-File-ShareDir
 
+0.4.1 2013-11-21T06:51:24Z
+ [00 Trivial Doc Fix]
+ - Escaping of code containing > was done wrong.
+
 0.4.0 2013-11-21T06:38:44Z
  [00 Major Changes]
  - New Modules/Interfaces to make life easier for people who only need one
