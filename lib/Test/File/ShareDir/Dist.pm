@@ -62,11 +62,13 @@ version 0.4.0
 =head1 SYNOPSIS
 
     use Test::File::ShareDir::Dist {
-        -root => "some/root/path",
-        "Dist-Zilla-Plugin-Foo" => "share/DZPF",
+        '-root' => 'some/root/path',
+        'Dist-Zilla-Plugin-Foo' => 'share/DZPF',
     };
 
 C<-root> is optional, and defaults to C<cwd>
+
+B<NOTE:> There's a bug prior to 5.18 with C<use Foo { -key => }>, so for backcompat, make sure you either quote the key: C<use Foo { '-key' => }>, or make it the non-first key.
 
 =begin MetaPOD::JSON v1.1.0
 

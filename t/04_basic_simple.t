@@ -7,8 +7,8 @@ use Test::Fatal;
 use FindBin;
 
 use Test::File::ShareDir::Module {
-  -root     => "$FindBin::Bin/04_files",
-  'Example' => 'share'
+  '-root' => "$FindBin::Bin/04_files",
+  Example => 'share',
 };
 
 use lib "$FindBin::Bin/04_files/lib";
