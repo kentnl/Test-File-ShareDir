@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-0.3.4 2013-11-21T03:23:04Z
+0.3.4 2013-11-21T05:56:05Z
  [00 Major Changes]
  - New Modules/Interfaces to make life easier for people who only need one
    of (Dist|Module) shares.
