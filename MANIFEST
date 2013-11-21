@@ -7,6 +7,8 @@ META.json
 META.yml
 README
 dist.ini
+layout/self_structure.dot
+layout/self_structure.png
 lib/Test/File/ShareDir.pm
 lib/Test/File/ShareDir/Dist.pm
 lib/Test/File/ShareDir/Module.pm

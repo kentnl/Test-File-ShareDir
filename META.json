@@ -460,6 +460,11 @@
                         "version" : "4.004"
                      },
                      {
+                        "class" : "Pod::Weaver::Section::Generic",
+                        "name" : "SIMPLE INTERFACE",
+                        "version" : "4.004"
+                     },
+                     {
                         "class" : "Pod::Weaver::Section::Collect",
                         "name" : "METHODS",
                         "version" : "4.004"

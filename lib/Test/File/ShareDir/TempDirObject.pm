@@ -164,6 +164,16 @@ version 0.3.4
 
 Creates a new instance of this object.
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir::TempDirObject",
+    "interface":"class"
+}
+
+
+=end MetaPOD::JSON
+
 =head1 AUTHOR
 
 Kent Fredric <kentnl@cpan.org>

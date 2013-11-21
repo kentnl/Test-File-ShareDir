@@ -100,6 +100,17 @@ The C<module> C<ShareDir> base directory within the C<tempdir>
 
 The C<dist> C<ShareDir> base directory within the C<tempdir>
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir::Object::Inc",
+    "interface":"class",
+    "inherits":"Class::Tiny::Object"
+}
+
+
+=end MetaPOD::JSON
+
 =head1 AUTHOR
 
 Kent Fredric <kentnl@cpan.org>

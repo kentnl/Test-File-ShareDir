@@ -162,6 +162,17 @@ The origin all paths's are relative to.
 
 ( Defaults to C<cwd> )
 
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir::Object::Module",
+    "interface":"class",
+    "inherits":"Class::Tiny::Object"
+}
+
+
+=end MetaPOD::JSON
+
 =head1 AUTHOR
 
 Kent Fredric <kentnl@cpan.org>

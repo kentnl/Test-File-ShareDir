@@ -18,8 +18,8 @@ sub import {
   my ( $class, $arg ) = @_;
 
   if ( not ref $arg or not ref $arg eq 'HASH' ) {
-      require Carp;
-      return Carp::croak q[Must pass a hashref];
+    require Carp;
+    return Carp::croak q[Must pass a hashref];
   }
 
   my %input_config = %{$arg};
@@ -67,6 +67,16 @@ version 0.3.4
     };
 
 C<-root> is optional, and defaults to C<cwd>
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir::Module",
+    "interface":"exporter"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 
