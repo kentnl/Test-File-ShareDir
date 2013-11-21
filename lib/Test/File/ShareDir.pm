@@ -46,6 +46,67 @@ For this reason, unless you have File::ShareDir 1.00 or later installed, this mo
 
 =cut
 
+=head1 SIMPLE INTERFACE
+
+Starting with version C<0.4.0>, there are a few extra interfaces you can use.
+
+These will probably be more useful, and easier to grok, because they don't have a layer of
+indirection in order to simultaneously support both C<Module> and C<Dist> C<ShareDir>'s.
+
+=head2 Simple Exporter Interfaces
+
+=head3 C<Test::File::ShareDir::Dist>
+
+L<< C<Test::File::ShareDir::Dist>|Test::File::ShareDir::Dist >> provides a simple export interface
+for making C<TempDir> C<ShareDir>'s from a given path:
+
+    use Test::File::ShareDir::Dist { "Dist-Name" => "share/" };
+
+This will automatically create a C<ShareDir> for C<Dist-Name> in a C<TempDir> based on the contents of C<CWD/share/>
+
+See L<< C<Test::File::ShareDir::Dist>|Test::File::ShareDir::Dist >> for details.
+
+=head3 C<Test::File::ShareDir::Module>
+
+L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> provides a simple export interface
+for making C<TempDir> C<ShareDir>'s from a given path:
+
+    use Test::File::ShareDir::Module { "Module::Name" => "share/" };
+
+This will automatically create a C<ShareDir> for C<Module::Name> in a C<TempDir> based on the contents of C<CWD/share/>
+
+See L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> for details.
+
+=head2 Simple Object Oriented Interfaces
+
+=head3 C<Test::File::ShareDir::Object::Dist>
+
+L<< C<Test::File::ShareDir::Object::Dist>|Test::File::ShareDir::Object::Dist >> provides a simple object oriented interface for making C<TempDir> C<ShareDir>'s from a given path:
+
+    use Test::File::ShareDir::Object::Dist;
+
+    my $obj = Test::File::ShareDir::Object::Dist->new( dists => { "Dist-Name" => "share/" } );
+    $obj->install_all_dists;
+    $obj->add_to_inc;
+
+This will automatically create a C<ShareDir> for C<Dist-Name> in a C<TempDir> based on the contents of C<CWD/share/>
+
+See L<< C<Test::File::ShareDir::Object::Dist>|Test::File::ShareDir::Object::Dist >> for details.
+
+=head3 C<Test::File::ShareDir::Object::Module>
+
+L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Module >> provides a simple object oriented interface for making C<TempDir> C<ShareDir>'s from a given path:
+
+    use Test::File::ShareDir::Object::Module;
+
+    my $obj = Test::File::ShareDir::Object::Module->new( modules => { "Module::Name" => "share/" } );
+    $obj->install_all_modules;
+    $obj->add_to_inc;
+
+This will automatically create a C<ShareDir> for C<Module::Name> in a C<TempDir> based on the contents of C<CWD/share/>
+
+See L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Module >> for details.
+
 =head1 IMPORTING
 
 =head2 -root
