@@ -6,7 +6,7 @@ BEGIN {
   $Test::File::ShareDir::TempDirObject::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Test::File::ShareDir::TempDirObject::VERSION = '0.3.3';
+  $Test::File::ShareDir::TempDirObject::VERSION = '0.4.0';
 }
 
 # ABSTRACT: Internal Object to make code simpler.
@@ -125,13 +125,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 0.3.3
+version 0.4.0
 
 =head1 SYNOPSIS
 
@@ -161,6 +163,16 @@ version 0.3.3
 =head2 new
 
 Creates a new instance of this object.
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir::TempDirObject",
+    "interface":"class"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 AUTHOR
 
