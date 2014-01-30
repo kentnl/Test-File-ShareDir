@@ -576,7 +576,7 @@ allow_includes = 1
 # spell_command = aspell list
 
 # The words to not consider as misspelled.
-stop_words = ShareDir sharedirs dir dirs Notedly
+stop_words = ShareDir sharedirs dir dirs Notedly tempdir
 
 # A file containing words to not consider as misspelled.
 # stop_words_file =
