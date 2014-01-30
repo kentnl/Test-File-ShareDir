@@ -20,16 +20,25 @@
    },
    "prereqs" : {
       "build" : {
-         "requires" : {
+         "recommends" : {
             "Module::Build" : "0.4204"
+         },
+         "requires" : {
+            "Module::Build" : "0.3601"
          }
       },
       "configure" : {
-         "requires" : {
+         "recommends" : {
             "Module::Build" : "0.4204"
+         },
+         "requires" : {
+            "Module::Build" : "0.3601"
          }
       },
       "develop" : {
+         "recommends" : {
+            "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.011000"
+         },
          "requires" : {
             "Dist::Zilla::Plugin::Authority" : "1.006",
             "Dist::Zilla::Plugin::AutoPrereqs" : "0",
@@ -59,7 +68,7 @@
             "Dist::Zilla::Plugin::PodSyntaxTests" : "0",
             "Dist::Zilla::Plugin::PodWeaver" : "0",
             "Dist::Zilla::Plugin::Prereqs" : "0",
-            "Dist::Zilla::Plugin::Prereqs::MatchInstalled" : "0",
+            "Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled" : "0",
             "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0",
             "Dist::Zilla::Plugin::ReadmeFromPod" : "0",
             "Dist::Zilla::Plugin::RunExtraTests" : "0",
@@ -72,7 +81,7 @@
             "Dist::Zilla::Plugin::TestRelease" : "0",
             "Dist::Zilla::Plugin::Twitter" : "0",
             "Dist::Zilla::Plugin::UploadToCPAN" : "0",
-            "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.011000",
+            "Dist::Zilla::PluginBundle::Author::KENTNL" : "v1.3.0",
             "Pod::Coverage::TrustPod" : "0",
             "Test::CPAN::Changes" : "0.19",
             "Test::CPAN::Meta" : "0",
@@ -100,7 +109,8 @@
       "test" : {
          "recommends" : {
             "CPAN::Meta" : "0",
-            "CPAN::Meta::Requirements" : "2.120900"
+            "CPAN::Meta::Requirements" : "2.120900",
+            "Test::More" : "1.001002"
          },
          "requires" : {
             "Cwd" : "0",
@@ -109,7 +119,7 @@
             "FindBin" : "0",
             "List::Util" : "0",
             "Test::Fatal" : "0",
-            "Test::More" : "1.001002",
+            "Test::More" : "0.96",
             "lib" : "0",
             "version" : "0"
          }
@@ -193,7 +203,7 @@
          "Dist::Zilla::Plugin::PodSyntaxTests" : "5.012",
          "Dist::Zilla::Plugin::PodWeaver" : "4.005",
          "Dist::Zilla::Plugin::Prereqs" : "5.012",
-         "Dist::Zilla::Plugin::Prereqs::MatchInstalled" : "0.1.6",
+         "Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled" : "0.001000",
          "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0.133360",
          "Dist::Zilla::Plugin::ReadmeFromPod" : "0.21",
          "Dist::Zilla::Plugin::RunExtraTests" : "0.016",
@@ -637,25 +647,15 @@
             "version" : "0.025"
          },
          {
-            "class" : "Dist::Zilla::Plugin::Prereqs::MatchInstalled",
+            "class" : "Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled",
             "config" : {
-               "Dist::Zilla::Plugin::Prereqs::MatchInstalled" : {
-                  "applyto" : [
-                     "build.requires",
-                     "build.recommends",
-                     "build.suggests",
-                     "test.requires",
-                     "test.recommends",
-                     "test.suggests",
-                     "runtime.requires",
-                     "runtime.recommends",
-                     "runtime.suggests",
-                     "configure.requires",
-                     "configure.recommends",
-                     "configure.suggests",
-                     "develop.requires",
-                     "develop.recommends",
-                     "develop.suggests"
+               "Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled" : {
+                  "applyto_map" : [
+                     "build.requires = build.recommends",
+                     "test.requires = test.recommends",
+                     "runtime.requires = runtime.recommends",
+                     "configure.requires = configure.recommends",
+                     "develop.requires = develop.recommends"
                   ],
                   "applyto_phase" : [
                      "build",
@@ -664,11 +664,6 @@
                      "configure",
                      "develop"
                   ],
-                  "applyto_relation" : [
-                     "requires",
-                     "recommends",
-                     "suggests"
-                  ],
                   "modules" : [
                      "Module::Build",
                      "Test::More",
@@ -676,8 +671,8 @@
                   ]
                }
             },
-            "name" : "@Author::KENTNL/Prereqs::MatchInstalled",
-            "version" : "0.1.6"
+            "name" : "@Author::KENTNL/Prereqs::Recommend::MatchInstalled",
+            "version" : "0.001000"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",

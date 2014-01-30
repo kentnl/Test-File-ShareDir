@@ -8,10 +8,10 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
-    "Module::Build" => "0.4204"
+    "Module::Build" => "0.3601"
   },
   "configure_requires" => {
-    "Module::Build" => "0.4204"
+    "Module::Build" => "0.3601"
   },
   "dist_abstract" => "Create a Fake ShareDir for your modules for testing.",
   "dist_author" => [
@@ -42,7 +42,7 @@ my %module_build_args = (
     "FindBin" => 0,
     "List::Util" => 0,
     "Test::Fatal" => 0,
-    "Test::More" => "1.001002",
+    "Test::More" => "0.96",
     "lib" => 0,
     "version" => 0
   }
@@ -55,9 +55,9 @@ my %fallback_build_requires = (
   "File::Spec::Functions" => 0,
   "FindBin" => 0,
   "List::Util" => 0,
-  "Module::Build" => "0.4204",
+  "Module::Build" => "0.3601",
   "Test::Fatal" => 0,
-  "Test::More" => "1.001002",
+  "Test::More" => "0.96",
   "lib" => 0,
   "version" => 0
 );
