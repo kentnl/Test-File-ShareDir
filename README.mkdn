@@ -68,7 +68,8 @@ See [`Test::File::ShareDir::Module`](https://metacpan.org/pod/Test::File::ShareD
 
 ### `Test::File::ShareDir::Object::Dist`
 
-[`Test::File::ShareDir::Object::Dist`](https://metacpan.org/pod/Test::File::ShareDir::Object::Dist) provides a simple object oriented interface for making `TempDir` `ShareDir`'s from a given path:
+[`Test::File::ShareDir::Object::Dist`](https://metacpan.org/pod/Test::File::ShareDir::Object::Dist) provides a simple object oriented interface for
+making `TempDir` `ShareDir`'s from a given path:
 
     use Test::File::ShareDir::Object::Dist;
 
@@ -82,7 +83,8 @@ See [`Test::File::ShareDir::Object::Dist`](https://metacpan.org/pod/Test::File::
 
 ### `Test::File::ShareDir::Object::Module`
 
-[`Test::File::ShareDir::Object::Module`](https://metacpan.org/pod/Test::File::ShareDir::Object::Module) provides a simple object oriented interface for making `TempDir` `ShareDir`'s from a given path:
+[`Test::File::ShareDir::Object::Module`](https://metacpan.org/pod/Test::File::ShareDir::Object::Module) provides a simple object oriented interface
+for making `TempDir` `ShareDir`'s from a given path:
 
     use Test::File::ShareDir::Object::Module;
 
@@ -140,11 +142,13 @@ This parameter is mandatory, and contains a `hashref` containing the data that e
 
     module_dir('My::Module')
 
-Notedly, it is a `hashref`, which means there is a limitation of one share dir per module. This is simply because having more than one share dir per module makes no sense at all.
+Notedly, it is a `hashref`, which means there is a limitation of one share dir per module. This is simply because having more
+than one share dir per module makes no sense at all.
 
 ### \-dist
 
-`-dist` contains a `hashref` mapping Distribution names to path names for dist\_dir style share dirs. The same limitation applied to `-module` applies here.
+`-dist` contains a `hashref` mapping Distribution names to path names for dist\_dir style share dirs. The same limitation
+applied to `-module` applies here.
 
     -share => {
       -dist => { 'My-Dist' => 'share/mydist' }

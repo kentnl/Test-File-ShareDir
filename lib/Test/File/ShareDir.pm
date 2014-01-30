@@ -84,7 +84,8 @@ See L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> for deta
 
 =head3 C<Test::File::ShareDir::Object::Dist>
 
-L<< C<Test::File::ShareDir::Object::Dist>|Test::File::ShareDir::Object::Dist >> provides a simple object oriented interface for making C<TempDir> C<ShareDir>'s from a given path:
+L<< C<Test::File::ShareDir::Object::Dist>|Test::File::ShareDir::Object::Dist >> provides a simple object oriented interface for
+making C<TempDir> C<ShareDir>'s from a given path:
 
     use Test::File::ShareDir::Object::Dist;
 
@@ -98,7 +99,8 @@ See L<< C<Test::File::ShareDir::Object::Dist>|Test::File::ShareDir::Object::Dist
 
 =head3 C<Test::File::ShareDir::Object::Module>
 
-L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Module >> provides a simple object oriented interface for making C<TempDir> C<ShareDir>'s from a given path:
+L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Module >> provides a simple object oriented interface
+for making C<TempDir> C<ShareDir>'s from a given path:
 
     use Test::File::ShareDir::Object::Module;
 
@@ -155,11 +157,13 @@ C<-module> contains a C<hashref> mapping Module names to path names for module_d
 
   module_dir('My::Module')
 
-Notedly, it is a C<hashref>, which means there is a limitation of one share dir per module. This is simply because having more than one share dir per module makes no sense at all.
+Notedly, it is a C<hashref>, which means there is a limitation of one share dir per module. This is simply because having more
+than one share dir per module makes no sense at all.
 
 =head3 -dist
 
-C<-dist> contains a C<hashref> mapping Distribution names to path names for dist_dir style share dirs. The same limitation applied to C<-module> applies here.
+C<-dist> contains a C<hashref> mapping Distribution names to path names for dist_dir style share dirs. The same limitation
+applied to C<-module> applies here.
 
   -share => {
     -dist => { 'My-Dist' => 'share/mydist' }

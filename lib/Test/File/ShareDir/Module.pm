@@ -30,7 +30,8 @@ use File::ShareDir 1.00 qw();
 C<-root> is optional, and defaults to C<cwd>
 
 
-B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
+B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote
+the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
 
 =cut
 
