@@ -3,14 +3,33 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Object::Module;
-BEGIN {
-  $Test::File::ShareDir::Object::Module::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::File::ShareDir::Object::Module::VERSION = '0.4.1';
-}
-
+$Test::File::ShareDir::Object::Module::VERSION = '0.4.2';
 # ABSTRACT: Object Oriented C<ShareDir> creation for modules
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 use Class::Tiny {
@@ -28,13 +47,44 @@ use Class::Tiny {
 };
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sub __rcopy { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
+
+
+
+
+
+
+
 
 
 sub module_names {
   my ( $self, ) = @_;
   return keys %{ $self->modules };
 }
+
+
+
+
+
+
+
 
 
 sub module_share_target_dir {
@@ -46,11 +96,25 @@ sub module_share_target_dir {
 }
 
 
+
+
+
+
+
+
+
 sub module_share_source_dir {
   my ( $self, $module ) = @_;
   require Path::Tiny;
   return Path::Tiny::path( $self->modules->{$module} )->absolute( $self->root );
 }
+
+
+
+
+
+
+
 
 
 sub install_module {
@@ -61,6 +125,13 @@ sub install_module {
 }
 
 
+
+
+
+
+
+
+
 sub install_all_modules {
   my ($self) = @_;
   for my $module ( $self->module_names ) {
@@ -68,6 +139,13 @@ sub install_all_modules {
   }
   return;
 }
+
+
+
+
+
+
+
 
 
 sub add_to_inc {
@@ -90,7 +168,7 @@ Test::File::ShareDir::Object::Module - Object Oriented C<ShareDir> creation for 
 
 =head1 VERSION
 
-version 0.4.1
+version 0.4.2
 
 =head1 SYNOPSIS
 
@@ -179,7 +257,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -2,14 +2,41 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Object::Inc;
-BEGIN {
-  $Test::File::ShareDir::Object::Inc::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::File::ShareDir::Object::Inc::VERSION = '0.4.1';
-}
-
+$Test::File::ShareDir::Object::Inc::VERSION = '0.4.2';
 # ABSTRACT: Shared C<tempdir> object code to inject into C<@INC>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -35,6 +62,25 @@ use Class::Tiny {
 };
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sub add_to_inc {
   my ($self) = @_;
   unshift @INC, $self->tempdir->stringify;
@@ -55,7 +101,7 @@ Test::File::ShareDir::Object::Inc - Shared C<tempdir> object code to inject into
 
 =head1 VERSION
 
-version 0.4.1
+version 0.4.2
 
 =head1 SYNOPSIS
 
@@ -117,7 +163,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

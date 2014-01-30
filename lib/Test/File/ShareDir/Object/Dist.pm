@@ -3,14 +3,33 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Object::Dist;
-BEGIN {
-  $Test::File::ShareDir::Object::Dist::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::File::ShareDir::Object::Dist::VERSION = '0.4.1';
-}
-
+$Test::File::ShareDir::Object::Dist::VERSION = '0.4.2';
 # ABSTRACT: Object Oriented C<ShareDir> creation for distributions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 use Class::Tiny {
@@ -28,7 +47,31 @@ use Class::Tiny {
 };
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sub __rcopy { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
+
+
+
+
+
+
+
 
 
 sub dist_names {
@@ -37,10 +80,24 @@ sub dist_names {
 }
 
 
+
+
+
+
+
+
+
 sub dist_share_target_dir {
   my ( $self, $distname ) = @_;
   return $self->inc->dist_tempdir->child($distname);
 }
+
+
+
+
+
+
+
 
 
 sub dist_share_source_dir {
@@ -48,6 +105,13 @@ sub dist_share_source_dir {
   require Path::Tiny;
   return Path::Tiny::path( $self->dists->{$distname} )->absolute( $self->root );
 }
+
+
+
+
+
+
+
 
 
 sub install_dist {
@@ -58,6 +122,13 @@ sub install_dist {
 }
 
 
+
+
+
+
+
+
+
 sub install_all_dists {
   my ($self) = @_;
   for my $dist ( $self->dist_names ) {
@@ -65,6 +136,13 @@ sub install_all_dists {
   }
   return;
 }
+
+
+
+
+
+
+
 
 
 sub add_to_inc {
@@ -87,7 +165,7 @@ Test::File::ShareDir::Object::Dist - Object Oriented C<ShareDir> creation for di
 
 =head1 VERSION
 
-version 0.4.1
+version 0.4.2
 
 =head1 SYNOPSIS
 
@@ -176,7 +254,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

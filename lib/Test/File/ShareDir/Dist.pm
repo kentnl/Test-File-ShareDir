@@ -2,16 +2,31 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Dist;
-BEGIN {
-  $Test::File::ShareDir::Dist::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::File::ShareDir::Dist::VERSION = '0.4.1';
-}
-
+$Test::File::ShareDir::Dist::VERSION = '0.4.2';
 # ABSTRACT: Simplified C<dist> oriented C<ShareDir> tester
 
 use File::ShareDir 1.00 qw();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub import {
@@ -57,7 +72,7 @@ Test::File::ShareDir::Dist - Simplified C<dist> oriented C<ShareDir> tester
 
 =head1 VERSION
 
-version 0.4.1
+version 0.4.2
 
 =head1 SYNOPSIS
 
@@ -86,7 +101,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

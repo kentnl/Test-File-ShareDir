@@ -2,14 +2,166 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir;
-BEGIN {
-  $Test::File::ShareDir::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::File::ShareDir::VERSION = '0.4.1';
-}
-
+$Test::File::ShareDir::VERSION = '0.4.2';
 # ABSTRACT: Create a Fake ShareDir for your modules for testing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -50,7 +202,7 @@ Test::File::ShareDir - Create a Fake ShareDir for your modules for testing.
 
 =head1 VERSION
 
-version 0.4.1
+version 0.4.2
 
 =head1 SYNOPSIS
 
@@ -213,7 +365,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
