@@ -1,7 +1,8 @@
-0.4.2
+1.000000
  [Added / develop requires]
  - Dist::Zilla::Plugin::Git::NextRelease
  - Dist::Zilla::Plugin::Git::NextVersion::Sanitized
+ - Dist::Zilla::Plugin::MakeMaker
  - Dist::Zilla::Plugin::MinimumPerl
  - Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled
  - Dist::Zilla::Plugin::RunExtraTests
@@ -14,6 +15,7 @@
  - Dist::Zilla::Plugin::Author::KENTNL::MinimumPerl
  - Dist::Zilla::Plugin::CheckExtraTests
  - Dist::Zilla::Plugin::Git::NextVersion
+ - Dist::Zilla::Plugin::ModuleBuild
  - Dist::Zilla::Plugin::NextRelease
  - Dist::Zilla::Plugin::Prereqs::MatchInstalled
  - Dist::Zilla::Plugin::PruneCruft
