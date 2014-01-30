@@ -56,9 +56,9 @@ sub import {
     $params->{modules}->{$key} = $input_config{$key};
   }
 
-  my $object = Test::File::ShareDir::Object::Module->new($params);
-  $object->install_all_modules();
-  $object->add_to_inc();
+  my $module_object = Test::File::ShareDir::Object::Module->new($params);
+  $module_object->install_all_modules();
+  $module_object->add_to_inc();
 
   return 1;
 }

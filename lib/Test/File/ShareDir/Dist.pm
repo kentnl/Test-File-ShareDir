@@ -54,9 +54,9 @@ sub import {
     $params->{dists}->{$key} = $input_config{$key};
   }
 
-  my $object = Test::File::ShareDir::Object::Dist->new($params);
-  $object->install_all_dists();
-  $object->add_to_inc();
+  my $dist_object = Test::File::ShareDir::Object::Dist->new($params);
+  $dist_object->install_all_dists();
+  $dist_object->add_to_inc();
 
   return 1;
 }

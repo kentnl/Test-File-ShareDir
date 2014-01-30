@@ -176,17 +176,17 @@ sub import {
 
   require Test::File::ShareDir::TempDirObject;
 
-  my $object = Test::File::ShareDir::TempDirObject->new( \%input_config );
+  my $tempdir_object = Test::File::ShareDir::TempDirObject->new( \%input_config );
 
-  for my $module ( $object->_module_names ) {
-    $object->_install_module($module);
+  for my $module ( $tempdir_object->_module_names ) {
+    $tempdir_object->_install_module($module);
   }
 
-  for my $dist ( $object->_dist_names ) {
-    $object->_install_dist($dist);
+  for my $dist ( $tempdir_object->_dist_names ) {
+    $tempdir_object->_install_dist($dist);
   }
 
-  unshift @INC, $object->_tempdir->stringify;
+  unshift @INC, $tempdir_object->_tempdir->stringify;
 
   return 1;
 }
