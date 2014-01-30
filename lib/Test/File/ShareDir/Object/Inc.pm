@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Inc;
 $Test::File::ShareDir::Object::Inc::VERSION = '0.4.2';
-# ABSTRACT: Shared C<tempdir> object code to inject into C<@INC>
+# ABSTRACT: Shared tempdir object code to inject into @INC
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -100,7 +100,7 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Object::Inc - Shared C<tempdir> object code to inject into C<@INC>
+Test::File::ShareDir::Object::Inc - Shared tempdir object code to inject into @INC
 
 =head1 VERSION
 

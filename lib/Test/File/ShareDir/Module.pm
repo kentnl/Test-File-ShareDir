@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Module;
 $Test::File::ShareDir::Module::VERSION = '0.4.2';
-# ABSTRACT: Simplified C<module> oriented C<ShareDir> tester
+# ABSTRACT: Simplified module oriented ShareDir tester
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -74,7 +74,7 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Module - Simplified C<module> oriented C<ShareDir> tester
+Test::File::ShareDir::Module - Simplified module oriented ShareDir tester
 
 =head1 VERSION
 

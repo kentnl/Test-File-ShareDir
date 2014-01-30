@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Dist;
 $Test::File::ShareDir::Object::Dist::VERSION = '0.4.2';
-# ABSTRACT: Object Oriented C<ShareDir> creation for distributions
+# ABSTRACT: Object Oriented ShareDir creation for distributions
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -163,7 +163,7 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Object::Dist - Object Oriented C<ShareDir> creation for distributions
+Test::File::ShareDir::Object::Dist - Object Oriented ShareDir creation for distributions
 
 =head1 VERSION
 

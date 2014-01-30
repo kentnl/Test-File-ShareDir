@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Module;
 $Test::File::ShareDir::Object::Module::VERSION = '0.4.2';
-# ABSTRACT: Object Oriented C<ShareDir> creation for modules
+# ABSTRACT: Object Oriented ShareDir creation for modules
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -166,7 +166,7 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Object::Module - Object Oriented C<ShareDir> creation for modules
+Test::File::ShareDir::Object::Module - Object Oriented ShareDir creation for modules
 
 =head1 VERSION
 
