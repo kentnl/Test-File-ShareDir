@@ -60,9 +60,6 @@ my $static_prereqs = do { my $x = {
                                       }
                       },
        'develop' => {
-                      'recommends' => {
-                                        'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.011000'
-                                      },
                       'requires' => {
                                       'Dist::Zilla::Plugin::Authority' => '1.006',
                                       'Dist::Zilla::Plugin::AutoPrereqs' => '0',
@@ -105,7 +102,7 @@ my $static_prereqs = do { my $x = {
                                       'Dist::Zilla::Plugin::TestRelease' => '0',
                                       'Dist::Zilla::Plugin::Twitter' => '0',
                                       'Dist::Zilla::Plugin::UploadToCPAN' => '0',
-                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => 'v1.3.0',
+                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.011001',
                                       'Pod::Coverage::TrustPod' => '0',
                                       'Test::CPAN::Changes' => '0.19',
                                       'Test::CPAN::Meta' => '0',
