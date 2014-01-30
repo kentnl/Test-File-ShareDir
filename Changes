@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-0.4.2 2014-01-30T06:38:30Z
+0.4.2 2014-01-30T06:42:04Z
  [00 Minor Maintenance release]
  - Lower dependency requirements of Module::Build and Test::More
  - Readvertise higher requirements as recommendations
