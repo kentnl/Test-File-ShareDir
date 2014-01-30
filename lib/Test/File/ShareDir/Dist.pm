@@ -33,7 +33,7 @@ B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for bac
 =cut
 
 sub import {
-  my ( $class, $arg ) = @_;
+  my ( undef, $arg ) = @_;
 
   if ( not ref $arg or not ref $arg eq 'HASH' ) {
     require Carp;

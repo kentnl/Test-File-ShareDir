@@ -172,7 +172,7 @@ C<-dist> contains a C<hashref> mapping Distribution names to path names for dist
 use File::ShareDir 1.00 qw();
 
 sub import {
-  my ( $class, %input_config ) = @_;
+  my ( undef, %input_config ) = @_;
 
   require Test::File::ShareDir::TempDirObject;
 
