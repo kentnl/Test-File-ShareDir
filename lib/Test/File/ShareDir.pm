@@ -5,6 +5,8 @@ package Test::File::ShareDir;
 
 # ABSTRACT: Create a Fake ShareDir for your modules for testing.
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

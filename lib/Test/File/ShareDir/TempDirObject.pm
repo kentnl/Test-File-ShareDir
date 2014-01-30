@@ -5,6 +5,8 @@ package Test::File::ShareDir::TempDirObject;
 
 # ABSTRACT: Internal Object to make code simpler.
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

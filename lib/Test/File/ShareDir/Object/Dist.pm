@@ -6,6 +6,8 @@ package Test::File::ShareDir::Object::Dist;
 
 # ABSTRACT: Object Oriented C<ShareDir> creation for distributions
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

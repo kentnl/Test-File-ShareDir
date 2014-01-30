@@ -6,6 +6,8 @@ package Test::File::ShareDir::Object::Module;
 
 # ABSTRACT: Object Oriented C<ShareDir> creation for modules
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {

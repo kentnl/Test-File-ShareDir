@@ -5,6 +5,8 @@ package Test::File::ShareDir::Dist;
 
 # ABSTRACT: Simplified C<dist> oriented C<ShareDir> tester
 
+# AUTHORITY
+
 use File::ShareDir 1.00 qw();
 
 =begin MetaPOD::JSON v1.1.0

@@ -5,6 +5,8 @@ package Test::File::ShareDir::Object::Inc;
 
 # ABSTRACT: Shared C<tempdir> object code to inject into C<@INC>
 
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.1.0
 
 {
