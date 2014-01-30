@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::TempDirObject;
-$Test::File::ShareDir::TempDirObject::VERSION = '0.4.2';
+$Test::File::ShareDir::TempDirObject::VERSION = '1.000000';
 # ABSTRACT: Internal Object to make code simpler.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -168,7 +168,7 @@ Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 0.4.2
+version 1.000000
 
 =head1 SYNOPSIS
 

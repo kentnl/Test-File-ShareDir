@@ -1,9 +1,11 @@
 Release history for Test-File-ShareDir
 
-0.4.2 2014-01-30T06:56:28Z
- [00 Minor Maintenance release]
- - Lower dependency requirements of Module::Build and Test::More
+1.000000 2014-01-30T15:21:34Z
+ [00 Tooling and Version replacement]
+ - Switched to EUMM to accelerate clean-install time.
+ - Build-time requirements are now softened
  - Readvertise higher requirements as recommendations
+ - version schema moved from x.y.z to x.YYYzzz and is the primary reason for incrementing the major
 
  [Dependencies::Stats]
  - Dependencies changed since 0.4.1, see Changes.deps{,.all,.dev} for

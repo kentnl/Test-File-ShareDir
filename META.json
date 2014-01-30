@@ -118,31 +118,31 @@
    "provides" : {
       "Test::File::ShareDir" : {
          "file" : "lib/Test/File/ShareDir.pm",
-         "version" : "v0.4.2"
+         "version" : "1.000000"
       },
       "Test::File::ShareDir::Dist" : {
          "file" : "lib/Test/File/ShareDir/Dist.pm",
-         "version" : "v0.4.2"
+         "version" : "1.000000"
       },
       "Test::File::ShareDir::Module" : {
          "file" : "lib/Test/File/ShareDir/Module.pm",
-         "version" : "v0.4.2"
+         "version" : "1.000000"
       },
       "Test::File::ShareDir::Object::Dist" : {
          "file" : "lib/Test/File/ShareDir/Object/Dist.pm",
-         "version" : "v0.4.2"
+         "version" : "1.000000"
       },
       "Test::File::ShareDir::Object::Inc" : {
          "file" : "lib/Test/File/ShareDir/Object/Inc.pm",
-         "version" : "v0.4.2"
+         "version" : "1.000000"
       },
       "Test::File::ShareDir::Object::Module" : {
          "file" : "lib/Test/File/ShareDir/Object/Module.pm",
-         "version" : "v0.4.2"
+         "version" : "1.000000"
       },
       "Test::File::ShareDir::TempDirObject" : {
          "file" : "lib/Test/File/ShareDir/TempDirObject.pm",
-         "version" : "v0.4.2"
+         "version" : "1.000000"
       }
    },
    "release_status" : "stable",
@@ -157,7 +157,7 @@
          "web" : "https://github.com/kentfredric/Test-File-ShareDir"
       }
    },
-   "version" : "0.4.2",
+   "version" : "1.000000",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::Meta" : "2.133380",
@@ -255,8 +255,8 @@
             "class" : "Dist::Zilla::Plugin::Git::NextVersion::Sanitized",
             "config" : {
                "Dist::Zilla::Role::Version::Sanitize" : {
-                  "mantissa" : 6,
-                  "normal_form" : "normal_3"
+                  "mantissa" : "6",
+                  "normal_form" : "numify"
                }
             },
             "name" : "@Author::KENTNL/Git::NextVersion::Sanitized",

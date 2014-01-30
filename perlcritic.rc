@@ -2014,7 +2014,7 @@ base_max = 130
 
 
 # $VERSION a plain number
-[-ValuesAndExpressions::RequireNumericVersion]
+[ValuesAndExpressions::RequireNumericVersion]
 # set_themes                         = bugs pulp
 # add_themes                         =
 # severity                           = 3

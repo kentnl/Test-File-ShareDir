@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Dist;
-$Test::File::ShareDir::Dist::VERSION = '0.4.2';
+$Test::File::ShareDir::Dist::VERSION = '1.000000';
 # ABSTRACT: Simplified dist oriented ShareDir tester
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -76,7 +76,7 @@ Test::File::ShareDir::Dist - Simplified dist oriented ShareDir tester
 
 =head1 VERSION
 
-version 0.4.2
+version 1.000000
 
 =head1 SYNOPSIS
 

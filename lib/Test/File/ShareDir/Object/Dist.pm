@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Object::Dist;
-$Test::File::ShareDir::Object::Dist::VERSION = '0.4.2';
+$Test::File::ShareDir::Object::Dist::VERSION = '1.000000';
 # ABSTRACT: Object Oriented ShareDir creation for distributions
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -167,7 +167,7 @@ Test::File::ShareDir::Object::Dist - Object Oriented ShareDir creation for distr
 
 =head1 VERSION
 
-version 0.4.2
+version 1.000000
 
 =head1 SYNOPSIS
 
