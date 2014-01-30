@@ -35,7 +35,7 @@ B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for bac
 sub import {
   my ( undef, $arg ) = @_;
 
-  if ( not ref $arg or not ref $arg eq 'HASH' ) {
+  if ( not ref $arg or 'HASH' ne ref $arg ) {
     require Carp;
     return Carp::croak q[Must pass a hashref];
   }
