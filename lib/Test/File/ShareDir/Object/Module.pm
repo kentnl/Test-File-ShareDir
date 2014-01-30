@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Module;
 
-# ABSTRACT: Object Oriented C<ShareDir> creation for modules
+# ABSTRACT: Object Oriented ShareDir creation for modules
 
 # AUTHORITY
 

@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Inc;
 
-# ABSTRACT: Shared C<tempdir> object code to inject into C<@INC>
+# ABSTRACT: Shared tempdir object code to inject into @INC
 
 # AUTHORITY
 

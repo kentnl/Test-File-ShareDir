@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Dist;
 
-# ABSTRACT: Simplified C<dist> oriented C<ShareDir> tester
+# ABSTRACT: Simplified dist oriented ShareDir tester
 
 # AUTHORITY
 

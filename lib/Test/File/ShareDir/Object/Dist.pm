@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Dist;
 
-# ABSTRACT: Object Oriented C<ShareDir> creation for distributions
+# ABSTRACT: Object Oriented ShareDir creation for distributions
 
 # AUTHORITY
 
