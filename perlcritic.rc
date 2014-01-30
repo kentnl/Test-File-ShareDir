@@ -392,7 +392,7 @@ allow_includes = 1
 
 
 # Require that all modules have a `use utf8;' statement.
-[CodeLayout::RequireUseUTF8]
+[-CodeLayout::RequireUseUTF8]
 # set_themes                         = swift unicode
 # add_themes                         =
 # severity                           = 3
@@ -750,7 +750,7 @@ stop_words = ShareDir sharedirs dir dirs Notedly
 
 
 # Use functions from Carp instead of `warn' or `die'.
-[-ErrorHandling::RequireCarping]
+[ErrorHandling::RequireCarping]
 # set_themes                         = certrule core maintenance pbp
 # add_themes                         =
 # severity                           = 3

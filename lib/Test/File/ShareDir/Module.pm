@@ -1,3 +1,4 @@
+use 5.006;    # pragmas
 use strict;
 use warnings;
 
@@ -33,10 +34,11 @@ use File::ShareDir 1.00 qw();
 
 
 
-sub import {
-  my ( $class, $arg ) = @_;
 
-  if ( not ref $arg or not ref $arg eq 'HASH' ) {
+sub import {
+  my ( undef, $arg ) = @_;
+
+  if ( not ref $arg or 'HASH' ne ref $arg ) {
     require Carp;
     return Carp::croak q[Must pass a hashref];
   }
@@ -55,9 +57,9 @@ sub import {
     $params->{modules}->{$key} = $input_config{$key};
   }
 
-  my $object = Test::File::ShareDir::Object::Module->new($params);
-  $object->install_all_modules();
-  $object->add_to_inc();
+  my $module_object = Test::File::ShareDir::Object::Module->new($params);
+  $module_object->install_all_modules();
+  $module_object->add_to_inc();
 
   return 1;
 }
@@ -87,7 +89,8 @@ version 0.4.2
 
 C<-root> is optional, and defaults to C<cwd>
 
-B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
+B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote
+the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
 
 =begin MetaPOD::JSON v1.1.0
 
