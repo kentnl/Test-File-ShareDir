@@ -43,20 +43,12 @@ my %exclude = map {; $_ => 1 } qw(
 
 # Add static prereqs to the included modules list
 my $static_prereqs = do { my $x = {
-       'build' => {
-                    'recommends' => {
-                                      'Module::Build' => '0.4204'
-                                    },
-                    'requires' => {
-                                    'Module::Build' => '0.3601'
-                                  }
-                  },
        'configure' => {
                         'recommends' => {
-                                          'Module::Build' => '0.4204'
+                                          'ExtUtils::MakeMaker' => '6.86'
                                         },
                         'requires' => {
-                                        'Module::Build' => '0.3601'
+                                        'ExtUtils::MakeMaker' => '6.30'
                                       }
                       },
        'develop' => {
@@ -74,6 +66,7 @@ my $static_prereqs = do { my $x = {
                                       'Dist::Zilla::Plugin::Git::Tag' => '0',
                                       'Dist::Zilla::Plugin::GithubMeta' => '0',
                                       'Dist::Zilla::Plugin::License' => '0',
+                                      'Dist::Zilla::Plugin::MakeMaker' => '0',
                                       'Dist::Zilla::Plugin::Manifest' => '0',
                                       'Dist::Zilla::Plugin::ManifestSkip' => '0',
                                       'Dist::Zilla::Plugin::MetaConfig' => '0',
@@ -83,7 +76,6 @@ my $static_prereqs = do { my $x = {
                                       'Dist::Zilla::Plugin::MetaTests' => '0',
                                       'Dist::Zilla::Plugin::MetaYAML' => '0',
                                       'Dist::Zilla::Plugin::MinimumPerl' => '0',
-                                      'Dist::Zilla::Plugin::ModuleBuild' => '0',
                                       'Dist::Zilla::Plugin::PkgVersion' => '0',
                                       'Dist::Zilla::Plugin::PodCoverageTests' => '0',
                                       'Dist::Zilla::Plugin::PodSyntaxTests' => '0',
@@ -131,6 +123,7 @@ my $static_prereqs = do { my $x = {
                    'recommends' => {
                                      'CPAN::Meta' => '0',
                                      'CPAN::Meta::Requirements' => '2.120900',
+                                     'ExtUtils::MakeMaker' => '6.86',
                                      'Test::More' => '1.001002'
                                    },
                    'requires' => {

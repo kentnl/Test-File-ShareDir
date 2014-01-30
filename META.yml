@@ -8,13 +8,12 @@ build_requires:
   File::Spec::Functions: 0
   FindBin: 0
   List::Util: 0
-  Module::Build: 0.3601
   Test::Fatal: 0
   Test::More: 0.96
   lib: 0
   version: 0
 configure_requires:
-  Module::Build: 0.3601
+  ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 5.012, CPAN::Meta::Converter version 2.133380'
 license: perl
@@ -82,6 +81,7 @@ x_BuiltWith:
     Dist::Zilla::Plugin::Git::Tag: 2.019
     Dist::Zilla::Plugin::GithubMeta: 0.42
     Dist::Zilla::Plugin::License: 5.012
+    Dist::Zilla::Plugin::MakeMaker: 5.012
     Dist::Zilla::Plugin::Manifest: 5.012
     Dist::Zilla::Plugin::ManifestSkip: 5.012
     Dist::Zilla::Plugin::MetaConfig: 5.012
@@ -91,7 +91,6 @@ x_BuiltWith:
     Dist::Zilla::Plugin::MetaTests: 5.012
     Dist::Zilla::Plugin::MetaYAML: 5.012
     Dist::Zilla::Plugin::MinimumPerl: 1.003
-    Dist::Zilla::Plugin::ModuleBuild: 5.012
     Dist::Zilla::Plugin::PkgVersion: 5.012
     Dist::Zilla::Plugin::PodCoverageTests: 5.012
     Dist::Zilla::Plugin::PodSyntaxTests: 5.012
@@ -119,7 +118,6 @@ x_BuiltWith:
     File::Temp: 0.2304
     FindBin: 1.51
     List::Util: 1.38
-    Module::Build: 0.4204
     Path::Tiny: 0.052
     Pod::Coverage::TrustPod: 0.100003
     Test::CPAN::Changes: 0.27
@@ -396,8 +394,8 @@ x_Dist_Zilla:
       name: '@Author::KENTNL/Authority'
       version: 1.006
     -
-      class: Dist::Zilla::Plugin::ModuleBuild
-      name: '@Author::KENTNL/ModuleBuild'
+      class: Dist::Zilla::Plugin::MakeMaker
+      name: '@Author::KENTNL/MakeMaker'
       version: 5.012
     -
       class: Dist::Zilla::Plugin::ReadmeFromPod
@@ -468,7 +466,7 @@ x_Dist_Zilla:
             - configure
             - develop
           modules:
-            - Module::Build
+            - ExtUtils::MakeMaker
             - Test::More
       name: '@Author::KENTNL/Prereqs::Recommend::MatchInstalled'
       version: 0.001000

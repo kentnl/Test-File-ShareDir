@@ -19,20 +19,12 @@
       ]
    },
    "prereqs" : {
-      "build" : {
-         "recommends" : {
-            "Module::Build" : "0.4204"
-         },
-         "requires" : {
-            "Module::Build" : "0.3601"
-         }
-      },
       "configure" : {
          "recommends" : {
-            "Module::Build" : "0.4204"
+            "ExtUtils::MakeMaker" : "6.86"
          },
          "requires" : {
-            "Module::Build" : "0.3601"
+            "ExtUtils::MakeMaker" : "6.30"
          }
       },
       "develop" : {
@@ -50,6 +42,7 @@
             "Dist::Zilla::Plugin::Git::Tag" : "0",
             "Dist::Zilla::Plugin::GithubMeta" : "0",
             "Dist::Zilla::Plugin::License" : "0",
+            "Dist::Zilla::Plugin::MakeMaker" : "0",
             "Dist::Zilla::Plugin::Manifest" : "0",
             "Dist::Zilla::Plugin::ManifestSkip" : "0",
             "Dist::Zilla::Plugin::MetaConfig" : "0",
@@ -59,7 +52,6 @@
             "Dist::Zilla::Plugin::MetaTests" : "0",
             "Dist::Zilla::Plugin::MetaYAML" : "0",
             "Dist::Zilla::Plugin::MinimumPerl" : "0",
-            "Dist::Zilla::Plugin::ModuleBuild" : "0",
             "Dist::Zilla::Plugin::PkgVersion" : "0",
             "Dist::Zilla::Plugin::PodCoverageTests" : "0",
             "Dist::Zilla::Plugin::PodSyntaxTests" : "0",
@@ -107,6 +99,7 @@
          "recommends" : {
             "CPAN::Meta" : "0",
             "CPAN::Meta::Requirements" : "2.120900",
+            "ExtUtils::MakeMaker" : "6.86",
             "Test::More" : "1.001002"
          },
          "requires" : {
@@ -185,6 +178,7 @@
          "Dist::Zilla::Plugin::Git::Tag" : "2.019",
          "Dist::Zilla::Plugin::GithubMeta" : "0.42",
          "Dist::Zilla::Plugin::License" : "5.012",
+         "Dist::Zilla::Plugin::MakeMaker" : "5.012",
          "Dist::Zilla::Plugin::Manifest" : "5.012",
          "Dist::Zilla::Plugin::ManifestSkip" : "5.012",
          "Dist::Zilla::Plugin::MetaConfig" : "5.012",
@@ -194,7 +188,6 @@
          "Dist::Zilla::Plugin::MetaTests" : "5.012",
          "Dist::Zilla::Plugin::MetaYAML" : "5.012",
          "Dist::Zilla::Plugin::MinimumPerl" : "1.003",
-         "Dist::Zilla::Plugin::ModuleBuild" : "5.012",
          "Dist::Zilla::Plugin::PkgVersion" : "5.012",
          "Dist::Zilla::Plugin::PodCoverageTests" : "5.012",
          "Dist::Zilla::Plugin::PodSyntaxTests" : "5.012",
@@ -222,7 +215,6 @@
          "File::Temp" : "0.2304",
          "FindBin" : "1.51",
          "List::Util" : "1.38",
-         "Module::Build" : "0.4204",
          "Path::Tiny" : "0.052",
          "Pod::Coverage::TrustPod" : "0.100003",
          "Test::CPAN::Changes" : "0.27",
@@ -574,8 +566,8 @@
             "version" : "1.006"
          },
          {
-            "class" : "Dist::Zilla::Plugin::ModuleBuild",
-            "name" : "@Author::KENTNL/ModuleBuild",
+            "class" : "Dist::Zilla::Plugin::MakeMaker",
+            "name" : "@Author::KENTNL/MakeMaker",
             "version" : "5.012"
          },
          {
@@ -662,7 +654,7 @@
                      "develop"
                   ],
                   "modules" : [
-                     "Module::Build",
+                     "ExtUtils::MakeMaker",
                      "Test::More"
                   ]
                }
