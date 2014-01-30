@@ -1,15 +1,45 @@
+use 5.006;    # pragmas
 use strict;
 use warnings;
 
 package Test::File::ShareDir::TempDirObject;
-BEGIN {
-  $Test::File::ShareDir::TempDirObject::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Test::File::ShareDir::TempDirObject::VERSION = '0.4.1';
-}
-
+$Test::File::ShareDir::TempDirObject::VERSION = '1.000000';
 # ABSTRACT: Internal Object to make code simpler.
+
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## no critic (Subroutines::RequireArgUnpacking)
@@ -17,6 +47,11 @@ sub __dir     { require Path::Tiny;            return Path::Tiny::path(@_); }
 sub __tempdir { require File::Temp;            goto \&File::Temp::tempdir; }
 sub __rcopy   { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
 sub __confess { require Carp;                  goto \&Carp::confess; }
+
+
+
+
+
 
 
 sub new {
@@ -133,7 +168,7 @@ Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 0.4.1
+version 1.000000
 
 =head1 SYNOPSIS
 
@@ -180,7 +215,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
