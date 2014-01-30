@@ -5,6 +5,8 @@ package Test::File::ShareDir;
 $Test::File::ShareDir::VERSION = '0.4.2';
 # ABSTRACT: Create a Fake ShareDir for your modules for testing.
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 

@@ -5,6 +5,8 @@ package Test::File::ShareDir::TempDirObject;
 $Test::File::ShareDir::TempDirObject::VERSION = '0.4.2';
 # ABSTRACT: Internal Object to make code simpler.
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 

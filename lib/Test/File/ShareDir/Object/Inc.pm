@@ -5,6 +5,8 @@ package Test::File::ShareDir::Object::Inc;
 $Test::File::ShareDir::Object::Inc::VERSION = '0.4.2';
 # ABSTRACT: Shared C<tempdir> object code to inject into C<@INC>
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 

@@ -5,6 +5,8 @@ package Test::File::ShareDir::Dist;
 $Test::File::ShareDir::Dist::VERSION = '0.4.2';
 # ABSTRACT: Simplified C<dist> oriented C<ShareDir> tester
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 use File::ShareDir 1.00 qw();
 
 

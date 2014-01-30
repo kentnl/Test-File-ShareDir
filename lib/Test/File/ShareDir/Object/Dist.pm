@@ -6,6 +6,8 @@ package Test::File::ShareDir::Object::Dist;
 $Test::File::ShareDir::Object::Dist::VERSION = '0.4.2';
 # ABSTRACT: Object Oriented C<ShareDir> creation for distributions
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 
