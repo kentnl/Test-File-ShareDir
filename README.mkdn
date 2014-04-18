@@ -4,7 +4,7 @@ Test::File::ShareDir - Create a Fake ShareDir for your modules for testing.
 
 # VERSION
 
-version 1.000000
+version 1.000001
 
 # SYNOPSIS
 
@@ -96,16 +96,9 @@ This will automatically create a `ShareDir` for `Module::Name` in a `TempDir` ba
 
 See [`Test::File::ShareDir::Object::Module`](https://metacpan.org/pod/Test::File::ShareDir::Object::Module) for details.
 
-{
-    "namespace":"Test::File::ShareDir",
-    "interface":"exporter"
-}
-
-
-
 # IMPORTING
 
-## \-root
+## -root
 
 This parameter is the prefix the other paths are relative to.
 
@@ -124,13 +117,13 @@ still be overridden.
 
     -root => "$FindBin::Bin/../" # resolves to project root from t/ regardless of Cwd.
 
-## \-share
+## -share
 
 This parameter is mandatory, and contains a `hashref` containing the data that explains what directories you want shared.
 
     -share =>  { ..... }
 
-### \-module
+### -module
 
 `-module` contains a `hashref` mapping Module names to path names for module\_dir style share dirs.
 
@@ -145,7 +138,7 @@ This parameter is mandatory, and contains a `hashref` containing the data that e
 Notedly, it is a `hashref`, which means there is a limitation of one share dir per module. This is simply because having more
 than one share dir per module makes no sense at all.
 
-### \-dist
+### -dist
 
 `-dist` contains a `hashref` mapping Distribution names to path names for dist\_dir style share dirs. The same limitation
 applied to `-module` applies here.
