@@ -22,6 +22,8 @@ lib/Test/File/ShareDir/Object/Dist.pm
 lib/Test/File/ShareDir/Object/Inc.pm
 lib/Test/File/ShareDir/Object/Module.pm
 lib/Test/File/ShareDir/TempDirObject.pm
+maint-travis-ci/.gitrepo
+maint-travis-ci/.perltidyrc
 maint-travis-ci/README.mkdn
 maint-travis-ci/before_script.pl
 maint-travis-ci/branch_reset.pl
@@ -38,6 +40,8 @@ maint-travis-ci/travis_enable.pl
 maint-travis-ci/yamls/sterile.mkdn
 maint-travis-ci/yamls/sterile.yaml
 maint-travis-ci/yamls/sterile2.yaml
+maint/perlcritic.rc.gen.pl
+perlcritic.deps
 perlcritic.rc
 t/00-compile/lib_Test_File_ShareDir_Dist_pm.t
 t/00-compile/lib_Test_File_ShareDir_Module_pm.t
