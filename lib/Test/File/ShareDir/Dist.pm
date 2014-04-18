@@ -33,6 +33,8 @@ use File::ShareDir 1.00 qw();
 
 
 
+my @cache;
+
 sub import {
   my ( undef, $arg ) = @_;
 
@@ -59,9 +61,14 @@ sub import {
   $dist_object->install_all_dists();
   $dist_object->add_to_inc();
 
+  push @cache, $dist_object;
+
   return 1;
 }
 
+END {
+  undef $_ for @cache;
+}
 1;
 
 __END__
