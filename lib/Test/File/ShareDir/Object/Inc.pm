@@ -46,8 +46,7 @@ and the injection of those C<tempdir>'s into C<@INC>
 use Class::Tiny {
   tempdir => sub {
     require Path::Tiny;
-    require File::Temp;
-    my $dir = Path::Tiny::path( File::Temp::tempdir( CLEANUP => 1 ) );
+    my $dir = Path::Tiny::tempdir( CLEANUP => 1 );
     return $dir->absolute;
   },
   module_tempdir => sub {
