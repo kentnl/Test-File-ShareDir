@@ -1,6 +1,13 @@
 Release history for Test-File-ShareDir
 
-1.000001 2014-04-18T12:19:43Z
+1.000001 2014-04-18T13:36:45Z
+ [Dependencies::Stats]
+ - Dependencies changed since 1.000000, see Changes.deps{,.all,.dev} for
+   details
+ - configure: (recommends: ↑1)
+ - develop: ↑1
+ - runtime: -1
+ - test: (recommends: ↑2)
 
 1.000000 2014-01-30T15:23:48Z
  [00 Tooling and Version replacement]
@@ -14,9 +21,9 @@ Release history for Test-File-ShareDir
  - Dependencies changed since 0.4.1, see Changes.deps{,.all,.dev} for
    details
  - build: -1
- - configure: +2 -1
+ - configure: +1 -1 (recommends: +1)
  - develop: +7 ↑1 -9
- - test: +8 ↓1
+ - test: +4 ↓1 (recommends: +4)
 
 0.4.1 2013-11-21T06:51:24Z
  [00 Trivial Doc Fix]
@@ -36,7 +43,7 @@ Release history for Test-File-ShareDir
    details
  - build: ↑1
  - configure: ↑1
- - develop: +46 -3
+ - develop: +45 -1 (recommends: -1, suggests: +1 -1)
  - runtime: +1
  - test: +1 ↑1 -1
 
@@ -78,7 +85,7 @@ Release history for Test-File-ShareDir
    details
  - build: ↑1
  - configure: ↑1
- - develop: +5 ↑2
+ - develop: +5 (recommends: ↑1, suggests: ↑1)
  - runtime: +1
  - test: ↑1
 

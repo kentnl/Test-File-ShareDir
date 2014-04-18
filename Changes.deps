@@ -1,4 +1,15 @@
-1.000000
+1.000001
+ [Changed / configure recommends]
+ - ExtUtils::MakeMaker 6.86 → 6.96
+
+ [Changed / test recommends]
+ - ExtUtils::MakeMaker 6.86 → 6.96
+ - Test::More 1.001002 → 1.001003
+
+ [Removed / runtime requires]
+ - File::Temp
+
+1.000000 2014-01-30T15:23:48Z
  [Added / configure recommends]
  - ExtUtils::MakeMaker 6.86
 
