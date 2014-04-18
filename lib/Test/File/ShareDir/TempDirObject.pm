@@ -44,7 +44,7 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 ## no critic (Subroutines::RequireArgUnpacking)
 sub __dir     { require Path::Tiny;            return Path::Tiny::path(@_); }
-sub __tempdir { require Path::Tiny;            return Path::Tiny::tempdir(); }
+sub __tempdir { require Path::Tiny;            return Path::Tiny::tempdir(@_); }
 sub __rcopy   { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
 sub __confess { require Carp;                  goto \&Carp::confess; }
 
@@ -81,7 +81,7 @@ sub new {
 sub _tempdir {
   my ($self) = shift;
   return $self->{tempdir} if exists $self->{tempdir};
-  $self->{tempdir} = __tempdir();
+  $self->{tempdir} = __tempdir( CLEANUP => 1 );
   return $self->{tempdir}->absolute;
 }
 

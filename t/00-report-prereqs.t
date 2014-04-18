@@ -112,7 +112,6 @@ my $static_prereqs = do { my $x = {
                                       'Class::Tiny' => '0',
                                       'File::Copy::Recursive' => '0',
                                       'File::ShareDir' => '1.00',
-                                      'File::Temp' => '0',
                                       'Path::Tiny' => '0',
                                       'perl' => '5.006',
                                       'strict' => '0',
