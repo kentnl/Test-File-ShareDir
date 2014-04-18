@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Object::Inc;
-$Test::File::ShareDir::Object::Inc::VERSION = '1.000000';
+$Test::File::ShareDir::Object::Inc::VERSION = '1.000001';
 # ABSTRACT: Shared tempdir object code to inject into @INC
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -104,7 +104,7 @@ Test::File::ShareDir::Object::Inc - Shared tempdir object code to inject into @I
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 

@@ -1534,7 +1534,7 @@ exempt_subs = String::Formatter::str_rf
 
 
 # Don't write `sub my_function (@@) {}'.
-[Subroutines::ProhibitSubroutinePrototypes]
+[-Subroutines::ProhibitSubroutinePrototypes]
 # set_themes                         = bugs certrec core pbp
 # add_themes                         =
 # severity                           = 5
@@ -1571,7 +1571,7 @@ private_name_regex = _(?!build_)\w
 
 
 # Always unpack `@_' first.
-[Subroutines::RequireArgUnpacking]
+[-Subroutines::RequireArgUnpacking]
 # set_themes                         = core maintenance pbp
 # add_themes                         =
 # severity                           = 4

@@ -1,5 +1,7 @@
 Release history for Test-File-ShareDir
 
+1.000001 2014-01-30T15:33:20Z
+
 1.000000 2014-01-30T15:23:48Z
  [00 Tooling and Version replacement]
  - Switched to EUMM to accelerate clean-install time.

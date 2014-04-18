@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Module;
-$Test::File::ShareDir::Module::VERSION = '1.000000';
+$Test::File::ShareDir::Module::VERSION = '1.000001';
 # ABSTRACT: Simplified module oriented ShareDir tester
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -78,7 +78,7 @@ Test::File::ShareDir::Module - Simplified module oriented ShareDir tester
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 
