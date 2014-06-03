@@ -63,7 +63,7 @@ sub import {
   $module_object->install_all_modules();
   $module_object->add_to_inc();
 
-  push @cache, $module_object; # Prevent tempdir being reaped
+  push @cache, $module_object;    # Prevent tempdir being reaped
 
   return 1;
 }

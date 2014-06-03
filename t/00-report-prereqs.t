@@ -45,7 +45,7 @@ my %exclude = map {; $_ => 1 } qw(
 my $static_prereqs = do { my $x = {
        'configure' => {
                         'recommends' => {
-                                          'ExtUtils::MakeMaker' => '6.96'
+                                          'ExtUtils::MakeMaker' => '6.98'
                                         },
                         'requires' => {
                                         'ExtUtils::MakeMaker' => '6.30'
@@ -94,7 +94,7 @@ my $static_prereqs = do { my $x = {
                                       'Dist::Zilla::Plugin::TestRelease' => '0',
                                       'Dist::Zilla::Plugin::Twitter' => '0',
                                       'Dist::Zilla::Plugin::UploadToCPAN' => '0',
-                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.013003',
+                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.015000',
                                       'Pod::Coverage::TrustPod' => '0',
                                       'Test::CPAN::Changes' => '0.19',
                                       'Test::CPAN::Meta' => '0',
@@ -122,7 +122,7 @@ my $static_prereqs = do { my $x = {
                    'recommends' => {
                                      'CPAN::Meta' => '0',
                                      'CPAN::Meta::Requirements' => '2.120900',
-                                     'ExtUtils::MakeMaker' => '6.96',
+                                     'ExtUtils::MakeMaker' => '6.98',
                                      'Test::More' => '1.001003'
                                    },
                    'requires' => {
