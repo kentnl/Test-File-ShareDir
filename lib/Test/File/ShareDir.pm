@@ -175,6 +175,8 @@ applied to C<-module> applies here.
 
 use File::ShareDir 1.00 qw();
 
+my @cache;
+
 sub import {
   my ( undef, %input_config ) = @_;
 
@@ -190,9 +192,14 @@ sub import {
     $tempdir_object->_install_dist($dist);
   }
 
+  # Otherwise the tempdir might go out of scope and get cleaned
+  push @cache, $tempdir_object;
   unshift @INC, $tempdir_object->_tempdir->stringify;
 
   return 1;
 }
 
+END {
+  undef $_ for @cache;
+}
 1;
