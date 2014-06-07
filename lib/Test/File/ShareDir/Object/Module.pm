@@ -4,6 +4,8 @@ use warnings;
 
 package Test::File::ShareDir::Object::Module;
 
+our $VERSION = '1.000001';
+
 # ABSTRACT: Object Oriented ShareDir creation for modules
 
 # AUTHORITY
