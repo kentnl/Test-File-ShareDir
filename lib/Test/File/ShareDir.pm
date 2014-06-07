@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir;
-$Test::File::ShareDir::VERSION = '1.000001';
+
+our $VERSION = '1.000001';
+
 # ABSTRACT: Create a Fake ShareDir for your modules for testing.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -175,8 +177,6 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use File::ShareDir 1.00 qw();
 
-my @cache;
-
 sub import {
   my ( undef, %input_config ) = @_;
 
@@ -192,16 +192,11 @@ sub import {
     $tempdir_object->_install_dist($dist);
   }
 
-  # Otherwise the tempdir might go out of scope and get cleaned
-  push @cache, $tempdir_object;
   unshift @INC, $tempdir_object->_tempdir->stringify;
 
   return 1;
 }
 
-END {
-  undef $_ for @cache;
-}
 1;
 
 __END__

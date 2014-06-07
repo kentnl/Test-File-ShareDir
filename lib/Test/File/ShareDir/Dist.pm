@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Dist;
-$Test::File::ShareDir::Dist::VERSION = '1.000001';
+
+our $VERSION = '1.000001';
+
 # ABSTRACT: Simplified dist oriented ShareDir tester
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -33,8 +35,6 @@ use File::ShareDir 1.00 qw();
 
 
 
-my @cache;
-
 sub import {
   my ( undef, $arg ) = @_;
 
@@ -61,14 +61,9 @@ sub import {
   $dist_object->install_all_dists();
   $dist_object->add_to_inc();
 
-  push @cache, $dist_object;
-
   return 1;
 }
 
-END {
-  undef $_ for @cache;
-}
 1;
 
 __END__

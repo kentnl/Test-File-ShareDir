@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Module;
-$Test::File::ShareDir::Module::VERSION = '1.000001';
+
+our $VERSION = '1.000001';
+
 # ABSTRACT: Simplified module oriented ShareDir tester
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -35,8 +37,6 @@ use File::ShareDir 1.00 qw();
 
 
 
-my @cache;
-
 sub import {
   my ( undef, $arg ) = @_;
 
@@ -63,13 +63,7 @@ sub import {
   $module_object->install_all_modules();
   $module_object->add_to_inc();
 
-  push @cache, $module_object;    # Prevent tempdir being reaped
-
   return 1;
-}
-
-END {
-  undef $_ for @cache;
 }
 
 1;

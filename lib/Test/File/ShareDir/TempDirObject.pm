@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::TempDirObject;
-$Test::File::ShareDir::TempDirObject::VERSION = '1.000001';
+
+our $VERSION = '1.000001';
+
 # ABSTRACT: Internal Object to make code simpler.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -77,11 +79,16 @@ sub new {
   return bless $realconfig, $class;
 }
 
+my @cache;
+
 sub _tempdir {
   my ($self) = shift;
   return $self->{tempdir} if exists $self->{tempdir};
   $self->{tempdir} = Path::Tiny::tempdir( CLEANUP => 1 );
-  return $self->{tempdir}->absolute;
+
+  # Explicit keepalive till GC
+  push @cache, $self->{tempdir};
+  return $self->{tempdir};
 }
 
 sub _module_tempdir {

@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Object::Module;
-$Test::File::ShareDir::Object::Module::VERSION = '1.000001';
+
+our $VERSION = '1.000001';
+
 # ABSTRACT: Object Oriented ShareDir creation for modules
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
