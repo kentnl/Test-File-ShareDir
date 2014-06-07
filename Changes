@@ -1,6 +1,8 @@
 Release history for Test-File-ShareDir
 
 {{$NEXT}}
+
+1.000001 2014-06-07T15:14:38Z
  [00 Trivial]
  - Mostly internal aesthetic changes / perlcritic things.
  - tempdir behaviours used via Path::Tiny interface instead of directly.
