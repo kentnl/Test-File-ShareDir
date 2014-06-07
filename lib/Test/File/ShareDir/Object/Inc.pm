@@ -43,11 +43,14 @@ and the injection of those C<tempdir>'s into C<@INC>
 
 =cut
 
+my @cache;
+
 use Class::Tiny {
   tempdir => sub {
     require Path::Tiny;
     my $dir = Path::Tiny::tempdir( CLEANUP => 1 );
-    return $dir->absolute;
+    push @cache, $dir;    # explicit keepalive
+    return $dir;
   },
   module_tempdir => sub {
     my ($self) = @_;

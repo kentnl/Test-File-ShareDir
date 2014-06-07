@@ -78,11 +78,16 @@ sub new {
   return bless $realconfig, $class;
 }
 
+my @cache;
+
 sub _tempdir {
   my ($self) = shift;
   return $self->{tempdir} if exists $self->{tempdir};
-  $self->{tempdir} = __tempdir( CLEANUP => 1 );
-  return $self->{tempdir}->absolute;
+  $self->{tempdir} = Path::Tiny::tempdir( CLEANUP => 1 );
+
+  # Explicit keepalive till GC
+  push @cache, $self->{tempdir};
+  return $self->{tempdir};
 }
 
 sub _module_tempdir {

@@ -35,8 +35,6 @@ the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
 
 =cut
 
-my @cache;
-
 sub import {
   my ( undef, $arg ) = @_;
 
@@ -63,13 +61,7 @@ sub import {
   $module_object->install_all_modules();
   $module_object->add_to_inc();
 
-  push @cache, $module_object;    # Prevent tempdir being reaped
-
   return 1;
-}
-
-END {
-  undef $_ for @cache;
 }
 
 1;
