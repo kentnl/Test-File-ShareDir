@@ -41,7 +41,7 @@ maint-travis-ci/yamls/sterile.mkdn
 maint-travis-ci/yamls/sterile.yaml
 maint-travis-ci/yamls/sterile2.yaml
 maint/perlcritic.rc.gen.pl
-perlcritic.deps
+misc/perlcritic.deps
 perlcritic.rc
 t/00-compile/lib_Test_File_ShareDir_Dist_pm.t
 t/00-compile/lib_Test_File_ShareDir_Module_pm.t
