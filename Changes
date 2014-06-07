@@ -1,6 +1,12 @@
 Release history for Test-File-ShareDir
 
 {{$NEXT}}
+ [00 Trivial]
+ - Mostly internal aesthetic changes / perlcritic things.
+ - tempdir behaviours used via Path::Tiny interface instead of directly.
+ - Silly runtime function proxies mostly deleted.
+ - packaging tweaked minorly
+
  [Dependencies::Stats]
  - Dependencies changed since 1.000000, see misc/*.deps* for details
  - configure: (recommends: ↑1)
