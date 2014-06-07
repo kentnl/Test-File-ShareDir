@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::Object::Inc;
-$Test::File::ShareDir::Object::Inc::VERSION = '1.000000';
+
+our $VERSION = '1.000001';
+
 # ABSTRACT: Shared tempdir object code to inject into @INC
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -43,12 +45,14 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 
+my @cache;
+
 use Class::Tiny {
   tempdir => sub {
     require Path::Tiny;
-    require File::Temp;
-    my $dir = Path::Tiny::path( File::Temp::tempdir( CLEANUP => 1 ) );
-    return $dir->absolute;
+    my $dir = Path::Tiny::tempdir( CLEANUP => 1 );
+    push @cache, $dir;    # explicit keepalive
+    return $dir;
   },
   module_tempdir => sub {
     my ($self) = @_;
@@ -104,7 +108,7 @@ Test::File::ShareDir::Object::Inc - Shared tempdir object code to inject into @I
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 

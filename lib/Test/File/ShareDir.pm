@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir;
-$Test::File::ShareDir::VERSION = '1.000000';
+
+our $VERSION = '1.000001';
+
 # ABSTRACT: Create a Fake ShareDir for your modules for testing.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -209,7 +211,7 @@ Test::File::ShareDir - Create a Fake ShareDir for your modules for testing.
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 

@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Test::File::ShareDir::TempDirObject;
-$Test::File::ShareDir::TempDirObject::VERSION = '1.000000';
+
+our $VERSION = '1.000001';
+
 # ABSTRACT: Internal Object to make code simpler.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -42,11 +44,10 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 
+use Path::Tiny qw(path);
+use Carp qw(confess);
 ## no critic (Subroutines::RequireArgUnpacking)
-sub __dir     { require Path::Tiny;            return Path::Tiny::path(@_); }
-sub __tempdir { require File::Temp;            goto \&File::Temp::tempdir; }
-sub __rcopy   { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
-sub __confess { require Carp;                  goto \&Carp::confess; }
+sub __rcopy { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
 
 
 
@@ -57,32 +58,37 @@ sub __confess { require Carp;                  goto \&Carp::confess; }
 sub new {
   my ( $class, $config ) = @_;
 
-  __confess('Need -share => for Test::File::ShareDir') unless exists $config->{-share};
+  confess('Need -share => for Test::File::ShareDir') unless exists $config->{-share};
 
   my $realconfig = {
-    root    => __dir(q{./})->absolute,    #->resolve->absolute,
+    root    => path(q{./})->absolute,    #->resolve->absolute,
     modules => {},
     dists   => {},
   };
 
-  $realconfig->{root}    = __dir( delete $config->{-root} )->absolute if exists $config->{-root};
-  $realconfig->{modules} = delete $config->{-share}->{-module}        if exists $config->{-share}->{-module};
-  $realconfig->{dists}   = delete $config->{-share}->{-dist}          if exists $config->{-share}->{-dist};
+  $realconfig->{root}    = path( delete $config->{-root} )->absolute if exists $config->{-root};
+  $realconfig->{modules} = delete $config->{-share}->{-module}       if exists $config->{-share}->{-module};
+  $realconfig->{dists}   = delete $config->{-share}->{-dist}         if exists $config->{-share}->{-dist};
 
-  __confess( 'Unsupported -share types : ' . join q{ }, keys %{ $config->{-share} } ) if keys %{ $config->{-share} };
+  confess( 'Unsupported -share types : ' . join q{ }, keys %{ $config->{-share} } ) if keys %{ $config->{-share} };
 
   delete $config->{-share};
 
-  __confess( 'Unsupported parameter to import() : ' . join q{ }, keys %{$config} ) if keys %{$config};
+  confess( 'Unsupported parameter to import() : ' . join q{ }, keys %{$config} ) if keys %{$config};
 
   return bless $realconfig, $class;
 }
 
+my @cache;
+
 sub _tempdir {
   my ($self) = shift;
   return $self->{tempdir} if exists $self->{tempdir};
-  $self->{tempdir} = __dir( __tempdir( CLEANUP => 1 ) );
-  return $self->{tempdir}->absolute;
+  $self->{tempdir} = Path::Tiny::tempdir( CLEANUP => 1 );
+
+  # Explicit keepalive till GC
+  push @cache, $self->{tempdir};
+  return $self->{tempdir};
 }
 
 sub _module_tempdir {
@@ -136,12 +142,12 @@ sub _dist_share_target_dir {
 
 sub _module_share_source_dir {
   my ( $self, $module ) = @_;
-  return __dir( $self->_modules->{$module} )->absolute( $self->_root );
+  return path( $self->_modules->{$module} )->absolute( $self->_root );
 }
 
 sub _dist_share_source_dir {
   my ( $self, $dist ) = @_;
-  return __dir( $self->_dists->{$dist} )->absolute( $self->_root );
+  return path( $self->_dists->{$dist} )->absolute( $self->_root );
 }
 
 sub _install_module {
@@ -168,7 +174,7 @@ Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 

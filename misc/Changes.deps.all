@@ -1,4 +1,32 @@
-1.000000
+1.000001
+ [Added / develop requires]
+ - Dist::Zilla::Plugin::BumpVersionAfterRelease
+ - Dist::Zilla::Plugin::CopyFilesFromBuild
+ - Dist::Zilla::Plugin::RewriteVersion::Sanitized
+
+ [Added / develop suggests]
+ - Dist::Zilla::App::Command::bakeini 0.001000
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.016000
+
+ [Changed / configure recommends]
+ - ExtUtils::MakeMaker 6.86 → 6.98
+
+ [Changed / test recommends]
+ - ExtUtils::MakeMaker 6.86 → 6.98
+ - Test::More 1.001002 → 1.001003
+
+ [Removed / develop requires]
+ - Dist::Zilla::Plugin::Git::NextVersion::Sanitized
+ - Dist::Zilla::Plugin::PkgVersion
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.011001
+
+ [Removed / develop suggests]
+ - Dist::Zilla::PluginBundle::Author::KENTNL::Lite v1.3.0
+
+ [Removed / runtime requires]
+ - File::Temp
+
+1.000000 2014-01-30T15:23:48Z
  [Added / configure recommends]
  - ExtUtils::MakeMaker 6.86
 

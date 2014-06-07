@@ -1,15 +1,10 @@
-1.000000
- [Added / configure recommends]
- - ExtUtils::MakeMaker 6.86
+1.000001
+ [Removed / runtime requires]
+ - File::Temp
 
+1.000000 2014-01-30T15:23:48Z
  [Added / configure requires]
  - ExtUtils::MakeMaker 6.30
-
- [Added / test recommends]
- - CPAN::Meta
- - CPAN::Meta::Requirements 2.120900
- - ExtUtils::MakeMaker 6.86
- - Test::More 1.001002
 
  [Added / test requires]
  - ExtUtils::MakeMaker
