@@ -1,5 +1,7 @@
 Release history for Test-File-ShareDir
 
+1.000002 2014-07-18T16:25:28Z
+
 1.000001 2014-06-07T15:14:38Z
  [00 Trivial]
  - Mostly internal aesthetic changes / perlcritic things.
