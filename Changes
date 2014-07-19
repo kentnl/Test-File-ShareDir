@@ -1,6 +1,8 @@
 Release history for Test-File-ShareDir
 
 {{$NEXT}}
+
+1.000002 2014-07-18T16:33:36Z
  [00 Trivial]
  - Minor packaging cleanups shaving ~7k
 

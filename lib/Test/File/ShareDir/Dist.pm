@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Dist;
 
-our $VERSION = '1.000002';
+our $VERSION = '1.000003';
 
 # ABSTRACT: Simplified dist oriented ShareDir tester
 
