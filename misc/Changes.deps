@@ -1,4 +1,14 @@
-1.000001
+This file contains changes in REQUIRED dependencies for standard CPAN phases (configure/build/runtime/test)
+
+1.000002
+ [Added / test requires]
+ - File::Spec
+ - Scalar::Util
+
+ [Changed / test requires]
+ - version 0 → 0.77
+
+1.000001 2014-06-07T15:14:38Z
  [Removed / runtime requires]
  - File::Temp
 

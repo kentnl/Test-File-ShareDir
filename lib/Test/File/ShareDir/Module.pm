@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Module;
 
-our $VERSION = '1.000001';
+our $VERSION = '1.000002';
 
 # ABSTRACT: Simplified module oriented ShareDir tester
 
@@ -80,7 +80,7 @@ Test::File::ShareDir::Module - Simplified module oriented ShareDir tester
 
 =head1 VERSION
 
-version 1.000001
+version 1.000002
 
 =head1 SYNOPSIS
 

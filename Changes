@@ -1,5 +1,14 @@
 Release history for Test-File-ShareDir
 
+1.000002 2014-07-18T16:33:36Z
+ [00 Trivial]
+ - Minor packaging cleanups shaving ~7k
+
+ [Dependencies::Stats]
+ - Dependencies changed since 1.000001, see misc/*.deps* for details
+ - develop: (suggests: ↑2)
+ - test: +2 ↑1 (recommends: +1)
+
 1.000001 2014-06-07T15:14:38Z
  [00 Trivial]
  - Mostly internal aesthetic changes / perlcritic things.
