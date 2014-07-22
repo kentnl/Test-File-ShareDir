@@ -33,3 +33,4 @@ auto_prereqs_skip = ^Example$
 directory = t/tlib
 
 [Prereqs]
+Path::Tiny = 0.018 ; # Attempt to avoid ::tempdir( CLEANUP => 1 ) failing
