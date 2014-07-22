@@ -29,31 +29,31 @@ no_index:
 provides:
   Test::File::ShareDir:
     file: lib/Test/File/ShareDir.pm
-    version: '1.000002'
+    version: '1.000003'
   Test::File::ShareDir::Dist:
     file: lib/Test/File/ShareDir/Dist.pm
-    version: '1.000002'
+    version: '1.000003'
   Test::File::ShareDir::Module:
     file: lib/Test/File/ShareDir/Module.pm
-    version: '1.000002'
+    version: '1.000003'
   Test::File::ShareDir::Object::Dist:
     file: lib/Test/File/ShareDir/Object/Dist.pm
-    version: '1.000002'
+    version: '1.000003'
   Test::File::ShareDir::Object::Inc:
     file: lib/Test/File/ShareDir/Object/Inc.pm
-    version: '1.000002'
+    version: '1.000003'
   Test::File::ShareDir::Object::Module:
     file: lib/Test/File/ShareDir/Object/Module.pm
-    version: '1.000002'
+    version: '1.000003'
   Test::File::ShareDir::TempDirObject:
     file: lib/Test/File/ShareDir/TempDirObject.pm
-    version: '1.000002'
+    version: '1.000003'
 requires:
   Carp: '0'
   Class::Tiny: '0'
   File::Copy::Recursive: '0'
   File::ShareDir: '1.00'
-  Path::Tiny: '0'
+  Path::Tiny: '0.018'
   perl: '5.006'
   strict: '0'
   warnings: '0'
@@ -61,7 +61,7 @@ resources:
   bugtracker: https://github.com/kentnl/Test-File-ShareDir/issues
   homepage: https://github.com/kentnl/Test-File-ShareDir
   repository: https://github.com/kentnl/Test-File-ShareDir.git
-version: '1.000002'
+version: '1.000003'
 x_BuiltWith:
   modules:
     CPAN::Meta: '2.141520'
@@ -89,7 +89,7 @@ x_BuiltWith:
     Dist::Zilla::Plugin::Manifest: '5.019'
     Dist::Zilla::Plugin::ManifestSkip: '5.019'
     Dist::Zilla::Plugin::MetaConfig: '5.019'
-    Dist::Zilla::Plugin::MetaData::BuiltWith: '1.000000'
+    Dist::Zilla::Plugin::MetaData::BuiltWith: '1.000001'
     Dist::Zilla::Plugin::MetaJSON: '5.019'
     Dist::Zilla::Plugin::MetaProvides::Package: '2.000002'
     Dist::Zilla::Plugin::MetaTests: '5.019'
@@ -102,10 +102,10 @@ x_BuiltWith:
     Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled: '0.002000'
     Dist::Zilla::Plugin::ReadmeAnyFromPod: '0.141760'
     Dist::Zilla::Plugin::ReadmeFromPod: '0.21'
-    Dist::Zilla::Plugin::RewriteVersion::Sanitized: '0.001000'
+    Dist::Zilla::Plugin::RewriteVersion::Sanitized: '0.001001'
     Dist::Zilla::Plugin::RunExtraTests: '0.022'
     Dist::Zilla::Plugin::Test::CPAN::Changes: '0.008'
-    Dist::Zilla::Plugin::Test::Compile::PerFile: '0.002000'
+    Dist::Zilla::Plugin::Test::Compile::PerFile: '0.002001'
     Dist::Zilla::Plugin::Test::Kwalitee: '2.07'
     Dist::Zilla::Plugin::Test::MinimumVersion: '2.000005'
     Dist::Zilla::Plugin::Test::Perl::Critic: '2.112410'
@@ -127,10 +127,10 @@ x_BuiltWith:
     Test::CPAN::Changes: '0.28'
     Test::CPAN::Meta: '0.23'
     Test::Fatal: '0.013'
-    Test::Kwalitee: '1.18'
+    Test::Kwalitee: '1.19'
     Test::More: '1.001003'
     Test::Pod: '1.48'
-    Test::Pod::Coverage: '1.08'
+    Test::Pod::Coverage: '1.10'
     lib: '0.63'
     strict: '1.08'
     version: '0.9908'
@@ -191,7 +191,7 @@ x_Dist_Zilla:
               - -i
             uname_call: uname
       name: '@Author::KENTNL/MetaData::BuiltWith'
-      version: '1.000000'
+      version: '1.000001'
     -
       class: Dist::Zilla::Plugin::Git::GatherDir
       config:
@@ -271,7 +271,7 @@ x_Dist_Zilla:
           test_template: 01-basic.t.tpl
           xt_mode: ~
       name: '@Author::KENTNL/Test::Compile::PerFile'
-      version: '0.002000'
+      version: '0.002001'
     -
       class: Dist::Zilla::Plugin::Test::Perl::Critic
       name: '@Author::KENTNL/Test::Perl::Critic'
@@ -287,7 +287,7 @@ x_Dist_Zilla:
           mantissa: '6'
           normal_form: numify
       name: '@Author::KENTNL/RewriteVersion::Sanitized'
-      version: '0.001000'
+      version: '0.001001'
     -
       class: Dist::Zilla::Plugin::PodWeaver
       config:
@@ -462,7 +462,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: 1.000002-source
+          tag: 1.000003-source
           tag_format: '%v-source'
           tag_message: v%v
           time_zone: local
@@ -516,7 +516,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: releases
           signed: 0
-          tag: '1.000002'
+          tag: '1.000003'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local

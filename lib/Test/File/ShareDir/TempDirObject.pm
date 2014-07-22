@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::TempDirObject;
 
-our $VERSION = '1.000002';
+our $VERSION = '1.000003';
 
 # ABSTRACT: Internal Object to make code simpler.
 
@@ -174,7 +174,7 @@ Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 1.000002
+version 1.000003
 
 =head1 SYNOPSIS
 
