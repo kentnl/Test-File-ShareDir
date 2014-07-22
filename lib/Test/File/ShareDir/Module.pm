@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Module;
 
-our $VERSION = '1.000004';
+our $VERSION = '1.000005';
 
 # ABSTRACT: Simplified module oriented ShareDir tester
 
