@@ -24,7 +24,7 @@ my %WriteMakefileArgs = (
     "Class::Tiny" => 0,
     "File::Copy::Recursive" => 0,
     "File::ShareDir" => "1.00",
-    "Path::Tiny" => 0,
+    "Path::Tiny" => "0.18",
     "strict" => 0,
     "warnings" => 0
   },
@@ -59,7 +59,7 @@ my %FallbackPrereqs = (
   "File::Spec::Functions" => 0,
   "FindBin" => 0,
   "List::Util" => 0,
-  "Path::Tiny" => 0,
+  "Path::Tiny" => "0.18",
   "Scalar::Util" => 0,
   "Test::Fatal" => 0,
   "Test::More" => "0.96",
