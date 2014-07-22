@@ -1,8 +1,14 @@
 Release history for Test-File-ShareDir
 
+1.000004 2014-07-22T19:29:27Z
+ [Doc Bugfix]
+ - Previous releases changelog was misleading.
+ - We're requiring a newer Path::Tiny to avoid a problem. ( As opposed to the impression that a newer Path::Tiny caused
+   the problem, grammar-- )
+
 1.000003 2014-07-22T19:02:06Z
  [Bugfix]
- - Attempt to avoid tempdir(CLEANUP => 1) being an error with newer Path::Tiny
+ - Attempt to avoid tempdir(CLEANUP => 1) being an error by requiring newer Path::Tiny
 
  [Dependencies::Stats]
  - Dependencies changed since 1.000002, see misc/*.deps* for details
