@@ -1,11 +1,19 @@
 Release history for Test-File-ShareDir
 
-1.000005 2014-08-05T09:10:43Z
+1.000005 2014-08-15T23:36:50Z
+ [00 Trivial]
+ - CPANDAY!
+ - no code changes.
+ - tests augmented.
+
  [Dependencies::Stats]
  - Dependencies changed since 1.000004, see misc/*.deps* for details
  - configure: ↓1
  - develop: +1 (suggests: ↑1)
  - test: -4 (recommends: ↑1 -2)
+
+ [Tests]
+ - update Test::ReportPrereqs
 
 1.000004 2014-07-22T19:29:27Z
  [Doc Bugfix]

@@ -23,18 +23,6 @@ use File::ShareDir 1.00 qw();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 sub import {
   my ( undef, $arg ) = @_;
 

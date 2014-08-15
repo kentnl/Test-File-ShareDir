@@ -22,20 +22,6 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 use Class::Tiny {
   inc => sub {
     require Test::File::ShareDir::Object::Inc;
