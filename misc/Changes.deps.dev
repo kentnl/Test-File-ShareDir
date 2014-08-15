@@ -2,10 +2,10 @@ This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and 
 
 1.000005
  [Added / develop requires]
- - Dist::Zilla::Plugin::Git::Contributors
+ - Dist::Zilla::Plugin::Git::Contributors 0.006
 
  [Changed / develop suggests]
- - Dist::Zilla::PluginBundle::Author::KENTNL 2.016004 → 2.017000
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.016004 → 2.017001
 
 1.000004 2014-07-22T19:29:27Z
 

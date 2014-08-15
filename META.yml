@@ -108,7 +108,7 @@ x_BuiltWith:
     Dist::Zilla::Plugin::TestRelease: '5.020'
     Dist::Zilla::Plugin::Twitter: '0.025'
     Dist::Zilla::Plugin::UploadToCPAN: '5.020'
-    Dist::Zilla::PluginBundle::Author::KENTNL: '2.017001'
+    Dist::Zilla::PluginBundle::Author::KENTNL: '2.017002'
     ExtUtils::MakeMaker: '6.98'
     File::Copy::Recursive: '0.38'
     File::ShareDir: '1.102'
