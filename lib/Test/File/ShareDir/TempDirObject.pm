@@ -19,29 +19,6 @@ our $VERSION = '1.000005';
 
 =end MetaPOD::JSON
 
-=head1 SYNOPSIS
-
-    my $object = $class->new({
-        -root => 'foo', # optional
-        -share => {
-            -module => {
-                'baz' => 'dir',
-            },
-            -dist => {
-                'Task-baz' => 'otherdir',
-            },
-        },
-    });
-
-    # installs a sharedir for 'baz' by copying 'foo/dir'
-    $object->_install_module('baz');
-
-    # installs a shardir for distribution 'Task-baz' by copying 'foo/otherdir'
-    $object->_install_dist('Task-baz');
-
-    # add to @INC
-    unshift @INC, $object->_tempdir->stringify;
-
 =cut
 
 use Path::Tiny qw(path);
@@ -161,3 +138,28 @@ sub _install_dist {
 }
 
 1;
+
+=head1 SYNOPSIS
+
+    my $object = $class->new({
+        -root => 'foo', # optional
+        -share => {
+            -module => {
+                'baz' => 'dir',
+            },
+            -dist => {
+                'Task-baz' => 'otherdir',
+            },
+        },
+    });
+
+    # installs a sharedir for 'baz' by copying 'foo/dir'
+    $object->_install_module('baz');
+
+    # installs a shardir for distribution 'Task-baz' by copying 'foo/otherdir'
+    $object->_install_dist('Task-baz');
+
+    # add to @INC
+    unshift @INC, $object->_tempdir->stringify;
+
+=cut

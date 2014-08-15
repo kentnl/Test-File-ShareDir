@@ -20,20 +20,6 @@ our $VERSION = '1.000005';
 
 =end MetaPOD::JSON
 
-=head1 SYNOPSIS
-
-    use Test::File::ShareDir::Object::Dist;
-
-    my $dir = Test::File::ShareDir::Object::Dist->new(
-        root    => "some/path",
-        dists => {
-            "Hello-Nurse" => "share/HN"
-        },
-    );
-
-    $dir->install_all_dists;
-    $dir->add_to_inc;
-
 =cut
 
 use Class::Tiny {
@@ -156,3 +142,19 @@ sub add_to_inc {
 }
 
 1;
+
+=head1 SYNOPSIS
+
+    use Test::File::ShareDir::Object::Dist;
+
+    my $dir = Test::File::ShareDir::Object::Dist->new(
+        root    => "some/path",
+        dists => {
+            "Hello-Nurse" => "share/HN"
+        },
+    );
+
+    $dir->install_all_dists;
+    $dir->add_to_inc;
+
+=cut

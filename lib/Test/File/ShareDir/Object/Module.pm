@@ -20,20 +20,6 @@ our $VERSION = '1.000005';
 
 =end MetaPOD::JSON
 
-=head1 SYNOPSIS
-
-    use Test::File::ShareDir::Object::Module;
-
-    my $dir = Test::File::ShareDir::Object::Module->new(
-        root    => "some/path",
-        modules => {
-            "Hello::Nurse" => "share/HN"
-        },
-    );
-
-    $dir->install_all_modules;
-    $dir->add_to_inc;
-
 =cut
 
 use Class::Tiny {
@@ -159,3 +145,19 @@ sub add_to_inc {
 }
 
 1;
+
+=head1 SYNOPSIS
+
+    use Test::File::ShareDir::Object::Module;
+
+    my $dir = Test::File::ShareDir::Object::Module->new(
+        root    => "some/path",
+        modules => {
+            "Hello::Nurse" => "share/HN"
+        },
+    );
+
+    $dir->install_all_modules;
+    $dir->add_to_inc;
+
+=cut

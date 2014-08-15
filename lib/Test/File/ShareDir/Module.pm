@@ -21,20 +21,6 @@ use File::ShareDir 1.00 qw();
 
 =end MetaPOD::JSON
 
-
-=head1 SYNOPSIS
-
-    use Test::File::ShareDir::Module {
-        '-root' => "some/root/path",
-        'Module::Foo' => "share/ModuleFoo",
-    };
-
-C<-root> is optional, and defaults to C<cwd>
-
-
-B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote
-the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
-
 =cut
 
 sub import {
@@ -67,3 +53,18 @@ sub import {
 }
 
 1;
+
+=head1 SYNOPSIS
+
+    use Test::File::ShareDir::Module {
+        '-root' => "some/root/path",
+        'Module::Foo' => "share/ModuleFoo",
+    };
+
+C<-root> is optional, and defaults to C<cwd>
+
+
+B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote
+the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
+
+=cut

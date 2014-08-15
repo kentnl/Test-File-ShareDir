@@ -19,6 +19,31 @@ our $VERSION = '1.000005';
 
 =end MetaPOD::JSON
 
+=cut
+
+use File::ShareDir 1.00 qw();
+
+sub import {
+  my ( undef, %input_config ) = @_;
+
+  require Test::File::ShareDir::TempDirObject;
+
+  my $tempdir_object = Test::File::ShareDir::TempDirObject->new( \%input_config );
+
+  for my $module ( $tempdir_object->_module_names ) {
+    $tempdir_object->_install_module($module);
+  }
+
+  for my $dist ( $tempdir_object->_dist_names ) {
+    $tempdir_object->_install_dist($dist);
+  }
+
+  unshift @INC, $tempdir_object->_tempdir->stringify;
+
+  return 1;
+}
+
+1;
 
 =head1 SYNOPSIS
 
@@ -41,15 +66,11 @@ our $VERSION = '1.000005';
 
     dist_dir( 'My-Dist' ) # dir with files from $dist/share/somefolder
 
-=cut
-
 =head1 DESCRIPTION
 
 This module only has support for creating 'new' style share dirs and are NOT compatible with old File::ShareDirs.
 
 For this reason, unless you have File::ShareDir 1.00 or later installed, this module will not be usable by you.
-
-=cut
 
 =head1 SIMPLE INTERFACE
 
@@ -174,27 +195,3 @@ applied to C<-module> applies here.
   dist_dir('My-Dist')
 
 =cut
-
-use File::ShareDir 1.00 qw();
-
-sub import {
-  my ( undef, %input_config ) = @_;
-
-  require Test::File::ShareDir::TempDirObject;
-
-  my $tempdir_object = Test::File::ShareDir::TempDirObject->new( \%input_config );
-
-  for my $module ( $tempdir_object->_module_names ) {
-    $tempdir_object->_install_module($module);
-  }
-
-  for my $dist ( $tempdir_object->_dist_names ) {
-    $tempdir_object->_install_dist($dist);
-  }
-
-  unshift @INC, $tempdir_object->_tempdir->stringify;
-
-  return 1;
-}
-
-1;

@@ -20,29 +20,6 @@ our $VERSION = '1.000005';
 
 =end MetaPOD::JSON
 
-=head1 SYNOPSIS
-
-    use Test::File::ShareDir::Object::Inc;
-
-    my $inc = Test::File::ShareDir::Object::Inc->new();
-
-    $inc->tempdir() # add files to here
-
-    $inc->module_tempdir() # or here
-
-    $inc->dist_tempdir() # or here
-
-    $inc->add_to_inc;
-
-=cut
-
-=head1 DESCRIPTION
-
-This class doesn't do very much on its own.
-
-It simply exists to facilitate C<tempdir> creation,
-and the injection of those C<tempdir>'s into C<@INC>
-
 =cut
 
 my @cache;
@@ -95,3 +72,26 @@ sub add_to_inc {
 }
 
 1;
+
+=head1 SYNOPSIS
+
+    use Test::File::ShareDir::Object::Inc;
+
+    my $inc = Test::File::ShareDir::Object::Inc->new();
+
+    $inc->tempdir() # add files to here
+
+    $inc->module_tempdir() # or here
+
+    $inc->dist_tempdir() # or here
+
+    $inc->add_to_inc;
+
+=head1 DESCRIPTION
+
+This class doesn't do very much on its own.
+
+It simply exists to facilitate C<tempdir> creation,
+and the injection of those C<tempdir>'s into C<@INC>
+
+=cut
