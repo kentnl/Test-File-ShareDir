@@ -4,34 +4,11 @@ use warnings;
 
 package Test::File::ShareDir::TempDirObject;
 
-our $VERSION = '1.000004';
+our $VERSION = '1.000005';
 
 # ABSTRACT: Internal Object to make code simpler.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -174,7 +151,7 @@ Test::File::ShareDir::TempDirObject - Internal Object to make code simpler.
 
 =head1 VERSION
 
-version 1.000004
+version 1.000005
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,24 @@
 Release history for Test-File-ShareDir
 
+1.000005 2014-08-15T23:41:58Z
+ [00 Trivial]
+ - CPANDAY!
+ - no code changes.
+ - tests augmented.
+ - whitespace greatly reduced.
+
+ [Dependencies::Stats]
+ - Dependencies changed since 1.000004, see misc/*.deps* for details
+ - configure: ↓1
+ - develop: +1 (suggests: ↑1)
+ - test: -4 (recommends: ↑1 -2)
+
+ [Misc]
+ - Improve source side POD to reduce build side whitespace.
+
+ [Tests]
+ - update Test::ReportPrereqs
+
 1.000004 2014-07-22T19:29:27Z
  [Doc Bugfix]
  - Previous releases changelog was misleading.

@@ -4,25 +4,13 @@ use warnings;
 
 package Test::File::ShareDir::Dist;
 
-our $VERSION = '1.000004';
+our $VERSION = '1.000005';
 
 # ABSTRACT: Simplified dist oriented ShareDir tester
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use File::ShareDir 1.00 qw();
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -78,7 +66,7 @@ Test::File::ShareDir::Dist - Simplified dist oriented ShareDir tester
 
 =head1 VERSION
 
-version 1.000004
+version 1.000005
 
 =head1 SYNOPSIS
 
