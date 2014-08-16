@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Inc;
 
-our $VERSION = '1.000005';
+our $VERSION = '1.000006';
 
 # ABSTRACT: Shared tempdir object code to inject into @INC
 
@@ -85,7 +85,7 @@ Test::File::ShareDir::Object::Inc - Shared tempdir object code to inject into @I
 
 =head1 VERSION
 
-version 1.000005
+version 1.000006
 
 =head1 SYNOPSIS
 
