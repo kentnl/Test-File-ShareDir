@@ -1,162 +1,31 @@
-NAME
-    Test::File::ShareDir - Create a Fake ShareDir for your modules for
-    testing.
+Test::File::ShareDir
 
-VERSION
-    version 1.000006
+This module only has support for creating 'new' style share dirs and are
+NOT compatible with old File::ShareDirs.
 
-SYNOPSIS
-        use Test::More;
+For this reason, unless you have File::ShareDir 1.00 or later installed,
+this module will not be usable by you.
 
-        # use FindBin; optional
+INSTALLATION
 
-        use Test::File::ShareDir
-            # -root => "$FindBin::Bin/../" # optional,
-            -share => {
-                -module => { 'My::Module' => 'share/MyModule' }
-                -dist   => { 'My-Dist'    => 'share/somefolder' }
-            };
+This is a Perl module distribution. It should be installed with whichever
+tool you use to manage your installation of Perl, e.g. any of
 
-        use My::Module;
+  cpanm .
+  cpan  .
+  cpanp -i .
 
-        use File::ShareDir qw( module_dir dist_dir );
+Consult http://www.cpan.org/modules/INSTALL.html for further instruction.
+Should you wish to install this module manually, the procedure is
 
-        module_dir( 'My::Module' ) # dir with files from $dist/share/MyModule
-
-        dist_dir( 'My-Dist' ) # dir with files from $dist/share/somefolder
-
-DESCRIPTION
-    This module only has support for creating 'new' style share dirs and are
-    NOT compatible with old File::ShareDirs.
-
-    For this reason, unless you have File::ShareDir 1.00 or later installed,
-    this module will not be usable by you.
-
-SIMPLE INTERFACE
-    Starting with version 0.4.0, there are a few extra interfaces you can
-    use.
-
-    These will probably be more useful, and easier to grok, because they
-    don't have a layer of indirection in order to simultaneously support
-    both "Module" and "Dist" "ShareDir"'s.
-
-  Simple Exporter Interfaces
-   "Test::File::ShareDir::Dist"
-    "Test::File::ShareDir::Dist" provides a simple export interface for
-    making "TempDir" "ShareDir"'s from a given path:
-
-        use Test::File::ShareDir::Dist { "Dist-Name" => "share/" };
-
-    This will automatically create a "ShareDir" for "Dist-Name" in a
-    "TempDir" based on the contents of "CWD/share/"
-
-    See "Test::File::ShareDir::Dist" for details.
-
-   "Test::File::ShareDir::Module"
-    "Test::File::ShareDir::Module" provides a simple export interface for
-    making "TempDir" "ShareDir"'s from a given path:
-
-        use Test::File::ShareDir::Module { "Module::Name" => "share/" };
-
-    This will automatically create a "ShareDir" for "Module::Name" in a
-    "TempDir" based on the contents of "CWD/share/"
-
-    See "Test::File::ShareDir::Module" for details.
-
-  Simple Object Oriented Interfaces
-   "Test::File::ShareDir::Object::Dist"
-    "Test::File::ShareDir::Object::Dist" provides a simple object oriented
-    interface for making "TempDir" "ShareDir"'s from a given path:
-
-        use Test::File::ShareDir::Object::Dist;
-
-        my $obj = Test::File::ShareDir::Object::Dist->new( dists => { "Dist-Name" => "share/" } );
-        $obj->install_all_dists;
-        $obj->add_to_inc;
-
-    This will automatically create a "ShareDir" for "Dist-Name" in a
-    "TempDir" based on the contents of "CWD/share/"
-
-    See "Test::File::ShareDir::Object::Dist" for details.
-
-   "Test::File::ShareDir::Object::Module"
-    "Test::File::ShareDir::Object::Module" provides a simple object oriented
-    interface for making "TempDir" "ShareDir"'s from a given path:
-
-        use Test::File::ShareDir::Object::Module;
-
-        my $obj = Test::File::ShareDir::Object::Module->new( modules => { "Module::Name" => "share/" } );
-        $obj->install_all_modules;
-        $obj->add_to_inc;
-
-    This will automatically create a "ShareDir" for "Module::Name" in a
-    "TempDir" based on the contents of "CWD/share/"
-
-    See "Test::File::ShareDir::Object::Module" for details.
-
-IMPORTING
-  -root
-    This parameter is the prefix the other paths are relative to.
-
-    If this parameter is not specified, it defaults to the Current Working
-    Directory ( "CWD" ).
-
-    In versions prior to 0.3.0, this value was mandatory.
-
-    The rationale behind using "CWD" as the default value is as follows.
-
-    *   Most users of this module are likely to be using it to test
-        distributions
-
-    *   Most users of this module will be using it in "$project/t/" to load
-        files from "$project/share/"
-
-    *   Most "CPAN" tools run tests with "CWD" = $project
-
-    Therefor, defaulting to "CWD" is a reasonably sane default for most
-    people, but where it is not it can still be overridden.
-
-      -root => "$FindBin::Bin/../" # resolves to project root from t/ regardless of Cwd.
-
-  -share
-    This parameter is mandatory, and contains a "hashref" containing the
-    data that explains what directories you want shared.
-
-      -share =>  { ..... }
-
-   -module
-    "-module" contains a "hashref" mapping Module names to path names for
-    module_dir style share dirs.
-
-      -share => {
-        -module => { 'My::Module' => 'share/mymodule/', }
-      }
-
-      ...
-
-      module_dir('My::Module')
-
-    Notedly, it is a "hashref", which means there is a limitation of one
-    share dir per module. This is simply because having more than one share
-    dir per module makes no sense at all.
-
-   -dist
-    "-dist" contains a "hashref" mapping Distribution names to path names
-    for dist_dir style share dirs. The same limitation applied to "-module"
-    applies here.
-
-      -share => {
-        -dist => { 'My-Dist' => 'share/mydist' }
-      }
-      ...
-      dist_dir('My-Dist')
-
-AUTHOR
-    Kent Fredric <kentnl@cpan.org>
+  perl Makefile.PL
+  make
+  make test
+  make install
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
 
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
+This software is copyright (c) 2015 by Kent Fredric <kentnl@cpan.org>.
 
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
