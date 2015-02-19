@@ -9,7 +9,7 @@ copyright_holder = Kent Fredric <kentnl@cpan.org>
 ; [Bootstrap::lib]
 
 [@Author::KENTNL]
-:version          = 2.016000
+:version          = 2.023
 normal_form       = numify
 mantissa          = 6
 toolkit           = eumm
@@ -18,6 +18,7 @@ bumpversions      = 1
 copyfiles         = LICENSE
 srcreadme         = mkdn
 twitter_extra_hash_tags = #testing
+Prereqs::Upgrade.-target_relation = suggests
 
 ;version_major     = 0
 ;version_minor     = 1

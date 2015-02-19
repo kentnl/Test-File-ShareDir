@@ -1,17 +1,14 @@
 do { my $x = {
        'configure' => {
-                        'recommends' => {
-                                          'ExtUtils::MakeMaker' => '7.00'
-                                        },
                         'requires' => {
                                         'ExtUtils::MakeMaker' => '0',
                                         'perl' => '5.006'
+                                      },
+                        'suggests' => {
+                                        'ExtUtils::MakeMaker' => '7.00'
                                       }
                       },
        'develop' => {
-                      'recommends' => {
-                                        'Test::More' => '0.99'
-                                      },
                       'requires' => {
                                       'Dist::Zilla' => '5',
                                       'Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes' => '0.001001',
@@ -73,13 +70,11 @@ do { my $x = {
                                     },
                       'suggests' => {
                                       'Dist::Zilla::App::Command::bakeini' => '0.002000',
-                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.023003'
+                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.023003',
+                                      'Test::More' => '0.99'
                                     }
                     },
        'runtime' => {
-                      'recommends' => {
-                                        'Path::Tiny' => '0.058'
-                                      },
                       'requires' => {
                                       'Carp' => '0',
                                       'Class::Tiny' => '0',
@@ -89,13 +84,14 @@ do { my $x = {
                                       'perl' => '5.006',
                                       'strict' => '0',
                                       'warnings' => '0'
+                                    },
+                      'suggests' => {
+                                      'Path::Tiny' => '0.058'
                                     }
                     },
        'test' => {
                    'recommends' => {
-                                     'CPAN::Meta' => '2.120900',
-                                     'ExtUtils::MakeMaker' => '7.00',
-                                     'Test::More' => '0.99'
+                                     'CPAN::Meta' => '2.120900'
                                    },
                    'requires' => {
                                    'Cwd' => '0',
@@ -106,6 +102,10 @@ do { my $x = {
                                    'Test::More' => '0.96',
                                    'lib' => '0',
                                    'perl' => '5.006'
+                                 },
+                   'suggests' => {
+                                   'ExtUtils::MakeMaker' => '7.00',
+                                   'Test::More' => '0.99'
                                  }
                  }
      };
