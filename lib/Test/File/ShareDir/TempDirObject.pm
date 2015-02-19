@@ -46,7 +46,6 @@ sub new {
   $realconfig->{root}    = path( delete $config->{-root} )->absolute if exists $config->{-root};
   $realconfig->{modules} = delete $config->{-share}->{-module}       if exists $config->{-share}->{-module};
   $realconfig->{dists}   = delete $config->{-share}->{-dist}         if exists $config->{-share}->{-dist};
-  $realconfig->{clearer} = delete $config->{-clearer}                if exists $config->{-clearer};
 
   confess( 'Unsupported -share types : ' . join q{ }, keys %{ $config->{-share} } ) if keys %{ $config->{-share} };
 
@@ -54,21 +53,19 @@ sub new {
 
   confess( 'Unsupported parameter to import() : ' . join q{ }, keys %{$config} ) if keys %{$config};
 
-  my $self = bless $realconfig, $class;
-  $self->BUILD;
-  return $self;
+  return bless $realconfig, $class;
 }
 
 my @cache;
 
-sub BUILD {
+sub _clearer {
   my ($self) = @_;
-  return unless exists $self->{clearer};
-  ${ $self->{clearer} } = sub {
-    my $tempdir = $self->_tempdir->stringify;
-    @INC = grep { ref $_ or $_ ne $tempdir } @INC;
+  return $self->{clearer} if exists $self->{clearer};
+  $self->{clearer} = sub {
+    ## no critic (Variables::RequireLocalizedPunctuationVars)
+    @INC = grep { ref or $_ ne $self->_tempdir->stringify } @INC;
   };
-  return;
+  return $self->{clearer};
 }
 
 sub _tempdir {

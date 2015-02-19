@@ -28,6 +28,10 @@ sub import {
 
   require Test::File::ShareDir::TempDirObject;
 
+  my $clearer;
+
+  $clearer = delete $input_config{-clearer} if exists $input_config{-clearer};
+
   my $tempdir_object = Test::File::ShareDir::TempDirObject->new( \%input_config );
 
   for my $module ( $tempdir_object->_module_names ) {
@@ -39,6 +43,10 @@ sub import {
   }
 
   unshift @INC, $tempdir_object->_tempdir->stringify;
+
+  if ( $clearer ) {
+    ${ $clearer } = $tempdir_object->_clearer;
+  }
 
   return 1;
 }
