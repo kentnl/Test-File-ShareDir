@@ -36,6 +36,9 @@ sub import {
   require Test::File::ShareDir::Object::Dist;
 
   my $params = {};
+  my $guard;
+  $guard = delete $input_config{-guard} if exists $input_config{-guard};
+
   for my $key ( keys %input_config ) {
     next unless $key =~ /\A-(.*)\z/msx;
     $params->{$1} = delete $input_config{$key};
@@ -48,6 +51,10 @@ sub import {
   my $dist_object = Test::File::ShareDir::Object::Dist->new($params);
   $dist_object->install_all_dists();
   $dist_object->register();
+  if ($guard) {
+    require Scope::Guard;
+    ${$guard} = Scope::Guard->new( sub { $dist_object->clear } );
+  }
   return 1;
 }
 
@@ -56,13 +63,17 @@ sub import {
 =head1 SYNOPSIS
 
     use Test::File::ShareDir::Dist {
-        '-root' => 'some/root/path',
-        'Dist-Zilla-Plugin-Foo' => 'share/DZPF',
+      '-root'                 => 'some/root/path',    # optional
+      'Dist-Zilla-Plugin-Foo' => 'share/DZPF',
     };
 
-C<-root> is optional, and defaults to C<cwd>
+C<-root> is optional, and defaults to C<cwd>. ( See L<Test::File::ShareDir/-root> )
 
 B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote
 the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
+
+I<Since 1.001000:>
+
+B<EXPERIMENTAL> I<Since 1.001000:> C<-guard> is optional, and if set, will be vivified to a C<Scope::Guard>. ( See L<Test::File::ShareDir/-guard> for B<EXPERIMENTAL> details )
 
 =cut

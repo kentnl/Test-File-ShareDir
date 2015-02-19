@@ -149,6 +149,44 @@ applied to `-module` applies here.
     ...
     dist_dir('My-Dist')
 
+### -guard
+
+**EXPERIMENTAL**
+
+**NOTE:** This feature is presently partially broken under coverage testing with `Devel::Cover` due to `PL_savebegin`
+breaking `Scope::Guard`'s. There is a workaround using `eval '\$guard'` however, but the extra effort required mostly negates
+the ease of use of this feature, and using `-clearer` is probably going to be simpler.
+
+`-guard`, may contain a reference to a variable. If specified, that variable will be set to a `Scope::Guard` that will remove
+the `ShareDir` magic that we're injecting.
+
+For instance:
+
+    {
+      my $guard;
+      use Test::File::ShareDir
+          -guard => eval '\$guard',     # EXPERIMENTAL, See note about eval
+          -share => { -module => { 'My::Module' => 'share/MyModule' }};
+
+      use File::ShareDir qw( module_dir );
+
+      module_dir('My::Module')  # ok, because My::Module is now setup
+    } # ShareDir is removed
+
+    module_dir('My::Module') # probably fails .... or might not,
+                             # either way, it defaults to using whatever is in your systems
+                             # @INC
+
+**NOTE:** Observe in the above there is an apparently superfluous `eval`. That code is presently necessary
+to avoid making the `BEGIN` block a `closure` over `$guard`, and thus makes the `Scope::Guard` expire correctly.
+
+_Since 1.001000_
+
+**More Details:**
+
+- [`Devel::Cover` issue 118 on `Github`](https://github.com/pjcj/Devel--Cover/issues/118)
+- [Related discussion on P5P](http://www.nntp.perl.org/group/perl.perl5.porters/2015/02/msg226031.html)
+
 # AUTHOR
 
 Kent Fredric <kentnl@cpan.org>

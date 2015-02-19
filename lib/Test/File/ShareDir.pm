@@ -28,6 +28,10 @@ sub import {
 
   require Test::File::ShareDir::TempDirObject;
 
+  my $guard;
+
+  $guard = delete $input_config{-guard} if exists $input_config{-guard};
+
   my $tempdir_object = Test::File::ShareDir::TempDirObject->new( \%input_config );
 
   for my $module ( $tempdir_object->_module_names ) {
@@ -38,7 +42,19 @@ sub import {
     $tempdir_object->_install_dist($dist);
   }
 
-  unshift @INC, $tempdir_object->_tempdir->stringify;
+  my $temp_path = $tempdir_object->_tempdir->stringify;
+
+  unshift @INC, $temp_path;
+
+  if ($guard) {
+    require Scope::Guard;
+    ${$guard} = Scope::Guard->new(
+      sub {
+        ## no critic (Variables::RequireLocalizedPunctuationVars)
+        @INC = grep { ref or $_ ne $temp_path } @INC;
+      }
+    );
+  }
 
   return 1;
 }
@@ -193,5 +209,50 @@ applied to C<-module> applies here.
   }
   ...
   dist_dir('My-Dist')
+
+
+=head3 -guard
+
+B<EXPERIMENTAL>
+
+B<NOTE:> This feature is presently partially broken under coverage testing with C<Devel::Cover> due to C<PL_savebegin>
+breaking C<Scope::Guard>'s. There is a workaround using C<eval '\$guard'> however, but the extra effort required mostly negates
+the ease of use of this feature, and using C<-clearer> is probably going to be simpler.
+
+C<-guard>, may contain a reference to a variable. If specified, that variable will be set to a C<Scope::Guard> that will remove
+the C<ShareDir> magic that we're injecting.
+
+For instance:
+
+  {
+    my $guard;
+    use Test::File::ShareDir
+        -guard => eval '\$guard',     # EXPERIMENTAL, See note about eval
+        -share => { -module => { 'My::Module' => 'share/MyModule' }};
+
+    use File::ShareDir qw( module_dir );
+
+    module_dir('My::Module')  # ok, because My::Module is now setup
+  } # ShareDir is removed
+
+  module_dir('My::Module') # probably fails .... or might not,
+                           # either way, it defaults to using whatever is in your systems
+                           # @INC
+
+
+B<NOTE:> Observe in the above there is an apparently superfluous C<eval>. That code is presently necessary
+to avoid making the C<BEGIN> block a C<closure> over C<$guard>, and thus makes the C<Scope::Guard> expire correctly.
+
+I<Since 1.001000>
+
+B<More Details:>
+
+=over 4
+
+=item * L<< C<Devel::Cover> issue 118 on C<Github>|https://github.com/pjcj/Devel--Cover/issues/118 >>
+
+=item * L<< Related discussion on P5P|http://www.nntp.perl.org/group/perl.perl5.porters/2015/02/msg226031.html >>
+
+=back
 
 =cut

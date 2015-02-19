@@ -5,7 +5,7 @@ Release history for Test-File-ShareDir
  - Dependencies changed since 1.000005, see misc/*.deps* for details
  - configure: +1 (recommends: -1, suggests: +1)
  - develop: +10 ↑3 -2 (suggests: +1 ↑2)
- - runtime: (suggests: +1)
+ - runtime: +1 (suggests: +1)
  - test: +1 (recommends: -2, suggests: +2)
 
  [Deprecations]
@@ -14,6 +14,10 @@ Release history for Test-File-ShareDir
 
  [Features]
  - OO interfaces now all have a ->register and a ->clear method.
+
+ [Features::EXPERIMENTAL]
+ - Add a new -guard attribute to importer interfaces that accepts a ref to a scalar that will be vivified to a
+   Scope::Guard which allows removal from @INC. However, very much broken under Devel::Cover without special care.
 
 1.000005 2014-08-15T23:41:58Z
  [00 Trivial]
