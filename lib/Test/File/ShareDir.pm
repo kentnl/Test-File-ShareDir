@@ -48,6 +48,7 @@ sub import {
 
   if ($clearer) {
     ${$clearer} = sub {
+      ## no critic (Variables::RequireLocalizedPunctuationVars)
       @INC = grep { ref or $_ ne $temp_path } @INC;
     };
   }
@@ -233,8 +234,8 @@ applied to C<-module> applies here.
 
 =head3 -clearer
 
-C<-clearer>, may contain a reference to a variable. If specified, that variable will be set to a coderef that will remove
-the ShareDir magic that we're injecting.
+C<-clearer>, may contain a reference to a variable. If specified, that variable will be set to a C<CodeRef> that will remove
+the C<ShareDir> magic that we're injecting.
 
 For instance:
 
