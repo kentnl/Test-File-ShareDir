@@ -44,8 +44,8 @@ sub import {
 
   unshift @INC, $tempdir_object->_tempdir->stringify;
 
-  if ( $clearer ) {
-    ${ $clearer } = $tempdir_object->_clearer;
+  if ($clearer) {
+    ${$clearer} = $tempdir_object->_clearer;
   }
 
   return 1;
