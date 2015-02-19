@@ -75,6 +75,7 @@ version 1.000006
 
     use Test::File::ShareDir
         # -root => "$FindBin::Bin/../" # optional,
+        # -clearer => \$variable       # optional,
         -share => {
             -module => { 'My::Module' => 'share/MyModule' }
             -dist   => { 'My-Dist'    => 'share/somefolder' }
@@ -225,6 +226,30 @@ applied to C<-module> applies here.
   }
   ...
   dist_dir('My-Dist')
+
+=head3 -clearer
+
+C<-clearer>, may contain a reference to a variable. If specified, that variable will be set to a coderef that will remove
+the ShareDir magic that we're injecting.
+
+For instance:
+
+    my $clearer;
+    use Test::File::ShareDir
+        -clearer => \$clearer,
+        -share => { -module => { 'My::Module' => 'share/MyModule' }};
+
+    use File::ShareDir qw( module_dir );
+
+    module_dir('My::Module')  # ok, because My::Module is now setup
+
+    $clearer->();
+
+    module_dir('My::Module') # probably fails .... or might not,
+                             # either way, it defaults to using whatever is in your systems
+                             # @INC
+
+I<Since 1.001000>
 
 =head1 AUTHOR
 

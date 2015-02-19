@@ -36,11 +36,6 @@ use Class::Tiny {
   },
 };
 
-sub clearer {
-  my ($self) = @_;
-  return $self->inc->clearer;
-}
-
 
 
 
@@ -146,6 +141,21 @@ sub add_to_inc {
   return;
 }
 
+
+
+
+
+
+
+
+
+
+
+sub remove_from_inc {
+  my ($self) = @_;
+  $self->inc->remove_from_inc;
+}
+
 1;
 
 __END__
@@ -213,6 +223,14 @@ Installs all C<dist_names>
     $instance->add_to_inc();
 
 Adds the C<Tempdir> C<ShareDir> (  C<inc> ) to the global C<@INC>
+
+=head2 C<remove_from_inc>
+
+    $instance->remove_from_inc();
+
+Removes the C<Tempdir> C<ShareDir> ( C<inc> ) from the global C<@INC>
+
+I<Since 1.001000>
 
 =head1 ATTRIBUTES
 

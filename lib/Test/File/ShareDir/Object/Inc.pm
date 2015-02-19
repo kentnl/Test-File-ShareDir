@@ -43,13 +43,6 @@ use Class::Tiny {
     $dir->mkpath();
     return $dir->absolute;
   },
-  clearer => sub {
-    my ($self) = @_;
-    return sub {
-      ## no critic (Variables::RequireLocalizedPunctuationVars)
-      @INC = grep { ref or $_ ne $self->tempdir->stringify } @INC;
-    };
-  },
 };
 
 
@@ -75,6 +68,23 @@ use Class::Tiny {
 sub add_to_inc {
   my ($self) = @_;
   unshift @INC, $self->tempdir->stringify;
+  return;
+}
+
+
+
+
+
+
+
+
+
+
+
+sub remove_from_inc {
+  my ($self) = @_;
+  ## no critic (Variables::RequireLocalizedPunctuationVars)
+  @INC = grep { ref or $_ ne $self->tempdir->stringify } @INC;
   return;
 }
 
@@ -122,6 +132,14 @@ and the injection of those C<tempdir>'s into C<@INC>
     $instance->add_to_inc;
 
 Injects C<tempdir> into C<@INC>
+
+=head2 C<remove_from_inc>
+
+    $instance->remove_from_inc();
+
+Removes the C<tempdir> from C<@INC>
+
+I<Since 1.001000>
 
 =head1 ATTRIBUTES
 

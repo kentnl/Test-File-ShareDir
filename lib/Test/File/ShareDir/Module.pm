@@ -37,12 +37,10 @@ sub import {
 
   my $params = {};
   my $clearer;
+  $clearer = delete $input_config{-clearer} if exists $input_config{-clearer};
+
   for my $key ( keys %input_config ) {
     next unless $key =~ /\A-(.*)\z/msx;
-    if ( 'clearer' eq $1 ) {
-      $clearer = delete $input_config{$key};
-      next;
-    }
     $params->{$1} = delete $input_config{$key};
   }
   $params->{modules} = {} if not exists $params->{modules};
@@ -54,7 +52,7 @@ sub import {
   $module_object->install_all_modules();
   $module_object->add_to_inc();
   if ($clearer) {
-    ${$clearer} = $module_object->clearer();
+    ${$clearer} = sub { $module_object->remove_from_inc() };
   }
   return 1;
 }
@@ -78,14 +76,19 @@ version 1.000006
 =head1 SYNOPSIS
 
     use Test::File::ShareDir::Module {
-        '-root' => "some/root/path",
-        'Module::Foo' => "share/ModuleFoo",
+      '-root'       => "some/root/path",
+      '-clearer'    => \$clearer,           # optional
+      'Module::Foo' => "share/ModuleFoo",
     };
 
-C<-root> is optional, and defaults to C<cwd>
+C<-root> is optional, and defaults to C<cwd>. ( See L<Test::File::ShareDir/-root> )
 
 B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote
 the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
+
+I<Since 1.001000:>
+
+C<-clearer> is optional, and if set, will be vivified to a C<CodeRef>. ( See L<Test::File::ShareDir/-clearer> )
 
 =begin MetaPOD::JSON v1.1.0
 
