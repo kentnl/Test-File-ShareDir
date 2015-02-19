@@ -1,12 +1,12 @@
 Release history for Test-File-ShareDir
 
-1.001000 2015-02-18T22:05:24Z 08f78ba
+1.001000 2015-02-19T08:55:04Z 009e61c
  [Dependencies::Stats]
  - Dependencies changed since 1.000005, see misc/*.deps* for details
- - configure: +1 (recommends: ↑1)
- - develop: +10 ↑3 -2 (recommends: +1, suggests: ↑2)
- - runtime: (recommends: +1)
- - test: +1 (recommends: ↑1 ↓1)
+ - configure: +1 (recommends: -1, suggests: +1)
+ - develop: +10 ↑3 -2 (suggests: +1 ↑2)
+ - runtime: (suggests: +1)
+ - test: +1 (recommends: -2, suggests: +2)
 
  [Deprecations]
  - OO interfaces have a ->add_to_inc method which is being replaced with the more generic ->register, which wil retain

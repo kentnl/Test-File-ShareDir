@@ -1,9 +1,6 @@
 This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and OPTIONAL )
 
 1.001000
- [Added / develop recommends]
- - Test::More 0.99
-
  [Added / develop requires]
  - Dist::Zilla 5
  - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001
@@ -15,6 +12,9 @@ This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and 
  - Dist::Zilla::Plugin::Test::EOL
  - Test::EOL
  - Test::More 0.88
+
+ [Added / develop suggests]
+ - Test::More 0.99
 
  [Changed / develop requires]
  - Dist::Zilla::Plugin::Git::NextRelease 0 → 0.004000

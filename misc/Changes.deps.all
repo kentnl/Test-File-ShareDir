@@ -4,8 +4,8 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  [Added / configure requires]
  - perl 5.006
 
- [Added / develop recommends]
- - Test::More 0.99
+ [Added / configure suggests]
+ - ExtUtils::MakeMaker 7.00
 
  [Added / develop requires]
  - Dist::Zilla 5
@@ -19,14 +19,18 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - Test::EOL
  - Test::More 0.88
 
- [Added / runtime recommends]
+ [Added / develop suggests]
+ - Test::More 0.99
+
+ [Added / runtime suggests]
  - Path::Tiny 0.058
 
  [Added / test requires]
  - perl 5.006
 
- [Changed / configure recommends]
- - ExtUtils::MakeMaker 6.98 → 7.00
+ [Added / test suggests]
+ - ExtUtils::MakeMaker 7.00
+ - Test::More 0.99
 
  [Changed / develop requires]
  - Dist::Zilla::Plugin::Git::NextRelease 0 → 0.004000
@@ -37,13 +41,16 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - Dist::Zilla::App::Command::bakeini 0.001001 → 0.002000
  - Dist::Zilla::PluginBundle::Author::KENTNL 2.017002 → 2.023003
 
- [Changed / test recommends]
- - ExtUtils::MakeMaker 6.98 → 7.00
- - Test::More 1.001003 → 0.99
+ [Removed / configure recommends]
+ - ExtUtils::MakeMaker 6.98
 
  [Removed / develop requires]
  - Dist::Zilla::Plugin::EOLTests
  - Dist::Zilla::Plugin::ReadmeFromPod
+
+ [Removed / test recommends]
+ - ExtUtils::MakeMaker 6.98
+ - Test::More 1.001003
 
 1.000005 2014-08-15T23:41:58Z
  [Added / develop requires]
