@@ -237,7 +237,7 @@ applied to C<-module> applies here.
 
 =head3 -guard
 
-C<-clearer>, may contain a reference to a variable. If specified, that variable will be set to a C<Scope::Guard> that will remove
+C<-guard>, may contain a reference to a variable. If specified, that variable will be set to a C<Scope::Guard> that will remove
 the C<ShareDir> magic that we're injecting.
 
 For instance:
