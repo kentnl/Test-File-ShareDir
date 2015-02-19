@@ -5,32 +5,36 @@ use warnings;
 use Test::More 0.96;
 use Test::Fatal;
 use FindBin;
-my $clearer;
-use Test::File::ShareDir::Dist {
-  '-root'        => "$FindBin::Bin/05_files",
-  '-clearer'     => \$clearer,
-  'Example-Dist' => 'share'
-};
 
-use File::ShareDir qw( dist_dir dist_file );
+{
+  my $guard;
+  use Test::File::ShareDir::Dist {
+    '-root'        => "$FindBin::Bin/05_files",
+    '-guard'       => \$guard,
+    'Example-Dist' => 'share'
+  };
 
-is(
-  exception {
-    note dist_dir('Example-Dist');
-  },
-  undef,
-  'dist_dir doesn\'t bail as it finds the dir'
-);
+  use File::ShareDir qw( dist_dir dist_file );
 
-is(
-  exception {
-    note dist_file( 'Example-Dist', 'afile' );
-  },
-  undef,
-  'dist_file doesn\'t bail as it finds the file'
-);
+  is(
+    exception {
+      note dist_dir('Example-Dist');
+    },
+    undef,
+    'dist_dir doesn\'t bail as it finds the dir'
+  );
 
-$clearer->();
+  is(
+    exception {
+      note dist_file( 'Example-Dist', 'afile' );
+    },
+    undef,
+    'dist_file doesn\'t bail as it finds the file'
+  );
+
+}
+
+# Guard Clear
 
 isnt(
   exception {
