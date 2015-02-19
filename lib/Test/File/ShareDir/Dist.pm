@@ -36,8 +36,13 @@ sub import {
   require Test::File::ShareDir::Object::Dist;
 
   my $params = {};
+  my $clearer;
   for my $key ( keys %input_config ) {
     next unless $key =~ /\A-(.*)\z/msx;
+    if ( 'clearer' eq $1 ) {
+      $clearer = delete $input_config{$key};
+      next;
+    }
     $params->{$1} = delete $input_config{$key};
   }
   $params->{dists} = {} if not exists $params->{dists};
@@ -48,7 +53,9 @@ sub import {
   my $dist_object = Test::File::ShareDir::Object::Dist->new($params);
   $dist_object->install_all_dists();
   $dist_object->add_to_inc();
-
+  if ($clearer) {
+    ${$clearer} = $dist_object->clearer();
+  }
   return 1;
 }
 

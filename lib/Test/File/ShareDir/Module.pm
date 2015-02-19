@@ -36,8 +36,13 @@ sub import {
   require Test::File::ShareDir::Object::Module;
 
   my $params = {};
+  my $clearer;
   for my $key ( keys %input_config ) {
     next unless $key =~ /\A-(.*)\z/msx;
+    if ( 'clearer' eq $1 ) {
+      $clearer = delete $input_config{$key};
+      next;
+    }
     $params->{$1} = delete $input_config{$key};
   }
   $params->{modules} = {} if not exists $params->{modules};
@@ -48,7 +53,9 @@ sub import {
   my $module_object = Test::File::ShareDir::Object::Module->new($params);
   $module_object->install_all_modules();
   $module_object->add_to_inc();
-
+  if ($clearer) {
+    ${$clearer} = $module_object->clearer();
+  }
   return 1;
 }
 

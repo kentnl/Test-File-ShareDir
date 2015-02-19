@@ -43,6 +43,12 @@ use Class::Tiny {
     $dir->mkpath();
     return $dir->absolute;
   },
+  clearer => sub {
+    my ($self) = @_;
+    return sub {
+      @INC = grep { ref $_ or $_ ne $self->tempdir->stringify } @INC;
+    };
+  },
 };
 
 

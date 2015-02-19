@@ -36,6 +36,11 @@ use Class::Tiny {
   },
 };
 
+sub clearer {
+  my ($self) = @_;
+  return $self->inc->clearer;
+}
+
 
 
 
