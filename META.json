@@ -132,31 +132,31 @@
    "provides" : {
       "Test::File::ShareDir" : {
          "file" : "lib/Test/File/ShareDir.pm",
-         "version" : "1.000006"
+         "version" : "1.001000"
       },
       "Test::File::ShareDir::Dist" : {
          "file" : "lib/Test/File/ShareDir/Dist.pm",
-         "version" : "1.000006"
+         "version" : "1.001000"
       },
       "Test::File::ShareDir::Module" : {
          "file" : "lib/Test/File/ShareDir/Module.pm",
-         "version" : "1.000006"
+         "version" : "1.001000"
       },
       "Test::File::ShareDir::Object::Dist" : {
          "file" : "lib/Test/File/ShareDir/Object/Dist.pm",
-         "version" : "1.000006"
+         "version" : "1.001000"
       },
       "Test::File::ShareDir::Object::Inc" : {
          "file" : "lib/Test/File/ShareDir/Object/Inc.pm",
-         "version" : "1.000006"
+         "version" : "1.001000"
       },
       "Test::File::ShareDir::Object::Module" : {
          "file" : "lib/Test/File/ShareDir/Object/Module.pm",
-         "version" : "1.000006"
+         "version" : "1.001000"
       },
       "Test::File::ShareDir::TempDirObject" : {
          "file" : "lib/Test/File/ShareDir/TempDirObject.pm",
-         "version" : "1.000006"
+         "version" : "1.001000"
       }
    },
    "release_status" : "stable",
@@ -171,7 +171,7 @@
          "web" : "https://github.com/kentnl/Test-File-ShareDir"
       }
    },
-   "version" : "1.000006",
+   "version" : "1.001000",
    "x_BuiltWith" : {
       "external_file" : "misc/built_with.json"
    },
@@ -642,7 +642,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "1.000006-source",
+                  "tag" : "1.001000-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -713,7 +713,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "1.000006",
+                  "tag" : "1.001000",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"

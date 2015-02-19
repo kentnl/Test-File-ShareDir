@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Module;
 
-our $VERSION = '1.000006';
+our $VERSION = '1.001000';
 
 # ABSTRACT: Object Oriented ShareDir creation for modules
 
@@ -187,7 +187,7 @@ Test::File::ShareDir::Object::Module - Object Oriented ShareDir creation for mod
 
 =head1 VERSION
 
-version 1.000006
+version 1.001000
 
 =head1 SYNOPSIS
 
