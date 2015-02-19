@@ -141,6 +141,22 @@ sub add_to_inc {
   return;
 }
 
+=method C<clear>
+
+    $instance->clear();
+
+Removes the C<Tempdir> C<ShareDir> ( C<inc> ) from the global C<@INC>
+
+I<Since 1.001000>
+
+=cut
+
+sub clear {
+  my ($self) = @_;
+  $self->inc->clear;
+  return;
+}
+
 1;
 
 =head1 SYNOPSIS

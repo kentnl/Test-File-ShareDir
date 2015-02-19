@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Inc;
 
-our $VERSION = '1.000006';
+our $VERSION = '1.001000';
 
 # ABSTRACT: Shared tempdir object code to inject into @INC
 
@@ -68,6 +68,25 @@ Injects C<tempdir> into C<@INC>
 sub add_to_inc {
   my ($self) = @_;
   unshift @INC, $self->tempdir->stringify;
+  return;
+}
+
+=method C<clear>
+
+    $instance->clear();
+
+Prevents this C<Inc> from being used.
+
+Presently, this removes the C<tempdir> from C<@INC>
+
+I<Since 1.001000>
+
+=cut
+
+sub clear {
+  my ($self) = @_;
+  ## no critic (Variables::RequireLocalizedPunctuationVars)
+  @INC = grep { ref or $_ ne $self->tempdir->stringify } @INC;
   return;
 }
 
