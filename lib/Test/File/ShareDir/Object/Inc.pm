@@ -44,6 +44,7 @@ use Class::Tiny {
     return $dir->absolute;
   },
 };
+use Carp qw( carp );
 
 
 
@@ -65,7 +66,7 @@ use Class::Tiny {
 
 sub add_to_inc {
   my ($self) = @_;
-  warn "add_to_inc deprecated sice 1.001000, use register instead";
+  carp 'add_to_inc deprecated sice 1.001000, use register instead';
   return $self->register;
 }
 

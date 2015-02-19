@@ -36,6 +36,8 @@ use Class::Tiny {
   },
 };
 
+use Carp qw( carp );
+
 
 
 
@@ -135,7 +137,7 @@ sub install_all_dists {
 
 sub add_to_inc {
   my ($self) = @_;
-  warn "add_to_inc deprecated since 1.001000, use register";
+  carp 'add_to_inc deprecated since 1.001000, use register';
   return $self->register;
 }
 
@@ -168,6 +170,7 @@ sub register {
 sub clear {
   my ($self) = @_;
   $self->inc->clear;
+  return;
 }
 
 1;
