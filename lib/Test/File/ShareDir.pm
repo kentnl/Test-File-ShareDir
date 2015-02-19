@@ -42,10 +42,14 @@ sub import {
     $tempdir_object->_install_dist($dist);
   }
 
-  unshift @INC, $tempdir_object->_tempdir->stringify;
+  my $temp_path = $tempdir_object->_tempdir->stringify;
+
+  unshift @INC, $temp_path;
 
   if ($clearer) {
-    ${$clearer} = $tempdir_object->_clearer;
+    ${$clearer} = sub {
+      @INC = grep { ref or $_ ne $temp_path } @INC;
+    };
   }
 
   return 1;

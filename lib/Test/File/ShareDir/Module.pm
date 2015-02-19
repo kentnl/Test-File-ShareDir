@@ -50,9 +50,9 @@ sub import {
 
   my $module_object = Test::File::ShareDir::Object::Module->new($params);
   $module_object->install_all_modules();
-  $module_object->add_to_inc();
+  $module_object->register();
   if ($clearer) {
-    ${$clearer} = sub { $module_object->remove_from_inc() };
+    ${$clearer} = sub { $module_object->clear() };
   }
   return 1;
 }

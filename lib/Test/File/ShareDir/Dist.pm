@@ -50,9 +50,9 @@ sub import {
 
   my $dist_object = Test::File::ShareDir::Object::Dist->new($params);
   $dist_object->install_all_dists();
-  $dist_object->add_to_inc();
+  $dist_object->register();
   if ($clearer) {
-    ${$clearer} = sub { $dist_object->remove_from_inc };
+    ${$clearer} = sub { $dist_object->clear };
   }
   return 1;
 }

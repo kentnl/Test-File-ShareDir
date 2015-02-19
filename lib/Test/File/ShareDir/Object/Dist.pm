@@ -133,11 +133,25 @@ sub install_all_dists {
 
 
 
-
-
 sub add_to_inc {
   my ($self) = @_;
-  $self->inc->add_to_inc;
+  warn "add_to_inc deprecated since 1.001000, use register";
+  return $self->register;
+}
+
+
+
+
+
+
+
+
+
+
+
+sub register {
+  my ($self) = @_;
+  $self->inc->register;
   return;
 }
 
@@ -151,9 +165,9 @@ sub add_to_inc {
 
 
 
-sub remove_from_inc {
+sub clear {
   my ($self) = @_;
-  $self->inc->remove_from_inc;
+  $self->inc->clear;
 }
 
 1;
@@ -220,13 +234,19 @@ Installs all C<dist_names>
 
 =head2 C<add_to_inc>
 
-    $instance->add_to_inc();
+B<DEPRECATED:> Use C<register> instead.
+
+=head2 C<register>
+
+    $instance->register();
 
 Adds the C<Tempdir> C<ShareDir> (  C<inc> ) to the global C<@INC>
 
-=head2 C<remove_from_inc>
+I<Since 1.001000>
 
-    $instance->remove_from_inc();
+=head2 C<clear>
+
+    $instance->clear();
 
 Removes the C<Tempdir> C<ShareDir> ( C<inc> ) from the global C<@INC>
 

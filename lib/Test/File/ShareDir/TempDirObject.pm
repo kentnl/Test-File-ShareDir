@@ -58,16 +58,6 @@ sub new {
 
 my @cache;
 
-sub _clearer {
-  my ($self) = @_;
-  return $self->{clearer} if exists $self->{clearer};
-  $self->{clearer} = sub {
-    ## no critic (Variables::RequireLocalizedPunctuationVars)
-    @INC = grep { ref or $_ ne $self->_tempdir->stringify } @INC;
-  };
-  return $self->{clearer};
-}
-
 sub _tempdir {
   my ($self) = shift;
   return $self->{tempdir} if exists $self->{tempdir};

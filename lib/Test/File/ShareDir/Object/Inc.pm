@@ -63,9 +63,25 @@ use Class::Tiny {
 
 
 
-
-
 sub add_to_inc {
+  my ($self) = @_;
+  warn "add_to_inc deprecated sice 1.001000, use register instead";
+  return $self->register;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+sub register {
   my ($self) = @_;
   unshift @INC, $self->tempdir->stringify;
   return;
@@ -81,7 +97,9 @@ sub add_to_inc {
 
 
 
-sub remove_from_inc {
+
+
+sub clear {
   my ($self) = @_;
   ## no critic (Variables::RequireLocalizedPunctuationVars)
   @INC = grep { ref or $_ ne $self->tempdir->stringify } @INC;
@@ -129,15 +147,25 @@ and the injection of those C<tempdir>'s into C<@INC>
 
 =head2 C<add_to_inc>
 
-    $instance->add_to_inc;
+B<DEPRECATED:> Use C<register> instead.
 
-Injects C<tempdir> into C<@INC>
+=head2 C<register>
 
-=head2 C<remove_from_inc>
+    $instance->register;
 
-    $instance->remove_from_inc();
+Allows this C<Inc> to be used.
 
-Removes the C<tempdir> from C<@INC>
+Presently, this injects the associated C<tempdir> into C<@INC>
+
+I<Since 1.001000>
+
+=head2 C<clear>
+
+    $instance->clear();
+
+Prevents this C<Inc> from being used.
+
+Presently, this removes the C<tempdir> from C<@INC>
 
 I<Since 1.001000>
 
