@@ -75,7 +75,7 @@ making `TempDir` `ShareDir`'s from a given path:
 
     my $obj = Test::File::ShareDir::Object::Dist->new( dists => { "Dist-Name" => "share/" } );
     $obj->install_all_dists;
-    $obj->add_to_inc;
+    $obj->register;
 
 This will automatically create a `ShareDir` for `Dist-Name` in a `TempDir` based on the contents of `CWD/share/`
 
@@ -90,7 +90,7 @@ for making `TempDir` `ShareDir`'s from a given path:
 
     my $obj = Test::File::ShareDir::Object::Module->new( modules => { "Module::Name" => "share/" } );
     $obj->install_all_modules;
-    $obj->add_to_inc;
+    $obj->register;
 
 This will automatically create a `ShareDir` for `Module::Name` in a `TempDir` based on the contents of `CWD/share/`
 

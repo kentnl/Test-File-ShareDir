@@ -8,8 +8,12 @@ Release history for Test-File-ShareDir
  - runtime: (suggests: +1)
  - test: +1 (recommends: -2, suggests: +2)
 
+ [Deprecations]
+ - OO interfaces have a ->add_to_inc method which is being replaced with the more generic ->register, which wil retain
+   meaning when the interface no longer actually uses @INC
+
  [Features]
- - OO interfaces now all have a ->clear method.
+ - OO interfaces now all have a ->register and a ->clear method.
 
 1.000005 2014-08-15T23:41:58Z
  [00 Trivial]

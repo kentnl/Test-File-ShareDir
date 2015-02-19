@@ -36,6 +36,8 @@ use Class::Tiny {
   },
 };
 
+use Carp qw( carp );
+
 =attr C<inc>
 
 A C<Test::File::ShareDir::Object::Inc> object.
@@ -132,15 +134,29 @@ sub install_all_modules {
 
 =method C<add_to_inc>
 
-    $instance->add_to_inc();
-
-Adds the C<Tempdir> C<ShareDir> ( C<inc> ) to the global C<@INC>.
+B<DEPRECATED:> Use C<register> instead.
 
 =cut
 
 sub add_to_inc {
   my ($self) = @_;
-  $self->inc->add_to_inc;
+  carp 'add_to_inc deprecated since 1.001000, use register';
+  return $self->register;
+}
+
+=method C<register>
+
+    $instance->register();
+
+Adds the C<Tempdir> C<ShareDir> (  C<inc> ) to the global C<@INC>
+
+I<Since 1.001000>
+
+=cut
+
+sub register {
+  my ($self) = @_;
+  $self->inc->register;
   return;
 }
 

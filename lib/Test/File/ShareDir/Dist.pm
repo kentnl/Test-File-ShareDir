@@ -47,8 +47,7 @@ sub import {
 
   my $dist_object = Test::File::ShareDir::Object::Dist->new($params);
   $dist_object->install_all_dists();
-  $dist_object->add_to_inc();
-
+  $dist_object->register();
   return 1;
 }
 

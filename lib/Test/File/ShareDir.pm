@@ -114,7 +114,7 @@ making C<TempDir> C<ShareDir>'s from a given path:
 
     my $obj = Test::File::ShareDir::Object::Dist->new( dists => { "Dist-Name" => "share/" } );
     $obj->install_all_dists;
-    $obj->add_to_inc;
+    $obj->register;
 
 This will automatically create a C<ShareDir> for C<Dist-Name> in a C<TempDir> based on the contents of C<CWD/share/>
 
@@ -129,7 +129,7 @@ for making C<TempDir> C<ShareDir>'s from a given path:
 
     my $obj = Test::File::ShareDir::Object::Module->new( modules => { "Module::Name" => "share/" } );
     $obj->install_all_modules;
-    $obj->add_to_inc;
+    $obj->register;
 
 This will automatically create a C<ShareDir> for C<Module::Name> in a C<TempDir> based on the contents of C<CWD/share/>
 

@@ -44,6 +44,7 @@ use Class::Tiny {
     return $dir->absolute;
   },
 };
+use Carp qw( carp );
 
 =attr C<tempdir>
 
@@ -59,13 +60,29 @@ The C<dist> C<ShareDir> base directory within the C<tempdir>
 
 =method C<add_to_inc>
 
-    $instance->add_to_inc;
-
-Injects C<tempdir> into C<@INC>
+B<DEPRECATED:> Use C<register> instead.
 
 =cut
 
 sub add_to_inc {
+  my ($self) = @_;
+  carp 'add_to_inc deprecated sice 1.001000, use register instead';
+  return $self->register;
+}
+
+=method C<register>
+
+    $instance->register;
+
+Allows this C<Inc> to be used.
+
+Presently, this injects the associated C<tempdir> into C<@INC>
+
+I<Since 1.001000>
+
+=cut
+
+sub register {
   my ($self) = @_;
   unshift @INC, $self->tempdir->stringify;
   return;
