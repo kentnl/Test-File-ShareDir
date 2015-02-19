@@ -46,7 +46,8 @@ use Class::Tiny {
   clearer => sub {
     my ($self) = @_;
     return sub {
-      @INC = grep { ref $_ or $_ ne $self->tempdir->stringify } @INC;
+      ## no critic (Variables::RequireLocalizedPunctuationVars)
+      @INC = grep { ref or $_ ne $self->tempdir->stringify } @INC;
     };
   },
 };
