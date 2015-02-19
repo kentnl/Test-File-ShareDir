@@ -28,9 +28,9 @@ sub import {
 
   require Test::File::ShareDir::TempDirObject;
 
-  my $clearer;
+  my $guard;
 
-  $clearer = delete $input_config{-clearer} if exists $input_config{-clearer};
+  $guard = delete $input_config{-guard} if exists $input_config{-guard};
 
   my $tempdir_object = Test::File::ShareDir::TempDirObject->new( \%input_config );
 
@@ -46,11 +46,14 @@ sub import {
 
   unshift @INC, $temp_path;
 
-  if ($clearer) {
-    ${$clearer} = sub {
-      ## no critic (Variables::RequireLocalizedPunctuationVars)
-      @INC = grep { ref or $_ ne $temp_path } @INC;
-    };
+  if ($guard) {
+    require Scope::Guard;
+    ${$guard} = Scope::Guard->new(
+      sub {
+        ## no critic (Variables::RequireLocalizedPunctuationVars)
+        @INC = grep { ref or $_ ne $temp_path } @INC;
+      }
+    );
   }
 
   return 1;
@@ -80,7 +83,7 @@ version 1.001000
 
     use Test::File::ShareDir
         # -root => "$FindBin::Bin/../" # optional,
-        # -clearer => \$variable       # optional,
+        # -guard => \$variable         # optional,
         -share => {
             -module => { 'My::Module' => 'share/MyModule' }
             -dist   => { 'My-Dist'    => 'share/somefolder' }
@@ -142,7 +145,7 @@ making C<TempDir> C<ShareDir>'s from a given path:
 
     my $obj = Test::File::ShareDir::Object::Dist->new( dists => { "Dist-Name" => "share/" } );
     $obj->install_all_dists;
-    $obj->add_to_inc;
+    $obj->register;
 
 This will automatically create a C<ShareDir> for C<Dist-Name> in a C<TempDir> based on the contents of C<CWD/share/>
 
@@ -157,7 +160,7 @@ for making C<TempDir> C<ShareDir>'s from a given path:
 
     my $obj = Test::File::ShareDir::Object::Module->new( modules => { "Module::Name" => "share/" } );
     $obj->install_all_modules;
-    $obj->add_to_inc;
+    $obj->register;
 
 This will automatically create a C<ShareDir> for C<Module::Name> in a C<TempDir> based on the contents of C<CWD/share/>
 
@@ -232,27 +235,27 @@ applied to C<-module> applies here.
   ...
   dist_dir('My-Dist')
 
-=head3 -clearer
+=head3 -guard
 
-C<-clearer>, may contain a reference to a variable. If specified, that variable will be set to a C<CodeRef> that will remove
+C<-clearer>, may contain a reference to a variable. If specified, that variable will be set to a C<Scope::Guard> that will remove
 the C<ShareDir> magic that we're injecting.
 
 For instance:
 
-    my $clearer;
+  {
+    my $guard;
     use Test::File::ShareDir
-        -clearer => \$clearer,
+        -guard => \$guard,
         -share => { -module => { 'My::Module' => 'share/MyModule' }};
 
     use File::ShareDir qw( module_dir );
 
     module_dir('My::Module')  # ok, because My::Module is now setup
+  } # @INC unpoisoned here.
 
-    $clearer->();
-
-    module_dir('My::Module') # probably fails .... or might not,
-                             # either way, it defaults to using whatever is in your systems
-                             # @INC
+  module_dir('My::Module') # probably fails .... or might not,
+                           # either way, it defaults to using whatever is in your systems
+                           # @INC
 
 I<Since 1.001000>
 

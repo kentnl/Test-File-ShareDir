@@ -173,6 +173,7 @@ sub register {
 sub clear {
   my ($self) = @_;
   $self->inc->clear;
+  return;
 }
 
 1;

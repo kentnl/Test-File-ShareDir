@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-1.001000 2015-02-19T10:53:39Z 46d86a8
+1.001000 2015-02-19T22:56:13Z 683edac
  [Dependencies::Stats]
  - Dependencies changed since 1.000005, see misc/*.deps* for details
  - configure: +1 (recommends: -1, suggests: +1)
@@ -13,8 +13,8 @@ Release history for Test-File-ShareDir
    meaning when the interface no longer actually uses @INC
 
  [Features]
- - Add a new -clearer attribute to importer interfaces that accepts a ref to a scalar that will be vivified to a
-   coderef which allows removal from @INC
+ - Add a new -guard attribute to importer interfaces that accepts a ref to a scalar that will be vivified to a
+   Scope::Guard which allows removal from @INC
  - OO interfaces now all have a ->register and a ->clear method.
 
 1.000005 2014-08-15T23:41:58Z

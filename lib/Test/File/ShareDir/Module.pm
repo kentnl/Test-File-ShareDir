@@ -36,8 +36,8 @@ sub import {
   require Test::File::ShareDir::Object::Module;
 
   my $params = {};
-  my $clearer;
-  $clearer = delete $input_config{-clearer} if exists $input_config{-clearer};
+  my $guard;
+  $guard = delete $input_config{-guard} if exists $input_config{-guard};
 
   for my $key ( keys %input_config ) {
     next unless $key =~ /\A-(.*)\z/msx;
@@ -51,8 +51,9 @@ sub import {
   my $module_object = Test::File::ShareDir::Object::Module->new($params);
   $module_object->install_all_modules();
   $module_object->register();
-  if ($clearer) {
-    ${$clearer} = sub { $module_object->clear() };
+  if ($guard) {
+    require Scope::Guard;
+    ${$guard} = Scope::Guard->new( sub { $module_object->clear() } );
   }
   return 1;
 }
@@ -77,7 +78,7 @@ version 1.001000
 
     use Test::File::ShareDir::Module {
       '-root'       => "some/root/path",
-      '-clearer'    => \$clearer,           # optional
+      '-guard'      => \$guard,           # optional
       'Module::Foo' => "share/ModuleFoo",
     };
 
@@ -88,7 +89,7 @@ the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
 
 I<Since 1.001000:>
 
-C<-clearer> is optional, and if set, will be vivified to a C<CodeRef>. ( See L<Test::File::ShareDir/-clearer> )
+C<-guard> is optional, and if set, will be vivified to a C<Scope::Guard>. ( See L<Test::File::ShareDir/-guard> )
 
 =begin MetaPOD::JSON v1.1.0
 

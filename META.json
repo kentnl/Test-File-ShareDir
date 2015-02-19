@@ -101,6 +101,7 @@
             "File::Copy::Recursive" : "0",
             "File::ShareDir" : "1.00",
             "Path::Tiny" : "0.018",
+            "Scope::Guard" : "0",
             "perl" : "5.006",
             "strict" : "0",
             "warnings" : "0"
