@@ -64,7 +64,6 @@ sub _mk_guard {
   require Scope::Guard;
   return Scope::Guard->new(
     sub {
-      print "Guard Trigger\n";
       $object->clear();
     }
   );
