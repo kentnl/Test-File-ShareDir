@@ -53,11 +53,17 @@ sub import {
   $dist_object->register();
   if ($guard) {
     require Scope::Guard;
-    ${$guard} = Scope::Guard->new( sub { $dist_object->clear } );
+    ${$guard} = Scope::Guard->new( _mk_clearer($dist_object) );
   }
   return 1;
 }
 
+## Hack: This prevents self-referencing memory leaks
+## under debuggers.
+sub _mk_clearer {
+  my ($dist_object) = @_;
+  return sub { $dist_object->clear() };
+}
 1;
 
 =head1 SYNOPSIS

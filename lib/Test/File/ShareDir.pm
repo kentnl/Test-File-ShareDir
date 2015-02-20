@@ -48,15 +48,20 @@ sub import {
 
   if ($guard) {
     require Scope::Guard;
-    ${$guard} = Scope::Guard->new(
-      sub {
-        ## no critic (Variables::RequireLocalizedPunctuationVars)
-        @INC = grep { ref or $_ ne $temp_path } @INC;
-      }
-    );
+    ${$guard} = Scope::Guard->new( _mk_clearer($temp_path) );
   }
 
   return 1;
+}
+
+## Hack: This prevents self-referencing memory leaks
+## under debuggers.
+sub _mk_clearer {
+  my ($temp_path) = @_;
+  return sub {
+    ## no critic (Variables::RequireLocalizedPunctuationVars)
+    @INC = grep { ref or $_ ne $temp_path } @INC;
+  };
 }
 
 1;

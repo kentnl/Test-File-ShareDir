@@ -53,9 +53,16 @@ sub import {
   $module_object->register();
   if ($guard) {
     require Scope::Guard;
-    ${$guard} = Scope::Guard->new( sub { $module_object->clear() } );
+    ${$guard} = Scope::Guard->new( _mk_clearer($module_object) );
   }
   return 1;
+}
+
+## Hack: This prevents self-referencing memory leaks
+## under debuggers.
+sub _mk_clearer {
+  my ($module_object) = @_;
+  return sub { $module_object->clear() };
 }
 
 1;
