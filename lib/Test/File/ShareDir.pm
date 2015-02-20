@@ -47,16 +47,23 @@ sub import {
   unshift @INC, $temp_path;
 
   if ($guard) {
-    require Scope::Guard;
-    ${$guard} = Scope::Guard->new(
-      sub {
-        ## no critic (Variables::RequireLocalizedPunctuationVars)
-        @INC = grep { ref or $_ ne $temp_path } @INC;
-      }
-    );
+    ${$guard} = _mk_guard($temp_path);
   }
 
   return 1;
+}
+
+## Hack: This prevents self-referencing memory leaks
+## under debuggers.
+sub _mk_guard {
+  my ($temp_path) = @_;
+  require Scope::Guard;
+  return Scope::Guard->new(
+    sub {
+      ## no critic (Variables::RequireLocalizedPunctuationVars)
+      @INC = grep { ref or $_ ne $temp_path } @INC;
+    }
+  );
 }
 
 1;

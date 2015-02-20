@@ -52,10 +52,22 @@ sub import {
   $module_object->install_all_modules();
   $module_object->register();
   if ($guard) {
-    require Scope::Guard;
-    ${$guard} = Scope::Guard->new( sub { $module_object->clear() } );
+    ${$guard} = _mk_guard($module_object);
   }
   return 1;
+}
+
+## Hack: This prevents self-referencing memory leaks
+## under debuggers.
+sub _mk_guard {
+  my ($object) = @_;
+  require Scope::Guard;
+  return Scope::Guard->new(
+    sub {
+      print "Guard Trigger\n";
+      $object->clear();
+    }
+  );
 }
 
 1;

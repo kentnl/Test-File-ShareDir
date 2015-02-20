@@ -178,7 +178,7 @@
    },
    "x_Dist_Zilla" : {
       "perl" : {
-         "version" : "5.021008"
+         "version" : "5.021009"
       },
       "plugins" : [
          {
@@ -561,7 +561,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Readme::Brief",
             "name" : "@Author::KENTNL/ShippedReadme",
-            "version" : "0.002003"
+            "version" : "0.002004"
          },
          {
             "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",

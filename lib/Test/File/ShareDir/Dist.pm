@@ -52,12 +52,23 @@ sub import {
   $dist_object->install_all_dists();
   $dist_object->register();
   if ($guard) {
-    require Scope::Guard;
-    ${$guard} = Scope::Guard->new( sub { $dist_object->clear } );
+    ${$guard} = _mk_guard($dist_object);
   }
   return 1;
 }
 
+## Hack: This prevents self-referencing memory leaks
+## under debuggers.
+sub _mk_guard {
+  my ($object) = @_;
+  require Scope::Guard;
+  return Scope::Guard->new(
+    sub {
+      print "Guard Trigger\n";
+      $object->clear();
+    }
+  );
+}
 1;
 
 __END__
