@@ -10,7 +10,7 @@ use FindBin;
   my $guard;
   use Test::File::ShareDir::Dist {
     '-root'        => "$FindBin::Bin/05_files",
-    '-guard'       => \$guard,
+    '-guard'       => eval '\$guard',             # Hack: Avoid BEGIN leak under PL_savebegin
     'Example-Dist' => 'share'
   };
 

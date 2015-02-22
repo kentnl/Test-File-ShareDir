@@ -11,7 +11,7 @@ use FindBin;
   use Test::File::ShareDir
     -root  => "$FindBin::Bin/02_files",
     -share => { -dist => { 'Example-Dist' => 'share', } },
-    -guard => \$guard;
+    -guard => eval '\$guard';                                # Hack: Avoid BEGIN leak under PL_savebegin
 
   use File::ShareDir qw( dist_dir dist_file );
 
