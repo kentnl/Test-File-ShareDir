@@ -13,6 +13,8 @@ Release history for Test-File-ShareDir
    meaning when the interface no longer actually uses @INC
 
  [Features]
+ - Add a new -clearer attribute to importer interfaces that accepts a ref to a scalar that will be vivified to a
+   CodeRef which allows removal from @INC
  - OO interfaces now all have a ->register and a ->clear method.
 
  [Features::EXPERIMENTAL]

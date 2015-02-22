@@ -28,9 +28,10 @@ sub import {
 
   require Test::File::ShareDir::TempDirObject;
 
-  my $guard;
+  my ( $guard, $clearer );
 
-  $guard = delete $input_config{-guard} if exists $input_config{-guard};
+  $guard   = delete $input_config{-guard}   if exists $input_config{-guard};
+  $clearer = delete $input_config{-clearer} if exists $input_config{-clearer};
 
   my $tempdir_object = Test::File::ShareDir::TempDirObject->new( \%input_config );
 
@@ -49,6 +50,9 @@ sub import {
   if ($guard) {
     require Scope::Guard;
     ${$guard} = Scope::Guard->new( _mk_clearer($temp_path) );
+  }
+  if ($clearer) {
+    ${$clearer} = _mk_clearer($temp_path);
   }
 
   return 1;
@@ -73,7 +77,8 @@ sub _mk_clearer {
     # use FindBin; optional
 
     use Test::File::ShareDir
-        # -root => "$FindBin::Bin/../" # optional,
+        # -root    => "$FindBin::Bin/../" # optional,
+        # -clearer => \$variable          # optional,
         -share => {
             -module => { 'My::Module' => 'share/MyModule' }
             -dist   => { 'My-Dist'    => 'share/somefolder' }
@@ -215,6 +220,29 @@ applied to C<-module> applies here.
   ...
   dist_dir('My-Dist')
 
+=head3 -clearer
+
+C<-clearer>, may contain a reference to a variable. If specified, that variable will be set to a C<CodeRef> that will remove
+the C<ShareDir> magic that we're injecting.
+
+For instance:
+
+  my $clearer;
+  use Test::File::ShareDir
+    -clearer => \$clearer,
+    -share   => { -module => { 'My::Module' => 'share/MyModule' }};
+
+  use File::ShareDir qw( module_dir );
+
+  module_dir('My::Module')  # ok, because My::Module is now setup
+
+  $clearer->();
+
+  module_dir('My::Module') # probably fails .... or might not,
+                           # either way, it defaults to using whatever is in your systems
+                           # @INC
+
+I<Since 1.001000>
 
 =head3 -guard
 
