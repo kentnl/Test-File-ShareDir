@@ -94,7 +94,13 @@ sub _mk_clearer {
 
 =head1 DESCRIPTION
 
-This module only has support for creating 'new' style share dirs and are NOT compatible with old File::ShareDirs.
+C<Test::File::ShareDir> is some low level plumbing to enable a distribution to perform tests while consuming its own C<share>
+directories in a manner similar to how they will be once installed.
+
+This allows C<File::ShareDir> to see the I<latest> version of content instead of simply whatever is installed on whichever target
+system you happen to be testing on.
+
+B<Note:> This module only has support for creating 'new' style share dirs and are NOT compatible with old File::ShareDirs.
 
 For this reason, unless you have File::ShareDir 1.00 or later installed, this module will not be usable by you.
 
