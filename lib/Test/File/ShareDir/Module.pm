@@ -98,13 +98,9 @@ C<-root> is optional, and defaults to C<cwd>. ( See L<Test::File::ShareDir/-root
 B<NOTE:> There's a bug prior to 5.18 with C<< use Foo { -key => } >>, so for backwards compatibility, make sure you either quote
 the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
 
-I<Since 1.001000:>
+I<Since 1.001000:> C<-clearer> is optional, and if set, will be vivified to a C<CodeRef>. ( See L<Test::File::ShareDir/-clearer> )
 
-C<-clearer> is optional, and if set, will be vivified to a C<CodeRef>. ( See L<Test::File::ShareDir/-clearer> )
-
-B<EXPERIMENTAL> I<Since 1.001000>
-
-C<-guard> is optional, and if set, will be vivified to a C<Scope::Guard>. ( See L<Test::File::ShareDir/-guard> for B<EXPERIMENTAL> details )
+B<EXPERIMENTAL> I<Since 1.001000:> C<-guard> is optional, and if set, will be vivified to a C<Scope::Guard>. ( See L<Test::File::ShareDir/-guard> for B<EXPERIMENTAL> details )
 
 =begin MetaPOD::JSON v1.1.0
 

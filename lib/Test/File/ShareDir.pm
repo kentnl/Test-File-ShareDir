@@ -277,6 +277,7 @@ I<Since 1.001000>
 =head3 -guard
 
 B<EXPERIMENTAL>
+
 B<NOTE:> This feature is presently broken under coverage testing with C<Devel::Cover> due to C<PL_savebegin>
 breaking C<Scope::Guard>'s. Use at own peril:
 
