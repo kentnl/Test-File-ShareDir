@@ -2,8 +2,8 @@
 use strict;
 use warnings;
 
-use Test::More 0.96;
-use Test::Fatal;
+use Test::More 0.96 ( $INC{"Devel/Cover.pm"} ? ( skip_all => "Guard broken under Devel::Cover" ) : () );
+use Test::Fatal qw( exception );
 use FindBin;
 
 {

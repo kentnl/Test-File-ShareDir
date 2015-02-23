@@ -36,8 +36,9 @@ sub import {
   require Test::File::ShareDir::Object::Dist;
 
   my $params = {};
-  my $guard;
-  $guard = delete $input_config{-guard} if exists $input_config{-guard};
+  my ( $guard, $clearer );
+  $guard   = delete $input_config{-guard}   if exists $input_config{-guard};
+  $clearer = delete $input_config{-clearer} if exists $input_config{-clearer};
 
   for my $key ( keys %input_config ) {
     next unless $key =~ /\A-(.*)\z/msx;
@@ -52,21 +53,20 @@ sub import {
   $dist_object->install_all_dists();
   $dist_object->register();
   if ($guard) {
-    ${$guard} = _mk_guard($dist_object);
+    require Scope::Guard;
+    ${$guard} = Scope::Guard->new( _mk_clearer($dist_object) );
+  }
+  if ($clearer) {
+    ${$clearer} = _mk_clearer($dist_object);
   }
   return 1;
 }
 
 ## Hack: This prevents self-referencing memory leaks
 ## under debuggers.
-sub _mk_guard {
+sub _mk_clearer {
   my ($object) = @_;
-  require Scope::Guard;
-  return Scope::Guard->new(
-    sub {
-      $object->clear();
-    }
-  );
+  return sub { $object->clear() };
 }
 1;
 
@@ -88,7 +88,7 @@ version 1.001000
 
     use Test::File::ShareDir::Dist {
       '-root'                 => 'some/root/path',    # optional
-      '-guard'                => \$guard,             # optional
+      '-clearer'              => \$clearer,           # optional
       'Dist-Zilla-Plugin-Foo' => 'share/DZPF',
     };
 
@@ -99,7 +99,11 @@ the key: C<< use Foo { '-key' => } >>, or make it the non-first key.
 
 I<Since 1.001000:>
 
-C<-guard> is optional, and if set, will be vivified to a C<Scope::Guard>. ( See L<Test::File::ShareDir/-guard> )
+C<-clearer> is optional, and if set, will be vivified to a C<CodeRef>. ( See L<Test::File::ShareDir/-clearer> )
+
+B<EXPERIMENTAL>I<Since 1.001000>
+
+C<-guard> is optional, and if set, will be vivified to a C<Scope::Guard>. ( See L<Test::File::ShareDir/-guard> for B<EXPERIMENTAL> details )
 
 =begin MetaPOD::JSON v1.1.0
 
