@@ -65,8 +65,8 @@ sub import {
 ## Hack: This prevents self-referencing memory leaks
 ## under debuggers.
 sub _mk_clearer {
-  my ($object) = @_;
-  return sub { $object->clear() };
+  my ($dist_object) = @_;
+  return sub { $dist_object->clear() };
 }
 1;
 
@@ -101,7 +101,7 @@ I<Since 1.001000:>
 
 C<-clearer> is optional, and if set, will be vivified to a C<CodeRef>. ( See L<Test::File::ShareDir/-clearer> )
 
-B<EXPERIMENTAL>I<Since 1.001000>
+B<EXPERIMENTAL> I<Since 1.001000>
 
 C<-guard> is optional, and if set, will be vivified to a C<Scope::Guard>. ( See L<Test::File::ShareDir/-guard> for B<EXPERIMENTAL> details )
 
