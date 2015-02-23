@@ -282,7 +282,7 @@ breaking C<Scope::Guard>'s. Use at own peril:
 
 =over 4
 
-=item * L<< C<Devel::Cover> issue 118 on Github|https://github.com/pjcj/Devel--Cover/issues/118 >>
+=item * L<< C<Devel::Cover> issue 118 on C<Github>|https://github.com/pjcj/Devel--Cover/issues/118 >>
 
 =item * L<< Related discussion on P5P|http://www.nntp.perl.org/group/perl.perl5.porters/2015/02/msg226031.html >>
 
