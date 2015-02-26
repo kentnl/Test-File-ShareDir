@@ -24,7 +24,6 @@ our $VERSION = '1.000006';
 use Path::Tiny qw(path);
 use Carp qw(confess);
 ## no critic (Subroutines::RequireArgUnpacking)
-sub __rcopy { require File::Copy::Recursive; goto \&File::Copy::Recursive::rcopy; }
 
 =method new
 
@@ -38,14 +37,28 @@ sub new {
   confess('Need -share => for Test::File::ShareDir') unless exists $config->{-share};
 
   my $realconfig = {
-    root    => path(q{./})->absolute,    #->resolve->absolute,
-    modules => {},
-    dists   => {},
+    root => path(q{./})->absolute,    #->resolve->absolute,
   };
 
-  $realconfig->{root}    = path( delete $config->{-root} )->absolute if exists $config->{-root};
-  $realconfig->{modules} = delete $config->{-share}->{-module}       if exists $config->{-share}->{-module};
-  $realconfig->{dists}   = delete $config->{-share}->{-dist}         if exists $config->{-share}->{-dist};
+  $realconfig->{root} = path( delete $config->{-root} )->absolute if exists $config->{-root};
+
+  require Test::File::ShareDir::Object::Inc;
+  require Test::File::ShareDir::Object::Module;
+  require Test::File::ShareDir::Object::Dist;
+
+  $realconfig->{inc} = Test::File::ShareDir::Object::Inc->new();
+
+  $realconfig->{modules} = Test::File::ShareDir::Object::Module->new(
+    inc     => $realconfig->{inc},
+    modules => ( delete $config->{-share}->{-module} || {} ),
+    root    => $realconfig->{root},
+  );
+
+  $realconfig->{dists} = Test::File::ShareDir::Object::Dist->new(
+    inc   => $realconfig->{inc},
+    dists => ( delete $config->{-share}->{-dist} || {} ),
+    root  => $realconfig->{root},
+  );
 
   confess( 'Unsupported -share types : ' . join q{ }, keys %{ $config->{-share} } ) if keys %{ $config->{-share} };
 
@@ -60,28 +73,17 @@ my @cache;
 
 sub _tempdir {
   my ($self) = shift;
-  return $self->{tempdir} if exists $self->{tempdir};
-  $self->{tempdir} = Path::Tiny::tempdir( CLEANUP => 1 );
-
-  # Explicit keepalive till GC
-  push @cache, $self->{tempdir};
-  return $self->{tempdir};
+  return $self->{inc}->tempdir;
 }
 
 sub _module_tempdir {
   my ($self) = shift;
-  return $self->{module_tempdir} if exists $self->{module_tempdir};
-  $self->{module_tempdir} = $self->_tempdir->child('auto/share/module');
-  $self->{module_tempdir}->mkpath();
-  return $self->{module_tempdir}->absolute;
+  return $self->{inc}->module_tempdir;
 }
 
 sub _dist_tempdir {
   my ($self) = shift;
-  return $self->{dist_tempdir} if exists $self->{dist_tempdir};
-  $self->{dist_tempdir} = $self->_tempdir->child('auto/share/dist');
-  $self->{dist_tempdir}->mkpath();
-  return $self->{dist_tempdir}->absolute;
+  return $self->{inc}->dist_tempdir;
 }
 
 sub _root {
@@ -89,52 +91,48 @@ sub _root {
   return $self->{root};
 }
 
-sub _modules { return shift->{modules}; }
+sub _modules { return shift->{modules}->modules }
 
-sub _dists { return shift->{dists} }
+sub _dists { return shift->{dists}->dists }
 
 sub _module_names {
   my ($self) = shift;
-  return keys %{ $self->_modules };
+  return $self->{modules}->module_names;
 }
 
 sub _dist_names {
   my ($self) = shift;
-  return keys %{ $self->_dists };
+  return $self->{dists}->dist_names;
 }
 
 sub _module_share_target_dir {
   my ( $self, $modname ) = @_;
-
-  ## no critic (RegularExpressions)
-  $modname =~ s/::/-/g;
-
-  return $self->_module_tempdir->child($modname);
+  return $self->{modules}->module_share_target_dir($modname);
 }
 
 sub _dist_share_target_dir {
   my ( $self, $distname ) = @_;
-  return $self->_dist_tempdir->child($distname);
+  return $self->{dists}->dist_share_target_dir($distname);
 }
 
 sub _module_share_source_dir {
   my ( $self, $module ) = @_;
-  return path( $self->_modules->{$module} )->absolute( $self->_root );
+  return $self->{modules}->module_share_source_dir($module);
 }
 
 sub _dist_share_source_dir {
   my ( $self, $dist ) = @_;
-  return path( $self->_dists->{$dist} )->absolute( $self->_root );
+  return $self->{dists}->dist_share_source_dir($dist);
 }
 
 sub _install_module {
   my ( $self, $module ) = @_;
-  return __rcopy( $self->_module_share_source_dir($module), $self->_module_share_target_dir($module) );
+  $self->{modules}->install_module($module);
 }
 
 sub _install_dist {
   my ( $self, $dist ) = @_;
-  return __rcopy( $self->_dist_share_source_dir($dist), $self->_dist_share_target_dir($dist) );
+  $self->{dists}->install_dist($dist);
 }
 
 1;
