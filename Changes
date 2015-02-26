@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-1.001000 2015-02-26T12:44:16Z 9629d6a
+1.001000 2015-02-26T12:48:32Z 9b6c752
  [Dependencies::Stats]
  - Dependencies changed since 1.000005, see misc/*.deps* for details
  - configure: +1 (recommends: -1, suggests: +1)
@@ -19,7 +19,7 @@ Release history for Test-File-ShareDir
 
  [Features::EXPERIMENTAL]
  - Add a new -guard attribute to importer interfaces that accepts a ref to a scalar that will be vivified to a
-   Scope::Guard which allows removal from @INC. However, very much broken under Devel::Cover.
+   Scope::Guard which allows removal from @INC. However, very much broken under Devel::Cover without special care.
 
 1.000005 2014-08-15T23:41:58Z
  [00 Trivial]
