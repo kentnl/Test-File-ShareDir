@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More 0.96 ( $INC{"Devel/Cover.pm"} ? ( skip_all => "Guard broken under Devel::Cover" ) : () );
+use Test::More 0.96;
 use Test::Fatal;
 use FindBin;
 
@@ -10,7 +10,7 @@ use FindBin;
   my $guard;
   use Test::File::ShareDir::Module {
     '-root'  => "$FindBin::Bin/04_files",
-    '-guard' => \$guard,
+    '-guard' => eval '\$guard',             # Hack: Avoid BEGIN leak under PL_savebegin
     Example  => 'share',
   };
 
