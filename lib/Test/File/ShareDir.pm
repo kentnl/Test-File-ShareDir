@@ -303,7 +303,7 @@ For instance:
                            # @INC
 
 B<NOTE:> Observe in the above there is an apparently superfluous C<eval>. That code is presently necessary
-to avoid making the C<BEGIN> block a C<closure> over C<$guard>, and thus makes the C<Scope::Guard> expire correclty.
+to avoid making the C<BEGIN> block a C<closure> over C<$guard>, and thus makes the C<Scope::Guard> expire correctly.
 
 I<Since 1.001000>
 
