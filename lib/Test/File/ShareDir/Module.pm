@@ -35,21 +35,11 @@ sub import {
 
   require Test::File::ShareDir::Object::Module;
 
-  my $params = {};
   my ( $guard, $clearer );
   $guard   = delete $input_config{-guard}   if exists $input_config{-guard};
   $clearer = delete $input_config{-clearer} if exists $input_config{-clearer};
 
-  for my $key ( keys %input_config ) {
-    next unless $key =~ /\A-(.*)\z/msx;
-    $params->{$1} = delete $input_config{$key};
-  }
-  $params->{modules} = {} if not exists $params->{modules};
-  for my $key ( keys %input_config ) {
-    $params->{modules}->{$key} = $input_config{$key};
-  }
-
-  my $module_object = Test::File::ShareDir::Object::Module->new($params);
+  my $module_object = Test::File::ShareDir::Object::Module->_new_from_import( \%input_config );
   $module_object->install_all_modules();
   $module_object->register();
   if ($guard) {

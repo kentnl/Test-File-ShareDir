@@ -36,7 +36,7 @@ use Class::Tiny {
   },
 };
 
-use Carp qw( carp );
+use Carp qw( carp croak );
 
 =attr C<inc>
 
@@ -171,6 +171,29 @@ sub clear {
   my ($self) = @_;
   $self->inc->clear;
   return;
+}
+
+=method C<_new_from_importer>
+
+
+=cut
+
+sub _new_from_import {
+  my ( $class, $arg ) = @_;
+  if ( not ref $arg or 'HASH' ne ref $arg ) {
+    return croak(q[Must pass a hashref]);
+  }
+  my %input_config = %{$arg};
+  my $params       = {};
+  for my $key ( keys %input_config ) {
+    next unless $key =~ /\A-(.*)\z/msx;
+    $params->{$1} = delete $input_config{$key};
+  }
+  $params->{dists} = {} if not exists $params->{dists};
+  for my $key ( keys %input_config ) {
+    $params->{dists}->{$key} = $input_config{$key};
+  }
+  return $class->new($params);
 }
 
 1;
