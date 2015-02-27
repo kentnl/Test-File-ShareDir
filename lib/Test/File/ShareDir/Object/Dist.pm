@@ -36,7 +36,7 @@ use Class::Tiny {
   },
 };
 
-use Carp qw( carp croak );
+use Carp qw( carp );
 
 
 
