@@ -161,10 +161,10 @@ L<< C<Test::File::ShareDir::Utils>|Test::File::ShareDir::Utils >> provides a few
 
     use Test::File::ShareDir::Utils qw( with_dist_dir with_module_dir );
 
-    with_dist_dir({ 'Dist-Name' => 'Some/Path', sub {
+    with_dist_dir({ 'Dist-Name' => 'Some/Path' }, sub {
       # dist_dir() now behaves differently here
     });
-    with_module_dir({ 'Module::Name' => 'Some/Path', sub {
+    with_module_dir({ 'Module::Name' => 'Some/Path' }, sub {
       # module_dir() now behaves differently here
     });
 
