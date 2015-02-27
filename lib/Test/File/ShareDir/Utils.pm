@@ -92,10 +92,10 @@ sub with_module_dir {
   require Scope::Guard;
 
   my $module_object = Test::File::ShareDir::Object::Module->new( extract_dashes( 'modules', $config ) );
-    
+
   $module_object->install_all_modules();
   $module_object->register();
-  my $guard = Scope::Guard->new( _mk_clearer($module_object) );  ## no critic (Variables::ProhibitUnusedVarsStricter)
+  my $guard = Scope::Guard->new( _mk_clearer($module_object) );    ## no critic (Variables::ProhibitUnusedVarsStricter)
 
   return $code->();
 }
@@ -178,7 +178,7 @@ Sets up a C<ShareDir> environment with limited context.
 
   } );
 
-C<%config> can contain anything L<Test::File::ShareDir::Dist> accepts.
+C<%config> can contain anything L<< C<Test::File::ShareDir::Dist>|Test::File::ShareDir::Dist >> accepts.
 
 =over 4
 
@@ -199,7 +199,7 @@ Sets up a C<ShareDir> environment with limited context.
 
   } );
 
-C<%config> can contain anything L<Test::File::ShareDir::Module> accepts.
+C<%config> can contain anything L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> accepts.
 
 =over 4
 
