@@ -36,7 +36,7 @@ use Class::Tiny {
   },
 };
 
-use Carp qw( carp );
+use Carp qw( carp croak );
 
 
 
@@ -176,29 +176,6 @@ sub clear {
   return;
 }
 
-
-
-
-
-
-sub _new_from_import {
-  my ( $class, $arg ) = @_;
-  if ( not ref $arg or 'HASH' ne ref $arg ) {
-    return croak(q[Must pass a hashref]);
-  }
-  my %input_config = %{$arg};
-  my $params       = {};
-  for my $key ( keys %input_config ) {
-    next unless $key =~ /\A-(.*)\z/msx;
-    $params->{$1} = delete $input_config{$key};
-  }
-  $params->{modules} = {} if not exists $params->{modules};
-  for my $key ( keys %input_config ) {
-    $params->{modules}->{$key} = $input_config{$key};
-  }
-  return $class->new($params);
-}
-
 1;
 
 __END__
@@ -280,8 +257,6 @@ I<Since 1.001000>
 Removes the C<Tempdir> C<ShareDir> ( C<inc> ) from the global C<@INC>
 
 I<Since 1.001000>
-
-=head2 C<_new_from_importer>
 
 =head1 ATTRIBUTES
 

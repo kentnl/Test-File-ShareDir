@@ -11,6 +11,7 @@ our $VERSION = '1.001000';
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use File::ShareDir 1.00 qw();
+use Test::File::ShareDir::Utils qw( extract_dashes );
 
 
 
@@ -35,7 +36,7 @@ sub import {
 
   require Test::File::ShareDir::Object::Dist;
 
-  my $dist_object = Test::File::ShareDir::Object::Dist->_new_from_import( \%input_config );
+  my $dist_object = Test::File::ShareDir::Object::Dist->new(extract_dashes('dists', \%input_config ));
   $dist_object->install_all_dists();
   $dist_object->register();
   return 1;

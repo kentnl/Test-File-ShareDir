@@ -11,6 +11,7 @@ our $VERSION = '1.001000';
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use File::ShareDir 1.00 qw();
+use Test::File::ShareDir::Utils qw( extract_dashes );
 
 
 
@@ -35,7 +36,7 @@ sub import {
 
   require Test::File::ShareDir::Object::Module;
 
-  my $module_object = Test::File::ShareDir::Object::Module->_new_from_import( \%input_config );
+  my $module_object = Test::File::ShareDir::Object::Module->new(extract_dashes('modules', \%input_config ));
   $module_object->install_all_modules();
   $module_object->register();
   return 1;

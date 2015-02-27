@@ -8,10 +8,12 @@ our $VERSION = '1.001000';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
+# ABSTRACT: Simple utilities for File::ShareDir testing
+
 use Exporter 5.57 qw(import);
 use Carp qw( croak );
 
-our @EXPORT_OK = qw( with_dist_dir with_module_dir );
+our @EXPORT_OK = qw( with_dist_dir with_module_dir extract_dashes );
 
 # This code is just to make sure any guard objects
 # are not lexically visible to the sub they contain creating a self reference.
@@ -50,10 +52,10 @@ sub with_dist_dir {
   }
   require Test::File::ShareDir::Object::Dist;
   require Scope::Guard;
-  my $dist_object = Test::File::ShareDir::Object::Dist->_new_from_import($config);
+  my $dist_object = Test::File::ShareDir::Object::Dist->new(extract_dashes('dists',$config));
   $dist_object->install_all_dists();
   $dist_object->register();
-  my $guard = Scope::Guard->new( _mk_clearer($dist_object) );
+  my $guard = Scope::Guard->new( _mk_clearer($dist_object) );    ## no critic (Variables::ProhibitUnusedVarsStricter)
   return $code->();
 }
 
@@ -87,11 +89,50 @@ sub with_module_dir {
   }
   require Test::File::ShareDir::Object::Module;
   require Scope::Guard;
-  my $module_object = Test::File::ShareDir::Object::Module->_new_from_import($config);
+  my $module_object = Test::File::ShareDir::Object::Module->new(extract_dashes('modules',$config));
   $module_object->install_all_modules();
   $module_object->register();
   my $guard = Scope::Guard->new( _mk_clearer($module_object) );
   return $code->();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sub extract_dashes {
+  my ( $undashed_to, $source ) = @_;
+  if ( not ref $source or 'HASH' ne ref $source ) {
+    return croak(q[Must pass a hashref]);
+  }
+  my %input_config = %{$source};
+  my $params       = {};
+  for my $key ( keys %input_config ) {
+    next unless $key =~ /\A-(.*)\z/msx;
+    $params->{$1} = delete $input_config{$key};
+  }
+  $params->{ $undashed_to } = {} if not exists $params->{ $undashed_to };
+  for my $key ( keys %input_config ) {
+    $params->{$undashed_to}->{$key} = $input_config{$key};
+  }
+  return $params;
 }
 
 1;
@@ -104,7 +145,7 @@ __END__
 
 =head1 NAME
 
-Test::File::ShareDir::Utils
+Test::File::ShareDir::Utils - Simple utilities for File::ShareDir testing
 
 =head1 VERSION
 
@@ -128,11 +169,11 @@ version 1.001000
 Sets up a C<ShareDir> environment with limited context.
 
   # with_dist_dir(\%config, \&sub);
-  with_dist_dir({ 'Dist-Name' => 'share/'} => sub {
+  with_dist_dir( { 'Dist-Name' => 'share/' } => sub {
 
-    File::ShareDir resolves to a copy of C<share/> in this context.
+      # File::ShareDir resolves to a copy of share/ in this context.
 
-  });
+  } );
 
 C<%config> can contain anything L<Test::File::ShareDir::Dist> accepts.
 
@@ -149,11 +190,11 @@ C<%config> can contain anything L<Test::File::ShareDir::Dist> accepts.
 Sets up a C<ShareDir> environment with limited context.
 
   # with_module_dir(\%config, \&sub);
-  with_module_dir({ 'Module::Name' => 'share/'} => sub {
+  with_module_dir( { 'Module::Name' => 'share/' } => sub {
 
-    File::ShareDir resolves to a copy of C<share/> in this context.
+      # File::ShareDir resolves to a copy of share/ in this context.
 
-  });
+  } );
 
 C<%config> can contain anything L<Test::File::ShareDir::Module> accepts.
 
@@ -164,6 +205,24 @@ C<%config> can contain anything L<Test::File::ShareDir::Module> accepts.
 =item C<I<$moduleName>>: Declare C<$moduleName>'s C<ShareDir>.
 
 =back
+
+=export extract_dashes
+
+A utility that helps tranform:
+
+  -opt_a => bar
+  -opt_b => baz
+  NameA  => NameAValue
+  NameB  => NameBValue
+
+Into
+
+  opt_a => bar
+  opt_b => baz
+  modules => {
+    NameA => NameAValue
+    NameB => NameBValue
+  }
 
 =head1 AUTHOR
 
