@@ -35,17 +35,7 @@ sub import {
 
   require Test::File::ShareDir::Object::Dist;
 
-  my $params = {};
-  for my $key ( keys %input_config ) {
-    next unless $key =~ /\A-(.*)\z/msx;
-    $params->{$1} = delete $input_config{$key};
-  }
-  $params->{dists} = {} if not exists $params->{dists};
-  for my $key ( keys %input_config ) {
-    $params->{dists}->{$key} = $input_config{$key};
-  }
-
-  my $dist_object = Test::File::ShareDir::Object::Dist->new($params);
+  my $dist_object = Test::File::ShareDir::Object::Dist->_new_from_import( \%input_config );
   $dist_object->install_all_dists();
   $dist_object->register();
   return 1;
