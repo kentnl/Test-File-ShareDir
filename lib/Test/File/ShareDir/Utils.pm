@@ -87,14 +87,16 @@ sub with_module_dir {
   if ( 'CODE' ne ( ref $code || q{} ) ) {
     croak( 'CodeRef expected at end of with_module_dir(), ' . ( ref $code || qq{scalar="$code"} ) . ' found' );
   }
+
   require Test::File::ShareDir::Object::Module;
   require Scope::Guard;
-  my $module_object = Test::File::ShareDir::Object::Module->new( extract_dashes( 'modules', $config ) )
-    ;    ## no critic (Variables::ProhibitUnusedVarsStricter)
 
+  my $module_object = Test::File::ShareDir::Object::Module->new( extract_dashes( 'modules', $config ) );
+    
   $module_object->install_all_modules();
   $module_object->register();
-  my $guard = Scope::Guard->new( _mk_clearer($module_object) );
+  my $guard = Scope::Guard->new( _mk_clearer($module_object) );  ## no critic (Variables::ProhibitUnusedVarsStricter)
+
   return $code->();
 }
 
