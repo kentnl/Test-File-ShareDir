@@ -243,7 +243,7 @@ applied to C<-module> applies here.
 
 Thanks to the C<#distzilla> crew for ideas,suggestions, code review and debugging, even though not all of it made it into releases.
 
-=for Pod::Spelling DOLMEN ETHER HAARG RJBS
+=for Pod::Spell DOLMEN ETHER HAARG RJBS
 
 =over 4
 
