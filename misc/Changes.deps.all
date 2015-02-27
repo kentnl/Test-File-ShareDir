@@ -22,9 +22,6 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  [Added / develop suggests]
  - Test::More 0.99
 
- [Added / runtime requires]
- - Scope::Guard
-
  [Added / runtime suggests]
  - Path::Tiny 0.058
 

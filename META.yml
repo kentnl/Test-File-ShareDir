@@ -46,9 +46,13 @@ provides:
   Test::File::ShareDir::TempDirObject:
     file: lib/Test/File/ShareDir/TempDirObject.pm
     version: '1.001000'
+  Test::File::ShareDir::Utils:
+    file: lib/Test/File/ShareDir/Utils.pm
+    version: '1.001000'
 requires:
   Carp: '0'
   Class::Tiny: '0'
+  Exporter: '5.57'
   File::Copy::Recursive: '0'
   File::ShareDir: '1.00'
   Path::Tiny: '0.018'
@@ -220,6 +224,7 @@ x_Dist_Zilla:
             - lib/Test/File/ShareDir/Object/Inc.pm
             - lib/Test/File/ShareDir/Object/Module.pm
             - lib/Test/File/ShareDir/TempDirObject.pm
+            - lib/Test/File/ShareDir/Utils.pm
           path_translator: base64_filter
           prefix: t/00-compile
           skip: []

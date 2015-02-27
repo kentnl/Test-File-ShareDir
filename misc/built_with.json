@@ -55,6 +55,7 @@
       "Dist::Zilla::Plugin::Twitter" : "0.026",
       "Dist::Zilla::Plugin::UploadToCPAN" : "5.032",
       "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.023003",
+      "Exporter" : "5.72",
       "ExtUtils::MakeMaker" : "7.04",
       "File::Copy::Recursive" : "0.38",
       "File::ShareDir" : "1.102",
