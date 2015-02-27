@@ -230,7 +230,7 @@ Into
     NameB => NameBValue
   }
 
-This is a useful approach used all over Importer style interfaces due to explicit configuration
+This is a useful approach used all over import and functional style interfaces due to explicit configuration
 being needed only on rare occasions.
 
 =head1 AUTHOR
