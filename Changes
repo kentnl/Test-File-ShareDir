@@ -15,6 +15,7 @@ Release history for Test-File-ShareDir
  [Features]
  - Add a new -clearer attribute to importer interfaces that accepts a ref to a scalar that will be vivified to a
    CodeRef which allows removal from @INC
+ - Add a new ::Utils package that provides with_dist_dir and with_module_dir for easy localised @INC changes
  - OO interfaces now all have a ->register and a ->clear method.
 
  [Features::EXPERIMENTAL]
