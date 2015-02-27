@@ -167,7 +167,7 @@ See L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Mo
 
 =head1 SCOPE LIMITED UTILITIES
 
-L<< C<Test::File::ShareDir::Utils>|Test::File::ShareDir::Utils >> provides a few utility functions to aide in temporarily adjusting C<ShareDir> behaviour.
+L<< C<Test::File::ShareDir::Utils>|Test::File::ShareDir::Utils >> provides a few utility functions to aide in temporarily adjusting C<ShareDir> behavior.
 
     use Test::File::ShareDir::Utils qw( with_dist_dir with_module_dir );
 
@@ -242,6 +242,8 @@ applied to C<-module> applies here.
 =head1 THANKS
 
 Thanks to the C<#distzilla> crew for ideas,suggestions, code review and debugging, even though not all of it made it into releases.
+
+=for Pod::Coverage DOLMEN ETHER HAARG RJBS
 
 =over 4
 
