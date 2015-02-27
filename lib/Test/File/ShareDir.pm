@@ -165,6 +165,21 @@ See L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Mo
 
 =end MetaPOD::JSON
 
+=head1 SCOPE LIMITED UTILITIES
+
+L<< C<Test::File::ShareDir::Utils>|Test::File::ShareDir::Utils >> provides a few utility functions to aide in temporarily adjusting C<ShareDir> behaviour.
+
+    use Test::File::ShareDir::Utils qw( with_dist_dir with_module_dir );
+
+    with_dist_dir({ 'Dist-Name' => 'Some/Path', sub {
+      # dist_dir() now behaves differently here
+    });
+    with_module_dir({ 'Module::Name' => 'Some/Path', sub {
+      # module_dir() now behaves differently here
+    });
+
+See L<< C<Test::File::ShareDir::Utils>|Test::File::ShareDir::Utils >> for details.
+
 =head1 IMPORTING
 
 =head2 -root
