@@ -45,6 +45,8 @@ sub _mk_clearer {
 
 
 
+
+
 sub with_dist_dir {
   my ( $config, $code ) = @_;
   if ( 'CODE' ne ( ref $code || q{} ) ) {
@@ -58,6 +60,8 @@ sub with_dist_dir {
   my $guard = Scope::Guard->new( _mk_clearer($dist_object) );    ## no critic (Variables::ProhibitUnusedVarsStricter)
   return $code->();
 }
+
+
 
 
 
@@ -193,6 +197,8 @@ C<%config> can contain anything L<< C<Test::File::ShareDir::Dist>|Test::File::Sh
 
 =back
 
+I<Since 1.001000>
+
 =head2 with_module_dir
 
 Sets up a C<ShareDir> environment with limited context.
@@ -213,6 +219,8 @@ C<%config> can contain anything L<< C<Test::File::ShareDir::Module>|Test::File::
 =item C<I<$moduleName>>: Declare C<$moduleName>'s C<ShareDir>.
 
 =back
+
+I<Since 1.001000>
 
 =head2 extract_dashes
 
