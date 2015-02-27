@@ -20,6 +20,29 @@ sub _mk_clearer {
   return sub { $clearee->clear };
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sub with_dist_dir {
   my ( $config, $code ) = @_;
   if ( 'CODE' ne ( ref $code || q{} ) ) {
@@ -33,6 +56,29 @@ sub with_dist_dir {
   my $guard = Scope::Guard->new( _mk_clearer($dist_object) );
   return $code->();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 sub with_module_dir {
   my ( $config, $code ) = @_;
@@ -48,6 +94,8 @@ sub with_module_dir {
   return $code->();
 }
 
+1;
+
 __END__
 
 =pod
@@ -61,6 +109,61 @@ Test::File::ShareDir::Utils
 =head1 VERSION
 
 version 1.001000
+
+=head1 SYNOPSIS
+
+  use Test::File::ShareDir::Utils qw( with_module_dir );
+  use File::ShareDir qw( module_dir );
+
+  with_module_dir({ "Module::Name" => "share/Module-Name"}, sub {
+
+    module_dir("Module::Name") # resolves to a sharedir containing share/Module-Name's contents.
+
+  });
+
+  module_dir("Module::Name") # resolves to system sharedir if it exists.
+
+=export with_dist_dir
+
+Sets up a C<ShareDir> environment with limited context.
+
+  # with_dist_dir(\%config, \&sub);
+  with_dist_dir({ 'Dist-Name' => 'share/'} => sub {
+
+    File::ShareDir resolves to a copy of C<share/> in this context.
+
+  });
+
+C<%config> can contain anything L<Test::File::ShareDir::Dist> accepts.
+
+=over 4
+
+=item C<-root>: Defaults to C<$CWD>
+
+=item C<I<$distName>>: Declare C<$distName>'s C<ShareDir>.
+
+=back
+
+=export with_module_dir
+
+Sets up a C<ShareDir> environment with limited context.
+
+  # with_module_dir(\%config, \&sub);
+  with_module_dir({ 'Module::Name' => 'share/'} => sub {
+
+    File::ShareDir resolves to a copy of C<share/> in this context.
+
+  });
+
+C<%config> can contain anything L<Test::File::ShareDir::Module> accepts.
+
+=over 4
+
+=item C<-root>: Defaults to C<$CWD>
+
+=item C<I<$moduleName>>: Declare C<$moduleName>'s C<ShareDir>.
+
+=back
 
 =head1 AUTHOR
 
