@@ -120,6 +120,9 @@ sub with_module_dir {
 
 
 
+
+
+
 sub extract_dashes {
   my ( $undashed_to, $source ) = @_;
   if ( not ref $source or 'HASH' ne ref $source ) {
@@ -211,7 +214,7 @@ C<%config> can contain anything L<< C<Test::File::ShareDir::Module>|Test::File::
 
 =export extract_dashes
 
-A utility that helps tranform:
+A utility that helps transform:
 
   -opt_a => bar
   -opt_b => baz
@@ -226,6 +229,9 @@ Into
     NameA => NameAValue
     NameB => NameBValue
   }
+
+This is a useful approach used all over Importer style interfaces due to explicit configuration
+being needed only on rare occasions.
 
 =head1 AUTHOR
 
