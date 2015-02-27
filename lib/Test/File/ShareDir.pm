@@ -155,16 +155,6 @@ This will automatically create a C<ShareDir> for C<Module::Name> in a C<TempDir>
 
 See L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Module >> for details.
 
-=begin MetaPOD::JSON v1.1.0
-
-{
-    "namespace":"Test::File::ShareDir",
-    "interface":"exporter"
-}
-
-
-=end MetaPOD::JSON
-
 =head1 SCOPE LIMITED UTILITIES
 
 L<< C<Test::File::ShareDir::Utils>|Test::File::ShareDir::Utils >> provides a few utility functions to aide in temporarily adjusting C<ShareDir> behavior.
@@ -179,6 +169,16 @@ L<< C<Test::File::ShareDir::Utils>|Test::File::ShareDir::Utils >> provides a few
     });
 
 See L<< C<Test::File::ShareDir::Utils>|Test::File::ShareDir::Utils >> for details.
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir",
+    "interface":"exporter"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 IMPORTING
 

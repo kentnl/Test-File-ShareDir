@@ -297,6 +297,10 @@ x_Dist_Zilla:
               name: 'SIMPLE INTERFACE'
               version: '4.010'
             -
+              class: Pod::Weaver::Section::Generic
+              name: 'SCOPE LIMITED UTILITIES'
+              version: '4.010'
+            -
               class: Pod::Weaver::Section::Collect
               name: METHODS
               version: '4.010'
