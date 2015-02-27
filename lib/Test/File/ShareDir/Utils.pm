@@ -52,7 +52,7 @@ sub with_dist_dir {
   }
   require Test::File::ShareDir::Object::Dist;
   require Scope::Guard;
-  my $dist_object = Test::File::ShareDir::Object::Dist->new(extract_dashes('dists',$config));
+  my $dist_object = Test::File::ShareDir::Object::Dist->new( extract_dashes( 'dists', $config ) );
   $dist_object->install_all_dists();
   $dist_object->register();
   my $guard = Scope::Guard->new( _mk_clearer($dist_object) );    ## no critic (Variables::ProhibitUnusedVarsStricter)
@@ -89,13 +89,14 @@ sub with_module_dir {
   }
   require Test::File::ShareDir::Object::Module;
   require Scope::Guard;
-  my $module_object = Test::File::ShareDir::Object::Module->new(extract_dashes('modules',$config));
+  my $module_object = Test::File::ShareDir::Object::Module->new( extract_dashes( 'modules', $config ) )
+    ;    ## no critic (Variables::ProhibitUnusedVarsStricter)
+
   $module_object->install_all_modules();
   $module_object->register();
   my $guard = Scope::Guard->new( _mk_clearer($module_object) );
   return $code->();
 }
-
 
 
 
@@ -128,7 +129,7 @@ sub extract_dashes {
     next unless $key =~ /\A-(.*)\z/msx;
     $params->{$1} = delete $input_config{$key};
   }
-  $params->{ $undashed_to } = {} if not exists $params->{ $undashed_to };
+  $params->{$undashed_to} = {} if not exists $params->{$undashed_to};
   for my $key ( keys %input_config ) {
     $params->{$undashed_to}->{$key} = $input_config{$key};
   }
