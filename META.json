@@ -479,6 +479,11 @@
                      },
                      {
                         "class" : "Pod::Weaver::Section::Collect",
+                        "name" : "EXPORTS",
+                        "version" : "4.010"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Collect",
                         "name" : "ATTRIBUTES",
                         "version" : "4.010"
                      },

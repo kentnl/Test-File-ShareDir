@@ -170,7 +170,9 @@ version 1.001000
 
   module_dir("Module::Name") # resolves to system sharedir if it exists.
 
-=export with_dist_dir
+=head1 EXPORTABLE FUNCTIONS
+
+=head2 with_dist_dir
 
 Sets up a C<ShareDir> environment with limited context.
 
@@ -191,7 +193,7 @@ C<%config> can contain anything L<< C<Test::File::ShareDir::Dist>|Test::File::Sh
 
 =back
 
-=export with_module_dir
+=head2 with_module_dir
 
 Sets up a C<ShareDir> environment with limited context.
 
@@ -212,7 +214,7 @@ C<%config> can contain anything L<< C<Test::File::ShareDir::Module>|Test::File::
 
 =back
 
-=export extract_dashes
+=head2 extract_dashes
 
 A utility that helps transform:
 

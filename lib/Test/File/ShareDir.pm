@@ -243,7 +243,7 @@ applied to C<-module> applies here.
 
 Thanks to the C<#distzilla> crew for ideas,suggestions, code review and debugging, even though not all of it made it into releases.
 
-=for stopword DOLMEN ETHER HAARG RJBS
+=for stopwords DOLMEN ETHER HAARG RJBS
 
 =over 4
 
