@@ -6,6 +6,8 @@ package Test::File::ShareDir::Utils;
 
 our $VERSION = '1.001000';
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 use Exporter 5.57 qw(import);
 use Carp qw( croak );
 
