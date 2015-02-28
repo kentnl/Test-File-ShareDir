@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Utils;
 
-our $VERSION = '1.001000';
+our $VERSION = '1.001001';
 
 # AUTHORITY
 

@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Dist;
 
-our $VERSION = '1.000006';
+our $VERSION = '1.001001';
 
 # ABSTRACT: Object Oriented ShareDir creation for distributions
 
