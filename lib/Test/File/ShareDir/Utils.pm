@@ -13,96 +13,7 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 use Exporter 5.57 qw(import);
 use Carp qw( croak );
 
-our @EXPORT_OK = qw( with_dist_dir with_module_dir extract_dashes );
-
-# This code is just to make sure any guard objects
-# are not lexically visible to the sub they contain creating a self reference.
-sub _mk_clearer {
-  my ($clearee) = @_;
-  return sub { $clearee->clear };
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-sub with_dist_dir {
-  my ( $config, $code ) = @_;
-  if ( 'CODE' ne ( ref $code || q{} ) ) {
-    croak( 'CodeRef expected at end of with_dist_dir(), ' . ( ref $code || qq{scalar="$code"} ) . ' found' );
-  }
-  require Test::File::ShareDir::Object::Dist;
-  require Scope::Guard;
-  my $dist_object = Test::File::ShareDir::Object::Dist->new( extract_dashes( 'dists', $config ) );
-  $dist_object->install_all_dists();
-  $dist_object->register();
-  my $guard = Scope::Guard->new( _mk_clearer($dist_object) );    ## no critic (Variables::ProhibitUnusedVarsStricter)
-  return $code->();
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-sub with_module_dir {
-  my ( $config, $code ) = @_;
-  if ( 'CODE' ne ( ref $code || q{} ) ) {
-    croak( 'CodeRef expected at end of with_module_dir(), ' . ( ref $code || qq{scalar="$code"} ) . ' found' );
-  }
-
-  require Test::File::ShareDir::Object::Module;
-  require Scope::Guard;
-
-  my $module_object = Test::File::ShareDir::Object::Module->new( extract_dashes( 'modules', $config ) );
-
-  $module_object->install_all_modules();
-  $module_object->register();
-  my $guard = Scope::Guard->new( _mk_clearer($module_object) );    ## no critic (Variables::ProhibitUnusedVarsStricter)
-
-  return $code->();
-}
+our @EXPORT_OK = qw( extract_dashes );
 
 
 
@@ -163,64 +74,11 @@ version 1.001000
 
 =head1 SYNOPSIS
 
-  use Test::File::ShareDir::Utils qw( with_module_dir );
-  use File::ShareDir qw( module_dir );
+  use Test::File::ShareDir::Utils qw( extract_dashes );
 
-  with_module_dir({ "Module::Name" => "share/Module-Name"}, sub {
-
-    module_dir("Module::Name") # resolves to a sharedir containing share/Module-Name's contents.
-
-  });
-
-  module_dir("Module::Name") # resolves to system sharedir if it exists.
+  my $hash = extract_dashes('dists', $oldhash );
 
 =head1 EXPORTABLE FUNCTIONS
-
-=head2 with_dist_dir
-
-Sets up a C<ShareDir> environment with limited context.
-
-  # with_dist_dir(\%config, \&sub);
-  with_dist_dir( { 'Dist-Name' => 'share/' } => sub {
-
-      # File::ShareDir resolves to a copy of share/ in this context.
-
-  } );
-
-C<%config> can contain anything L<< C<Test::File::ShareDir::Dist>|Test::File::ShareDir::Dist >> accepts.
-
-=over 4
-
-=item C<-root>: Defaults to C<$CWD>
-
-=item C<I<$distName>>: Declare C<$distName>'s C<ShareDir>.
-
-=back
-
-I<Since 1.001000>
-
-=head2 with_module_dir
-
-Sets up a C<ShareDir> environment with limited context.
-
-  # with_module_dir(\%config, \&sub);
-  with_module_dir( { 'Module::Name' => 'share/' } => sub {
-
-      # File::ShareDir resolves to a copy of share/ in this context.
-
-  } );
-
-C<%config> can contain anything L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> accepts.
-
-=over 4
-
-=item C<-root>: Defaults to C<$CWD>
-
-=item C<I<$moduleName>>: Declare C<$moduleName>'s C<ShareDir>.
-
-=back
-
-I<Since 1.001000>
 
 =head2 extract_dashes
 

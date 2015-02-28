@@ -6,7 +6,7 @@ use Test::More 0.96;
 use Test::Fatal;
 use FindBin;
 
-use Test::File::ShareDir::Utils qw(with_dist_dir);
+use Test::File::ShareDir qw(with_dist_dir);
 use lib "$FindBin::Bin/07_files/lib";
 use Example;
 use File::ShareDir qw( dist_dir dist_file );
