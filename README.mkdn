@@ -217,6 +217,15 @@ Sets up a `ShareDir` environment with limited context.
 
 _Since 1.001000_
 
+# THANKS
+
+Thanks to the `#distzilla` crew for ideas,suggestions, code review and debugging, even though not all of it made it into releases.
+
+- [DOLMEN](cpan:///author/dolmen)
+- [ETHER](cpan:///author/ether)
+- [HAARG](cpan:///author/haarg)
+- [RJBS](cpan:///author/rjbs)
+
 # AUTHOR
 
 Kent Fredric <kentnl@cpan.org>

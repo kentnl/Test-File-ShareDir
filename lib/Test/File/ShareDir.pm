@@ -344,4 +344,23 @@ applied to C<-module> applies here.
   ...
   dist_dir('My-Dist')
 
+
+=head1 THANKS
+
+Thanks to the C<#distzilla> crew for ideas,suggestions, code review and debugging, even though not all of it made it into releases.
+
+=for stopwords DOLMEN ETHER HAARG RJBS
+
+=over 4
+
+=item * L<DOLMEN|cpan:///author/dolmen>
+
+=item * L<ETHER|cpan:///author/ether>
+
+=item * L<HAARG|cpan:///author/haarg>
+
+=item * L<RJBS|cpan:///author/rjbs>
+
+=back
+
 =cut
