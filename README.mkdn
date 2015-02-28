@@ -102,9 +102,33 @@ This will automatically create a `ShareDir` for `Module::Name` in a `TempDir` ba
 
 See [`Test::File::ShareDir::Object::Module`](https://metacpan.org/pod/Test::File::ShareDir::Object::Module) for details.
 
+# SCOPE LIMITED UTILITIES
+
+`Test::File::ShareDir` provides a few utility functions to aide in temporarily adjusting `ShareDir` behavior.
+
+    use Test::File::ShareDir qw( with_dist_dir with_module_dir );
+
+    with_dist_dir({ 'Dist-Name' => 'Some/Path' }, sub {
+      # dist_dir() now behaves differently here
+    });
+    with_module_dir({ 'Module::Name' => 'Some/Path' }, sub {
+      # module_dir() now behaves differently here
+    });
+
+See [`EXPORTABLE FUNCTIONS`](#exportable-functions) for details.
+
 # IMPORTING
 
-## -root
+Since `1.001000`, there are 2 ways of passing arguments to `import`
+
+    use Foo { -root => ... options }, qw( functions to import );
+    use Foo -optname => option, -optname => option, qw( functions to import );
+
+Both should work, but the former might be less prone to accidental issues.
+
+## IMPORT OPTIONS
+
+### -root
 
 This parameter is the prefix the other paths are relative to.
 
@@ -123,13 +147,13 @@ still be overridden.
 
     -root => "$FindBin::Bin/../" # resolves to project root from t/ regardless of Cwd.
 
-## -share
+### -share
 
 This parameter is mandatory, and contains a `hashref` containing the data that explains what directories you want shared.
 
     -share =>  { ..... }
 
-### -module
+#### -module
 
 `-module` contains a `hashref` mapping Module names to path names for module\_dir style share dirs.
 
@@ -144,7 +168,7 @@ This parameter is mandatory, and contains a `hashref` containing the data that e
 Notedly, it is a `hashref`, which means there is a limitation of one share dir per module. This is simply because having more
 than one share dir per module makes no sense at all.
 
-### -dist
+#### -dist
 
 `-dist` contains a `hashref` mapping Distribution names to path names for dist\_dir style share dirs. The same limitation
 applied to `-module` applies here.
@@ -154,6 +178,44 @@ applied to `-module` applies here.
     }
     ...
     dist_dir('My-Dist')
+
+# EXPORTABLE FUNCTIONS
+
+## with\_dist\_dir
+
+Sets up a `ShareDir` environment with limited context.
+
+    # with_dist_dir(\%config, \&sub);
+    with_dist_dir( { 'Dist-Name' => 'share/' } => sub {
+
+        # File::ShareDir resolves to a copy of share/ in this context.
+
+    } );
+
+`%config` can contain anything [`Test::File::ShareDir::Dist`](https://metacpan.org/pod/Test::File::ShareDir::Dist) accepts.
+
+- `-root`: Defaults to `$CWD`
+- `_$distName_`: Declare `$distName`'s `ShareDir`.
+
+_Since 1.001000_
+
+## with\_module\_dir
+
+Sets up a `ShareDir` environment with limited context.
+
+    # with_module_dir(\%config, \&sub);
+    with_module_dir( { 'Module::Name' => 'share/' } => sub {
+
+        # File::ShareDir resolves to a copy of share/ in this context.
+
+    } );
+
+`%config` can contain anything [`Test::File::ShareDir::Module`](https://metacpan.org/pod/Test::File::ShareDir::Module) accepts.
+
+- `-root`: Defaults to `$CWD`
+- `_$moduleName_`: Declare `$moduleName`'s `ShareDir`.
+
+_Since 1.001000_
 
 # AUTHOR
 

@@ -22,25 +22,145 @@ our $VERSION = '1.001000';
 =cut
 
 use File::ShareDir 1.00 qw();
+use Exporter qw();
+use Test::File::ShareDir::Utils qw( extract_dashes );
+use Carp qw( croak );
+use parent qw( Exporter );
+
+our @EXPORT_OK = qw( with_dist_dir with_module_dir );
 
 sub import {
-  my ( undef, %input_config ) = @_;
+  my ( $package, @args ) = @_;
 
-  require Test::File::ShareDir::TempDirObject;
+  my ( @imports, %params );
 
-  my $tempdir_object = Test::File::ShareDir::TempDirObject->new( \%input_config );
-
-  for my $module ( $tempdir_object->_module_names ) {
-    $tempdir_object->_install_module($module);
+  # ->import( {  }, qw( imports ) )
+  if ( 'HASH' eq ref $args[0] ) {
+    %params  = %{ shift @args };
+    @imports = @args;
+  }
+  else {
+    # ->import( -arg  => value, -arg => value, @imports );
+    while (@args) {
+      if ( $args[0] =~ /\A-(.*)\z/msx ) {
+        $params{ $args[0] } = $args[1];
+        splice @args, 0, 2, ();
+        next;
+      }
+      push @imports, shift @args;
+    }
   }
 
-  for my $dist ( $tempdir_object->_dist_names ) {
-    $tempdir_object->_install_dist($dist);
+  if ( keys %params ) {
+    require Test::File::ShareDir::TempDirObject;
+
+    my $tempdir_object = Test::File::ShareDir::TempDirObject->new( \%params );
+
+    for my $module ( $tempdir_object->_module_names ) {
+      $tempdir_object->_install_module($module);
+    }
+
+    for my $dist ( $tempdir_object->_dist_names ) {
+      $tempdir_object->_install_dist($dist);
+    }
+
+    unshift @INC, $tempdir_object->_tempdir->stringify;
+
+  }
+  if (@imports) {
+    $package->export_to_level( 1, undef, @imports );
+  }
+  return;
+
+}
+
+# This code is just to make sure any guard objects
+# are not lexically visible to the sub they contain creating a self reference.
+sub _mk_clearer {
+  my ($clearee) = @_;
+  return sub { $clearee->clear };
+}
+
+=export with_dist_dir
+
+Sets up a C<ShareDir> environment with limited context.
+
+  # with_dist_dir(\%config, \&sub);
+  with_dist_dir( { 'Dist-Name' => 'share/' } => sub {
+
+      # File::ShareDir resolves to a copy of share/ in this context.
+
+  } );
+
+C<%config> can contain anything L<< C<Test::File::ShareDir::Dist>|Test::File::ShareDir::Dist >> accepts.
+
+=over 4
+
+=item C<-root>: Defaults to C<$CWD>
+
+=item C<I<$distName>>: Declare C<$distName>'s C<ShareDir>.
+
+=back
+
+I<Since 1.001000>
+
+=cut
+
+sub with_dist_dir {
+  my ( $config, $code ) = @_;
+  if ( 'CODE' ne ( ref $code || q{} ) ) {
+    croak( 'CodeRef expected at end of with_dist_dir(), ' . ( ref $code || qq{scalar="$code"} ) . ' found' );
+  }
+  require Test::File::ShareDir::Object::Dist;
+  require Scope::Guard;
+  my $dist_object = Test::File::ShareDir::Object::Dist->new( extract_dashes( 'dists', $config ) );
+  $dist_object->install_all_dists();
+  $dist_object->register();
+  my $guard = Scope::Guard->new( _mk_clearer($dist_object) );    ## no critic (Variables::ProhibitUnusedVarsStricter)
+  return $code->();
+}
+
+=export with_module_dir
+
+Sets up a C<ShareDir> environment with limited context.
+
+  # with_module_dir(\%config, \&sub);
+  with_module_dir( { 'Module::Name' => 'share/' } => sub {
+
+      # File::ShareDir resolves to a copy of share/ in this context.
+
+  } );
+
+C<%config> can contain anything L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> accepts.
+
+=over 4
+
+=item C<-root>: Defaults to C<$CWD>
+
+=item C<I<$moduleName>>: Declare C<$moduleName>'s C<ShareDir>.
+
+=back
+
+I<Since 1.001000>
+
+=cut
+
+sub with_module_dir {
+  my ( $config, $code ) = @_;
+  if ( 'CODE' ne ( ref $code || q{} ) ) {
+    croak( 'CodeRef expected at end of with_module_dir(), ' . ( ref $code || qq{scalar="$code"} ) . ' found' );
   }
 
-  unshift @INC, $tempdir_object->_tempdir->stringify;
+  require Test::File::ShareDir::Object::Module;
+  require Scope::Guard;
 
-  return 1;
+  my $module_object = Test::File::ShareDir::Object::Module->new( extract_dashes( 'modules', $config ) );
+
+  $module_object->install_all_modules();
+  $module_object->register();
+  my $guard = Scope::Guard->new( _mk_clearer($module_object) );    ## no critic (Variables::ProhibitUnusedVarsStricter)
+
+  return $code->();
 }
 
 1;
@@ -141,9 +261,33 @@ This will automatically create a C<ShareDir> for C<Module::Name> in a C<TempDir>
 
 See L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Module >> for details.
 
+=head1 SCOPE LIMITED UTILITIES
+
+C<Test::File::ShareDir> provides a few utility functions to aide in temporarily adjusting C<ShareDir> behavior.
+
+    use Test::File::ShareDir qw( with_dist_dir with_module_dir );
+
+    with_dist_dir({ 'Dist-Name' => 'Some/Path' }, sub {
+      # dist_dir() now behaves differently here
+    });
+    with_module_dir({ 'Module::Name' => 'Some/Path' }, sub {
+      # module_dir() now behaves differently here
+    });
+
+See L<< C<EXPORTABLE FUNCTIONS>|/EXPORTABLE FUNCTIONS >> for details.
+
 =head1 IMPORTING
 
-=head2 -root
+Since C<1.001000>, there are 2 ways of passing arguments to C<import>
+
+  use Foo { -root => ... options }, qw( functions to import );
+  use Foo -optname => option, -optname => option, qw( functions to import );
+
+Both should work, but the former might be less prone to accidental issues.
+
+=head2 IMPORT OPTIONS
+
+=head3 -root
 
 This parameter is the prefix the other paths are relative to.
 
@@ -168,13 +312,13 @@ still be overridden.
 
   -root => "$FindBin::Bin/../" # resolves to project root from t/ regardless of Cwd.
 
-=head2 -share
+=head3 -share
 
 This parameter is mandatory, and contains a C<hashref> containing the data that explains what directories you want shared.
 
   -share =>  { ..... }
 
-=head3 -module
+=head4 -module
 
 C<-module> contains a C<hashref> mapping Module names to path names for module_dir style share dirs.
 
@@ -189,7 +333,7 @@ C<-module> contains a C<hashref> mapping Module names to path names for module_d
 Notedly, it is a C<hashref>, which means there is a limitation of one share dir per module. This is simply because having more
 than one share dir per module makes no sense at all.
 
-=head3 -dist
+=head4 -dist
 
 C<-dist> contains a C<hashref> mapping Distribution names to path names for dist_dir style share dirs. The same limitation
 applied to C<-module> applies here.
