@@ -288,7 +288,7 @@ C<Test::File::ShareDir> provides a few utility functions to aide in temporarily 
       # module_dir() now behaves differently here
     });
 
-See L<< C<EXPORTS>|/EXPORTS >> for details.
+See L<< C<EXPORTABLE FUNCTIONS>|/EXPORTABLE FUNCTIONS >> for details.
 
 =head1 IMPORTING
 
