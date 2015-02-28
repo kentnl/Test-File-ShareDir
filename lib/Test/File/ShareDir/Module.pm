@@ -11,6 +11,7 @@ our $VERSION = '1.000006';
 # AUTHORITY
 
 use File::ShareDir 1.00 qw();
+use Test::File::ShareDir::Utils qw( extract_dashes );
 
 =begin MetaPOD::JSON v1.1.0
 
@@ -35,17 +36,7 @@ sub import {
 
   require Test::File::ShareDir::Object::Module;
 
-  my $params = {};
-  for my $key ( keys %input_config ) {
-    next unless $key =~ /\A-(.*)\z/msx;
-    $params->{$1} = delete $input_config{$key};
-  }
-  $params->{modules} = {} if not exists $params->{modules};
-  for my $key ( keys %input_config ) {
-    $params->{modules}->{$key} = $input_config{$key};
-  }
-
-  my $module_object = Test::File::ShareDir::Object::Module->new($params);
+  my $module_object = Test::File::ShareDir::Object::Module->new(extract_dashes('modules', \%input_config ));
   $module_object->install_all_modules();
   $module_object->register();
   return 1;
