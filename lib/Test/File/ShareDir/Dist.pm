@@ -4,13 +4,14 @@ use warnings;
 
 package Test::File::ShareDir::Dist;
 
-our $VERSION = '1.000005';
+our $VERSION = '1.001000';
 
 # ABSTRACT: Simplified dist oriented ShareDir tester
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use File::ShareDir 1.00 qw();
+use Test::File::ShareDir::Utils qw( extract_dashes );
 
 
 
@@ -35,20 +36,9 @@ sub import {
 
   require Test::File::ShareDir::Object::Dist;
 
-  my $params = {};
-  for my $key ( keys %input_config ) {
-    next unless $key =~ /\A-(.*)\z/msx;
-    $params->{$1} = delete $input_config{$key};
-  }
-  $params->{dists} = {} if not exists $params->{dists};
-  for my $key ( keys %input_config ) {
-    $params->{dists}->{$key} = $input_config{$key};
-  }
-
-  my $dist_object = Test::File::ShareDir::Object::Dist->new($params);
+  my $dist_object = Test::File::ShareDir::Object::Dist->new(extract_dashes('dists', \%input_config ));
   $dist_object->install_all_dists();
-  $dist_object->add_to_inc();
-
+  $dist_object->register();
   return 1;
 }
 
@@ -66,7 +56,7 @@ Test::File::ShareDir::Dist - Simplified dist oriented ShareDir tester
 
 =head1 VERSION
 
-version 1.000005
+version 1.001000
 
 =head1 SYNOPSIS
 
@@ -96,7 +86,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2015 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

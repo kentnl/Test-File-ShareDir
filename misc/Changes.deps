@@ -1,6 +1,17 @@
 This file contains changes in REQUIRED dependencies for standard CPAN phases (configure/build/runtime/test)
 
-1.000005
+1.001000
+ [Added / configure requires]
+ - perl 5.006
+
+ [Added / runtime requires]
+ - Exporter 5.57
+ - Scope::Guard
+
+ [Added / test requires]
+ - perl 5.006
+
+1.000005 2014-08-15T23:41:58Z
  [Changed / configure requires]
  - ExtUtils::MakeMaker 6.30 → 0
 

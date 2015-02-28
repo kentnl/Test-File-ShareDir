@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Module;
 
-our $VERSION = '1.000005';
+our $VERSION = '1.001000';
 
 # ABSTRACT: Object Oriented ShareDir creation for modules
 
@@ -35,6 +35,8 @@ use Class::Tiny {
     return Path::Tiny::path(q[./])->absolute;
   },
 };
+
+use Carp qw( carp );
 
 
 
@@ -136,11 +138,41 @@ sub install_all_modules {
 
 
 
-
-
 sub add_to_inc {
   my ($self) = @_;
-  $self->inc->add_to_inc;
+  carp 'add_to_inc deprecated since 1.001000, use register';
+  return $self->register;
+}
+
+
+
+
+
+
+
+
+
+
+
+sub register {
+  my ($self) = @_;
+  $self->inc->register;
+  return;
+}
+
+
+
+
+
+
+
+
+
+
+
+sub clear {
+  my ($self) = @_;
+  $self->inc->clear;
   return;
 }
 
@@ -158,7 +190,7 @@ Test::File::ShareDir::Object::Module - Object Oriented ShareDir creation for mod
 
 =head1 VERSION
 
-version 1.000005
+version 1.001000
 
 =head1 SYNOPSIS
 
@@ -208,9 +240,23 @@ Installs all C<module_names>.
 
 =head2 C<add_to_inc>
 
-    $instance->add_to_inc();
+B<DEPRECATED:> Use C<register> instead.
 
-Adds the C<Tempdir> C<ShareDir> ( C<inc> ) to the global C<@INC>.
+=head2 C<register>
+
+    $instance->register();
+
+Adds the C<Tempdir> C<ShareDir> (  C<inc> ) to the global C<@INC>
+
+I<Since 1.001000>
+
+=head2 C<clear>
+
+    $instance->clear();
+
+Removes the C<Tempdir> C<ShareDir> ( C<inc> ) from the global C<@INC>
+
+I<Since 1.001000>
 
 =head1 ATTRIBUTES
 
@@ -247,7 +293,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2015 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Object::Inc;
 
-our $VERSION = '1.000005';
+our $VERSION = '1.001000';
 
 # ABSTRACT: Shared tempdir object code to inject into @INC
 
@@ -44,8 +44,7 @@ use Class::Tiny {
     return $dir->absolute;
   },
 };
-
-
+use Carp qw( carp );
 
 
 
@@ -67,7 +66,44 @@ use Class::Tiny {
 
 sub add_to_inc {
   my ($self) = @_;
+  carp 'add_to_inc deprecated sice 1.001000, use register instead';
+  return $self->register;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+sub register {
+  my ($self) = @_;
   unshift @INC, $self->tempdir->stringify;
+  return;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+sub clear {
+  my ($self) = @_;
+  ## no critic (Variables::RequireLocalizedPunctuationVars)
+  @INC = grep { ref or $_ ne $self->tempdir->stringify } @INC;
   return;
 }
 
@@ -85,7 +121,7 @@ Test::File::ShareDir::Object::Inc - Shared tempdir object code to inject into @I
 
 =head1 VERSION
 
-version 1.000005
+version 1.001000
 
 =head1 SYNOPSIS
 
@@ -112,9 +148,27 @@ and the injection of those C<tempdir>'s into C<@INC>
 
 =head2 C<add_to_inc>
 
-    $instance->add_to_inc;
+B<DEPRECATED:> Use C<register> instead.
 
-Injects C<tempdir> into C<@INC>
+=head2 C<register>
+
+    $instance->register;
+
+Allows this C<Inc> to be used.
+
+Presently, this injects the associated C<tempdir> into C<@INC>
+
+I<Since 1.001000>
+
+=head2 C<clear>
+
+    $instance->clear();
+
+Prevents this C<Inc> from being used.
+
+Presently, this removes the C<tempdir> from C<@INC>
+
+I<Since 1.001000>
 
 =head1 ATTRIBUTES
 
@@ -147,7 +201,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentnl@cpan.org>.
+This software is copyright (c) 2015 by Kent Fredric <kentnl@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
