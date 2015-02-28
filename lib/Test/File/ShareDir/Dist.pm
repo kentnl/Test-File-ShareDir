@@ -36,7 +36,7 @@ sub import {
 
   require Test::File::ShareDir::Object::Dist;
 
-  my $dist_object = Test::File::ShareDir::Object::Dist->new( extract_dashes( 'dists', \%input_config ) );
+  my $dist_object = Test::File::ShareDir::Object::Dist->new(extract_dashes('dists', \%input_config ));
   $dist_object->install_all_dists();
   $dist_object->register();
   return 1;

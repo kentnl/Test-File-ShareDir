@@ -25,6 +25,7 @@ my %WriteMakefileArgs = (
     "File::ShareDir" => "1.00",
     "Path::Tiny" => "0.018",
     "Scope::Guard" => 0,
+    "parent" => 0,
     "strict" => 0,
     "warnings" => 0
   },
@@ -59,6 +60,7 @@ my %FallbackPrereqs = (
   "Test::Fatal" => 0,
   "Test::More" => "0.96",
   "lib" => 0,
+  "parent" => 0,
   "strict" => 0,
   "warnings" => 0
 );

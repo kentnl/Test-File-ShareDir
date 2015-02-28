@@ -36,7 +36,7 @@ sub import {
 
   require Test::File::ShareDir::Object::Module;
 
-  my $module_object = Test::File::ShareDir::Object::Module->new( extract_dashes( 'modules', \%input_config ) );
+  my $module_object = Test::File::ShareDir::Object::Module->new(extract_dashes('modules', \%input_config ));
   $module_object->install_all_modules();
   $module_object->register();
   return 1;

@@ -24,8 +24,9 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 use File::ShareDir 1.00 qw();
 use Exporter qw();
 use Test::File::ShareDir::Utils qw( extract_dashes );
+use Carp qw( croak );
+use parent qw( Exporter );
 
-our @ISA       = qw( Exporter );
 our @EXPORT_OK = qw( with_dist_dir with_module_dir );
 
 sub import {
@@ -276,7 +277,7 @@ See L<< C<Test::File::ShareDir::Object::Module>|Test::File::ShareDir::Object::Mo
 
 =head1 SCOPE LIMITED UTILITIES
 
-L<< C<Test::File::ShareDir>|Test::File::ShareDir >> provides a few utility functions to aide in temporarily adjusting C<ShareDir> behavior.
+C<Test::File::ShareDir> provides a few utility functions to aide in temporarily adjusting C<ShareDir> behavior.
 
     use Test::File::ShareDir qw( with_dist_dir with_module_dir );
 

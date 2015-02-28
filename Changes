@@ -1,6 +1,6 @@
 Release history for Test-File-ShareDir
 
-1.001000 2015-02-27T10:18:08Z d5527e6
+1.001000 2015-02-28T10:58:31Z 5523317
  [Dependencies::Stats]
  - Dependencies changed since 1.000005, see misc/*.deps* for details
  - configure: +1 (recommends: -1, suggests: +1)
@@ -13,8 +13,8 @@ Release history for Test-File-ShareDir
    meaning when the interface no longer actually uses @INC
 
  [Features]
- - Add a new ::Utils package that provides with_dist_dir and with_module_dir for easy localised @INC changes
  - OO interfaces now all have a ->register and a ->clear method.
+ - Now supports exporting with_dist_dir and with_module_dir functions from Test::File::ShareDir
 
 1.000005 2014-08-15T23:41:58Z
  [00 Trivial]
