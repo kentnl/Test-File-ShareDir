@@ -289,64 +289,6 @@ L<< C<Test::File::ShareDir>|Test::File::ShareDir >> provides a few utility funct
 
 See L<< C<EXPORTS>|/EXPORTS >> for details.
 
-=head1 EXPORTABLE FUNCTIONS
-
-=head2 with_dist_dir
-
-Sets up a C<ShareDir> environment with limited context.
-
-  # with_dist_dir(\%config, \&sub);
-  with_dist_dir( { 'Dist-Name' => 'share/' } => sub {
-
-      # File::ShareDir resolves to a copy of share/ in this context.
-
-  } );
-
-C<%config> can contain anything L<< C<Test::File::ShareDir::Dist>|Test::File::ShareDir::Dist >> accepts.
-
-=over 4
-
-=item C<-root>: Defaults to C<$CWD>
-
-=item C<I<$distName>>: Declare C<$distName>'s C<ShareDir>.
-
-=back
-
-I<Since 1.001000>
-
-=head2 with_module_dir
-
-Sets up a C<ShareDir> environment with limited context.
-
-  # with_module_dir(\%config, \&sub);
-  with_module_dir( { 'Module::Name' => 'share/' } => sub {
-
-      # File::ShareDir resolves to a copy of share/ in this context.
-
-  } );
-
-C<%config> can contain anything L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> accepts.
-
-=over 4
-
-=item C<-root>: Defaults to C<$CWD>
-
-=item C<I<$moduleName>>: Declare C<$moduleName>'s C<ShareDir>.
-
-=back
-
-I<Since 1.001000>
-
-=begin MetaPOD::JSON v1.1.0
-
-{
-    "namespace":"Test::File::ShareDir",
-    "interface":"exporter"
-}
-
-
-=end MetaPOD::JSON
-
 =head1 IMPORTING
 
 Since C<1.001000>, there are 2 ways of passing arguments to C<import>
@@ -414,6 +356,64 @@ applied to C<-module> applies here.
   }
   ...
   dist_dir('My-Dist')
+
+=head1 EXPORTABLE FUNCTIONS
+
+=head2 with_dist_dir
+
+Sets up a C<ShareDir> environment with limited context.
+
+  # with_dist_dir(\%config, \&sub);
+  with_dist_dir( { 'Dist-Name' => 'share/' } => sub {
+
+      # File::ShareDir resolves to a copy of share/ in this context.
+
+  } );
+
+C<%config> can contain anything L<< C<Test::File::ShareDir::Dist>|Test::File::ShareDir::Dist >> accepts.
+
+=over 4
+
+=item C<-root>: Defaults to C<$CWD>
+
+=item C<I<$distName>>: Declare C<$distName>'s C<ShareDir>.
+
+=back
+
+I<Since 1.001000>
+
+=head2 with_module_dir
+
+Sets up a C<ShareDir> environment with limited context.
+
+  # with_module_dir(\%config, \&sub);
+  with_module_dir( { 'Module::Name' => 'share/' } => sub {
+
+      # File::ShareDir resolves to a copy of share/ in this context.
+
+  } );
+
+C<%config> can contain anything L<< C<Test::File::ShareDir::Module>|Test::File::ShareDir::Module >> accepts.
+
+=over 4
+
+=item C<-root>: Defaults to C<$CWD>
+
+=item C<I<$moduleName>>: Declare C<$moduleName>'s C<ShareDir>.
+
+=back
+
+I<Since 1.001000>
+
+=begin MetaPOD::JSON v1.1.0
+
+{
+    "namespace":"Test::File::ShareDir",
+    "interface":"exporter"
+}
+
+
+=end MetaPOD::JSON
 
 =head1 THANKS
 
