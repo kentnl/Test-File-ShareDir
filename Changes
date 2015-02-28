@@ -1,11 +1,13 @@
 Release history for Test-File-ShareDir
 
+1.001001 2015-02-28T12:17:22Z 869b7a4
+
 1.001000 2015-02-28T11:09:38Z d703dd2
  [Dependencies::Stats]
  - Dependencies changed since 1.000005, see misc/*.deps* for details
  - configure: +1 (recommends: -1, suggests: +1)
  - develop: +10 ↑3 -2 (suggests: +1 ↑2)
- - runtime: +2 (suggests: +1)
+ - runtime: +3 (suggests: +1)
  - test: +1 (recommends: -2, suggests: +2)
 
  [Deprecations]

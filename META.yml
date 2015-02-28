@@ -27,28 +27,28 @@ no_index:
 provides:
   Test::File::ShareDir:
     file: lib/Test/File/ShareDir.pm
-    version: '1.001000'
+    version: '1.001001'
   Test::File::ShareDir::Dist:
     file: lib/Test/File/ShareDir/Dist.pm
-    version: '1.001000'
+    version: '1.001001'
   Test::File::ShareDir::Module:
     file: lib/Test/File/ShareDir/Module.pm
-    version: '1.001000'
+    version: '1.001001'
   Test::File::ShareDir::Object::Dist:
     file: lib/Test/File/ShareDir/Object/Dist.pm
-    version: '1.001000'
+    version: '1.001001'
   Test::File::ShareDir::Object::Inc:
     file: lib/Test/File/ShareDir/Object/Inc.pm
-    version: '1.001000'
+    version: '1.001001'
   Test::File::ShareDir::Object::Module:
     file: lib/Test/File/ShareDir/Object/Module.pm
-    version: '1.001000'
+    version: '1.001001'
   Test::File::ShareDir::TempDirObject:
     file: lib/Test/File/ShareDir/TempDirObject.pm
-    version: '1.001000'
+    version: '1.001001'
   Test::File::ShareDir::Utils:
     file: lib/Test/File/ShareDir/Utils.pm
-    version: '1.001000'
+    version: '1.001001'
 requires:
   Carp: '0'
   Class::Tiny: '0'
@@ -65,7 +65,7 @@ resources:
   bugtracker: https://github.com/kentnl/Test-File-ShareDir/issues
   homepage: https://github.com/kentnl/Test-File-ShareDir
   repository: https://github.com/kentnl/Test-File-ShareDir.git
-version: '1.001000'
+version: '1.001001'
 x_BuiltWith:
   external_file: misc/built_with.json
 x_Dist_Zilla:
@@ -443,7 +443,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: 1.001000-source
+          tag: 1.001001-source
           tag_format: '%v-source'
           tag_message: v%v
           time_zone: local
@@ -497,7 +497,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: releases
           signed: 0
-          tag: '1.001000'
+          tag: '1.001001'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local

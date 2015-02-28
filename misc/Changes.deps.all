@@ -1,6 +1,8 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
-1.001000
+1.001001
+
+1.001000 2015-02-28T11:09:38Z
  [Added / configure requires]
  - perl 5.006
 
@@ -25,6 +27,7 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  [Added / runtime requires]
  - Exporter 5.57
  - Scope::Guard
+ - parent
 
  [Added / runtime suggests]
  - Path::Tiny 0.058

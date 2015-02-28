@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir::Utils;
 
-our $VERSION = '1.001000';
+our $VERSION = '1.001001';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -70,7 +70,7 @@ Test::File::ShareDir::Utils - Simple utilities for File::ShareDir testing
 
 =head1 VERSION
 
-version 1.001000
+version 1.001001
 
 =head1 SYNOPSIS
 
