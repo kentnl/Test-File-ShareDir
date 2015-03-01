@@ -4,7 +4,7 @@ use warnings;
 
 package Test::File::ShareDir;
 
-our $VERSION = '1.001001';
+our $VERSION = '1.001002';
 
 # ABSTRACT: Create a Fake ShareDir for your modules for testing.
 
