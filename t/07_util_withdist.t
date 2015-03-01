@@ -40,7 +40,7 @@ with_dist_dir(
 
 isnt(
   exception {
-    note dist_dir($distname);
+    diag dist_dir($distname);
   },
   undef,
   'dist_dir bails after clear'
@@ -52,7 +52,7 @@ isnt(
 #  -> File::Spec->catfile( undef, 'afile' )  # warns about undef in subroutine entry.
 isnt(
   exception {
-    note dist_file( $distname, 'afile' );
+    diag dist_file( $distname, 'afile' );
   },
   undef,
   'dist_file bails after clear'
