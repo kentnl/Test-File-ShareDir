@@ -12,6 +12,11 @@ use Example;
 use File::ShareDir qw( dist_dir dist_file );
 
 my $distname = "Should-Not-Exist-X" . int( rand() * 255 );
+my $ddir;
+if ( not exception { $ddir = dist_dir($distname); 1 } ) {
+  diag "Found should-not-exist dir at $ddir";
+  plan skip_all => "dist_dir($distname) needs to not exist";
+}
 
 with_dist_dir(
   { $distname => 't/07_files/share' } => sub {
