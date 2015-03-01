@@ -1,6 +1,8 @@
 Release history for Test-File-ShareDir
 
-1.001001 2015-03-01T04:51:48Z 13ce7ed
+1.001001 2015-03-01T05:41:19Z 6066b3c
+ [TestFixes]
+ - Try to guard against accidentally failing if a test distdir does in fact exist in the "Expect not to exist" test.
 
 1.001000 2015-02-28T11:09:38Z d703dd2
  [Dependencies::Stats]
