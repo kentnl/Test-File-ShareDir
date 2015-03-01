@@ -22,7 +22,7 @@ with_dist_dir(
   { $distname => 't/07_files/share' } => sub {
     is(
       exception {
-        diag dist_dir($distname);
+        note dist_dir($distname);
       },
       undef,
       'dist_dir doesn\'t bail as it finds the dir'
@@ -40,7 +40,7 @@ with_dist_dir(
 
 isnt(
   exception {
-    note dist_dir($distname);
+    diag dist_dir($distname);
   },
   undef,
   'dist_dir bails after clear'
