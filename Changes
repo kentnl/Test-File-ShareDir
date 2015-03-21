@@ -1,6 +1,9 @@
 Release history for Test-File-ShareDir
 
 {{$NEXT}}
+ [Dependencies::Stats]
+ - Dependencies changed since 1.001001, see misc/*.deps* for details
+ - develop: ↑2 (suggests: ↑1)
 
 1.001001 2015-03-01T05:44:37Z a89c745
  [TestFixes]
