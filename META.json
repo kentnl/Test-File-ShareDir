@@ -31,8 +31,8 @@
       "develop" : {
          "requires" : {
             "Dist::Zilla" : "5",
-            "Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes" : "0.001001",
-            "Dist::Zilla::Plugin::Author::KENTNL::TravisCI" : "0",
+            "Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes" : "0.004002",
+            "Dist::Zilla::Plugin::Author::KENTNL::TravisCI" : "0.001002",
             "Dist::Zilla::Plugin::Authority" : "1.006",
             "Dist::Zilla::Plugin::AutoPrereqs" : "0",
             "Dist::Zilla::Plugin::BumpVersionAfterRelease" : "0",
@@ -716,7 +716,7 @@
             "class" : "Dist::Zilla::Plugin::Git::CommitBuild",
             "config" : {
                "Dist::Zilla::Plugin::Git::CommitBuild" : {
-                  "branch" : "build/%b",
+                  "branch" : "builds",
                   "build_root" : null,
                   "message" : "Build results of %h (on %b)",
                   "multiple_inheritance" : 0,
