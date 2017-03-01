@@ -1,12 +1,19 @@
 This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and OPTIONAL )
 
 1.001002
+ [Added / develop requires]
+ - English
+ - Software::License::Perl_5
+ - Test::MinimumVersion
+
  [Changed / develop requires]
  - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001 → 0.004002
  - Dist::Zilla::Plugin::Author::KENTNL::TravisCI 0 → 0.001002
+ - Test::More 0.88 → 0.96
 
  [Changed / develop suggests]
- - Dist::Zilla::PluginBundle::Author::KENTNL 2.023003 → 2.024001
+ - Dist::Zilla::App::Command::bakeini 0.002000 → 0.002005
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.023003 → 2.025020
 
 1.001001 2015-03-01T05:44:37Z
 
@@ -184,4 +191,3 @@ This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and 
 0.1.2 2011-04-07T21:08:05Z
 
 0.1.1 2011-03-10T16:35:13Z
-
