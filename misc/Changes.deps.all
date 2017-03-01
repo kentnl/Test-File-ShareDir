@@ -9,6 +9,7 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  [Changed / develop requires]
  - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001 → 0.004002
  - Dist::Zilla::Plugin::Author::KENTNL::TravisCI 0 → 0.001002
+ - Dist::Zilla::Plugin::Test::Compile::PerFile 0 → 0.003902
  - Test::More 0.88 → 0.96
 
  [Changed / develop suggests]
